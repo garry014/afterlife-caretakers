@@ -28,8 +28,8 @@
     <meta name="format-detection" content="telephone=no">
 
     <!-- FAVICONS ICON ============================================= -->
-    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+    <link rel="icon" href="images/favicon.png" type="/image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
 
     <!-- PAGE TITLE HERE ============================================= -->
     <title>@ViewBag.Title</title>
@@ -38,9 +38,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- All PLUGINS CSS ============================================= -->
-    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/css/bootstrap-select.min.css">
-    <link rel="stylesheet" href="vendor/swiper/swiper.min.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="/vendor/swiper/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +66,7 @@
                     <div class="container-fluid clearfix">
                         <!-- website logo -->
                         <div class="menu-logo logo-dark">
-                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                            <a href="index.html"><img src="/images/logo.png" alt=""></a>
                         </div>
                         <!-- nav toggle button -->
                         <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -193,10 +193,12 @@
         </header>
         <!-- header END -->
 
+        <div class="page-content bg-white">
         @RenderBody()
+        </div>
 
         <!-- Footer ==== -->
-        <footer class="footer" style="background-image:url(images/background/footer.jpg);">
+        <footer class="footer" style="background-image:url(/images/background/footer.jpg);">
             <!-- Footer Top -->
             <div class="footer-top">
                 <div class="container">
@@ -204,7 +206,7 @@
                         <div class="col-xl-4 col-lg-4 col-md-8">
                             <div class="widget widget_info">
                                 <div class="footer-logo">
-                                    <a href="index.html"><img src="images/logo.png" alt=""></a>
+                                    <a href="index.html"><img src="/images/logo.png" alt=""></a>
                                 </div>
                                 <div class="ft-contact">
                                     <p>
@@ -273,28 +275,24 @@
                 <div class="footer-bottom">
                     <div class="row">
                         <div class="col-12 text-center">
-                            <p class="copyright-text">Copyright © 2021 Design & Developed by <a href="https://themeforest.net/user/themetrades" target="_blank" class="text-secondary">ThemeTrades</a></p>
+                            <p class="copyright-text">Copyright © 2022 AfterLife Caretakers</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- footer-shape -->
-            <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
-            <img class="pt-img2 animate1" src="images/shap/circle-dots.png" alt="">
-            <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
-            <img class="pt-img4 animate-wave" src="images/shap/wave-blue.png" alt="">
+
         </footer>
         <!-- Footer END ==== -->
         <button class="back-to-top fa fa-chevron-up"></button>
     </div>
     <!-- JAVASCRIPT FILES ========================================= -->
-    <script src="js/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
-    <script src="vendor/swiper/swiper.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
-    <script src="js/functions.js"></script>
-    <script src="js/contact.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="/vendor/swiper/swiper.min.js"></script>
+    <script src="/vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="/js/functions.js"></script>
+    <script src="/js/contact.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
