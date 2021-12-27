@@ -1,17 +1,15 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Pract2.Models;
-using Pract2.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace Pract2
+namespace afterlife_caretakers
 {
     public class Startup
     {
@@ -26,9 +24,6 @@ namespace Pract2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            services.AddSession();
-            services.AddTransient<EmployeeService>();
-            services.AddDbContext<HRDbContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,11 +46,9 @@ namespace Pract2
             app.UseRouting();
 
             app.UseAuthorization();
-            
-            app.UseSession();
+
             app.UseEndpoints(endpoints =>
             {
-                
                 endpoints.MapRazorPages();
             });
         }

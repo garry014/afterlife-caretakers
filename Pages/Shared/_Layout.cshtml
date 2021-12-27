@@ -1,54 +1,300 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Pract2</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+
+    <!-- META ============================================= -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- OG -->
+    <meta name="robots" content="index, follow">
+    <meta name="keywords" content="Clinic, Medical Health Center, Health Dental, Creative, Healthcare, Industry, Lifestyle, Blogging, meditation, Design" />
+    <meta name="author" content="ThemeTrades" />
+    <meta name="description" content="MediTro is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for Clinic, Medical Health Center, Health Dental, Creative, Healthcare, Industry, Lifestyle, Blogging, meditation, Design" />
+
+    <meta property="og:url" content="http://meditro.themetrades.com/html/demo/" />
+    <meta property="og:site_name" content="MediTro - Doctor, Medical & Healthcare HTML Template" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_us" />
+    <meta property="og:title" content="MediTro - Doctor, Medical & Healthcare HTML Template" />
+    <meta property="og:description" content="MediTro is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for Clinic, Medical Health Center, Health Dental, Creative, Healthcare, Industry, Lifestyle, Blogging, meditation, Design" />
+    <meta property="og:image" content="http://meditro.themetrades.com/html/demo/preview.png" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:url" content="http://meditro.themetrades.com/html/demo/" />
+    <meta name="twitter:title" content="MediTro - Doctor, Medical & Healthcare HTML Template" />
+    <meta name="twitter:description" content="MediTro is a Fully Creative Mobile Responsive HTML Template. It is designed specifically for Clinic, Medical Health Center, Health Dental, Creative, Healthcare, Industry, Lifestyle, Blogging, meditation, Design" />
+
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- FAVICONS ICON ============================================= -->
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+    <!-- PAGE TITLE HERE ============================================= -->
+    <title>@ViewBag.Title</title>
+
+    <!-- MOBILE SPECIFIC ============================================= -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- All PLUGINS CSS ============================================= -->
+    <link rel="stylesheet" type="text/css" href="vendor/bootstrap-select/css/bootstrap-select.min.css">
+    <link rel="stylesheet" href="vendor/swiper/swiper.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">Practical 2</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark"  href="/Create">CreateEmployee</a>
-                        </li>
+    <div class="page-wraper">
+        <div id="loading-icon-bx">
+            <div class="loading-inner">
+                <div class="load-one"></div>
+                <div class="load-two"></div>
+                <div class="load-three"></div>
+            </div>
+        </div>
 
-                    </ul>
+        <!-- header -->
+        <header class="header rs-nav">
+            <!-- main header -->
+            <div class="sticky-header navbar-expand-lg">
+                <div class="menu-bar clearfix">
+                    <div class="container-fluid clearfix">
+                        <!-- website logo -->
+                        <div class="menu-logo logo-dark">
+                            <a href="index.html"><img src="images/logo.png" alt=""></a>
+                        </div>
+                        <!-- nav toggle button -->
+                        <button class="navbar-toggler collapsed menuicon justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#menuDropdown" aria-controls="menuDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+
+                        <!-- extra nav -->
+
+                        <div class="secondary-menu" style="margin-left:-20px">
+                            <li><a href="contact-us.html" class="btn btn-primary shadow">LOGIN  <i class="btn-icon-bx fas fa-chevron-right"></i></a></li>
+                        </div>
+                        <!-- Search Box ==== -->
+                        <div class="nav-search-bar">
+                            <form action="#">
+                                <input name="search" value="" type="text" class="form-control" placeholder="Type to search">
+                                <span><i class="ti-search"></i></span>
+                            </form>
+                            <span id="searchRemove"><i class="ti-close"></i></span>
+                        </div>
+                        <div class="menu-links navbar-collapse collapse justify-content-end" id="menuDropdown">
+                            <div class="menu-logo">
+                                <a href="index.html"><img src="images/logo-white.png" alt=""></a>
+                            </div>
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="index.html">Home</a></li>
+                                <li>
+                                    <a href="javascript:;">Will Making <i class="fas fa-plus"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="add-menu-left">
+                                            <ul>
+                                                <li><a href="about-us.html"><span>Make a Will</span></a></li>
+                                                <li><a href="team.html"><span>Our Advisors</span></a></li>
+                                                <li><a href="team.html"><span>Our Witnesses</span></a></li>
+                                                <li><a href="faq.html"><span>Create Last Message</span></a></li>
+                                                <!--
+                                                <li><a href="booking.html"><span>Booking</span></a></li>
+                                                <li><a href="error-404.html"><span>Error 404</span></a></li>
+                                                <li><a href="login.html"><span>Login / Register</span></a></li>
+                                                    -->
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Pre-Funeral Planning<i class="fas fa-plus"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="add-menu-left">
+                                            <ul>
+                                                <li><a href="about-us.html"><span>Customize</span></a></li>
+
+                                                <li><a href="team.html"><span>Funeral Package</span></a></li>
+                                                <li><a href="faq.html"><span>View my Plan</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">AMD<i class="fas fa-plus"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="add-menu-left">
+                                            <ul>
+                                                <li><a href="about-us.html"><span>Make an Advanced Medical Directive</span></a></li>
+                                                <li><a href="team.html"><span>Our Doctors</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="javascript:;">Beneficiary<i class="fas fa-plus"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="add-menu-left">
+                                            <ul>
+                                                <li><a href="about-us.html"><span>View Last Message</span></a></li>
+                                                <li><a href="team.html"><span>Counselling</span></a></li>
+                                                <li><a href="team.html"><span>Our Counsellors</span></a></li>
+                                                <li><a href="faq.html"><span>View my Appointments</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <!--
+                                    <li>
+                                        <a href="javascript:;">fsd <i class="fas fa-plus"></i></a>
+                                        <ul class="sub-menu">
+                                            <li class="add-menu-left">
+                                                <ul>
+                                                    <li><a href="services.html"><span>Service</span> </a></li>
+                                                    <li><a href="service-detail.html"><span>Service Detail</span></a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:;">Blog <i class="fas fa-plus"></i></a>
+                                        <ul class="sub-menu left">
+                                            <li><a href="blog-grid.html"><span>Blogs</span></a></li>
+                                            <li><a href="blog-details.html"><span>Blog Details</span></a></li>
+                                        </ul>
+                                    </li>
+
+                                                        <li><a href="contact-us.html">Contact Us</a></li>
+                                                    </ul>
+
+                                <ul class="social-media">
+                                    <li><a target="_blank" href="https://www.facebook.com/" class="btn btn-primary"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a target="_blank" href="https://www.google.com/" class="btn btn-primary"><i class="fab fa-google"></i></a></li>
+                                    <li><a target="_blank" href="https://www.linkedin.com/" class="btn btn-primary"><i class="fab fa-linkedin-in"></i></a></li>
+                                    <li><a target="_blank" href="https://twitter.com/" class="btn btn-primary"><i class="fab fa-twitter"></i></a></li>
+                                </ul>
+                                    -->
+                                <div class="menu-close">
+                                    <i class="ti-close"></i>
+                                </div>
+                        </div>
+                        <!-- Navigation Menu END ==== -->
+                    </div>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+            <!-- main header END -->
+        </header>
+        <!-- header END -->
+
+        @RenderBody()
+
+        <!-- Footer ==== -->
+        <footer class="footer" style="background-image:url(images/background/footer.jpg);">
+            <!-- Footer Top -->
+            <div class="footer-top">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-4 col-lg-4 col-md-8">
+                            <div class="widget widget_info">
+                                <div class="footer-logo">
+                                    <a href="index.html"><img src="images/logo.png" alt=""></a>
+                                </div>
+                                <div class="ft-contact">
+                                    <p>
+                                        Company registered number:<br />
+                                        100451356
+                                    </p>
+
+                                    <div class="contact-bx">
+                                        <div class="icon"><i class="fas fa-phone-alt"></i></div>
+                                        <div class="contact-number">
+                                            <span>Contact Us</span>
+                                            <h4 class="number">+65 6551 3554</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-8">
+                            <div class="widget footer_widget ml-50">
+                                <h3 class="footer-title">Quick Links</h3>
+                                <ul>
+                                    <li><a href="services.html"><span>FAQ</span></a></li>
+                                    <li><a href="booking.html"><span>Book Appointment</span></a></li>
+                                    <li><a href="team.html"><span>Support</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-8">
+                            <div class="widget footer_widget">
+                                <h3 class="footer-title">Our Team</h3>
+                                <ul>
+                                    <li><a href="service-detail.html"><span>Our Doctors</span></a></li>
+                                    <li><a href="service-detail.html"><span>Our Will Advisors</span></a></li>
+                                    <li><a href="service-detail.html"><span>Our Witnesses</span></a></li>
+                                    <li><a href="service-detail.html"><span>Our Counsellors</span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="col-xl-3 col-lg-3 col-md-6">
+                            <div class="widget widget_form">
+                                <h3 class="footer-title">Subcribe</h3>
+                                <form class="subscribe-form subscription-form mb-30" action="script/mailchamp.php" method="post">
+                                    <div class="ajax-message"></div>
+                                    <div class="input-group">
+                                        <input name="email" required="required" class="form-control" placeholder="Email Address" type="email">
+                                    </div>
+                                    <button name="submit" value="Submit" type="submit" class="btn btn-secondary shadow w-100">Subscribe Now</button>
+                                </form>
+                                <div class="footer-social-link">
+                                    <ul>
+                                        <li><a target="_blank" href="https://www.facebook.com/"><img src="images/social/facebook.png" alt=""/></a></li>
+                                        <li><a target="_blank" href="https://twitter.com/"><img src="images/social/twitter.png" alt=""/></a></li>
+                                        <li><a target="_blank" href="https://www.instagram.com/"><img src="images/social/instagram.png" alt=""/></a></li>
+                                        <li><a target="_blank" href="https://www.linkedin.com/"><img src="images/social/linkedin.png" alt=""/></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                            -->
+                    </div>
+                </div>
+            </div>
+            <!-- footer bottom -->
+            <div class="container">
+                <div class="footer-bottom">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <p class="copyright-text">Copyright © 2021 Design & Developed by <a href="https://themeforest.net/user/themetrades" target="_blank" class="text-secondary">ThemeTrades</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- footer-shape -->
+            <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+            <img class="pt-img2 animate1" src="images/shap/circle-dots.png" alt="">
+            <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+            <img class="pt-img4 animate-wave" src="images/shap/wave-blue.png" alt="">
+        </footer>
+        <!-- Footer END ==== -->
+        <button class="back-to-top fa fa-chevron-up"></button>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - Pract2 - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
-    </footer>
-
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <!-- JAVASCRIPT FILES ========================================= -->
+    <script src="js/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script src="vendor/swiper/swiper.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/contact.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
