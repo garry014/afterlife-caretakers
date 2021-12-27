@@ -1,3 +1,4 @@
+using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -24,6 +25,8 @@ namespace afterlife_caretakers
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+            //services.AddSession();
+            services.AddDbContext<ALCDBContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
