@@ -1,0 +1,43 @@
+﻿@page "{id}"
+@model Pract2.Pages.DetailModel
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<h1>Detail</h1> 
+ 
+<form method="post" >
+ 
+
+    <div>
+        <label class="col-sm-2 col-form-label">NRIC:</label>
+        <label>@Model.MyEmployee.NRIC</label>
+    </div>
+
+    <div>
+        <label class="col-sm-2 col-form-label">Name:</label>
+        <label>@Model.MyEmployee.Name</label>
+
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Birth Date:</label>
+        <label>@Model.MyEmployee.BirthDate.ToShortDateString()</label>
+    </div>
+
+
+    <div>
+        <label class="col-sm-2 col-form-label">Gender:</label>
+        <label>@Model.MyEmployee.Gender</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Department:</label>
+        <label>@Model.MyEmployee.Department</label>
+    </div>
+    <div>
+        <label class="col-sm-2 col-form-label">Salary</label>
+        <label>@Model.MyEmployee.Salary</label>
+    </div>
+    <div class="col-sm-10">
+        <input id="btn1" type="submit" value="Back" class="btn btn-primary" />
+    </div>
+</form>

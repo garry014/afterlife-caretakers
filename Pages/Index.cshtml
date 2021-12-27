@@ -1,0 +1,39 @@
+﻿@page 
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    <p>
+        <a asp-page="Create">Create New Employee</a>
+    </p>     
+    <h5>List of Employee</h5>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.allemployees[0].Id)</th>
+            <th>@Html.DisplayNameFor(model => model.allemployees[0].Name)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody> 
+    @{ if (Model.allemployees != null)
+        {
+
+            @foreach (var item in Model.allemployees)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.Name</td>
+                    <td>
+                        <a asp-page="/Detail" asp-route-id="@item.Id" >View</a>
+                        <a asp-page="/Edit" asp-route-id="@item.Id">|Edit</a>
+                    </td>
+                </tr>
+            }
+        }
+    }
+        </tbody>
+</table>

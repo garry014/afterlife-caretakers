@@ -1,0 +1,132 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: white    
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #9f5317;  
+    border-color: #9f5317;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #9f5317;  
+    border-color: none; 
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background: #4c320d;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    color: white;
+}
+#header {
+    background: rgba(204, 154, 51, 0.08);
+    height: 80px;
+    
+}
+
+#header h1 {
+    font-size: 26px;
+    font-weight: 100;
+    letter-spacing: -1px;
+    padding: 5px 0 0px 20px;
+}
+
+#header h1 a {
+    color: #fff;
+    text-decoration: none;
+}
+
+    #header h1 a:hover {
+        color:  #4c320d; 
+        text-decoration: none;
+    }
+
+#header h2 {
+    color: #ccc;
+    font-size: 15px;
+    font-weight: 100;
+    padding: 0 0 0 21px;
+    letter-spacing: -1px;
+    line-height: 12px;
+}
+#menu {
+    height: 30px;
+    line-height: 30px;
+    background-color: burlywood;
+    margin-top:-15px;
+}
+
+#menu ul {
+    padding-left: 10px;
+    list-style-type: none;
+}
+
+#menu ul li {
+    display: block;
+    float: left;
+}
+
+#menu ul li a {
+    color: #eee;
+    padding: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#menu ul li a:hover {
+    color: #fff;
+    text-decoration: underline;
+                }
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; 
+}

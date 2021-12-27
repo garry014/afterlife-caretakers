@@ -1,0 +1,59 @@
+﻿@page "{id}"
+@model Pract2.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Employee</h1>
+
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="MyEmployee.Id" />
+            <div class="form-group">
+                <label asp-for="MyEmployee.NRIC" class="control-label"></label>
+                <input asp-for="MyEmployee.NRIC" readonly class="form-control" />
+                <span asp-validation-for="MyEmployee.NRIC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyEmployee.Name" class="control-label"></label>
+                <input asp-for="MyEmployee.Name" class="form-control" />
+                <span asp-validation-for="MyEmployee.Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label class="control-label">Gender:</label>
+                @Html.RadioButton("MyEmployee.Gender", "M") <span>Male</span>
+                @Html.RadioButton("MyEmployee.Gender", "F") <span>Female</span>
+                <span asp-validation-for="MyEmployee.Gender" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="MyEmployee.BirthDate" class="control-label"></label>
+                <input asp-for="MyEmployee.BirthDate" class="form-control" />
+                <span asp-validation-for="MyEmployee.BirthDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyEmployee.Department" class="control-label"></label>
+                @Html.DropDownList("MyEmployee.Department", new SelectList(Enum.GetValues(typeof(Models.Dept))), "--Select an option--", new { @class = "form-control" })
+                <span asp-validation-for="MyEmployee.Department" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="MyEmployee.Salary" class="control-label"></label>
+                <input asp-for="MyEmployee.Salary" class="form-control" />
+                <span asp-validation-for="MyEmployee.Salary" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;
+                <a asp-page="./Index" class="btn btn-primary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
