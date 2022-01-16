@@ -1,0 +1,278 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.plan_executorModel
+@{
+    ViewData["Title"] = "Plan Executors - Wake/Funeral Planning";
+}
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post">
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name"><a href="religion.html">Religion</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name"><a href="wake-location.html">Wake <br>Location</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">3</div>
+                                <div class="step-name"><a href="wake-plans.html">Wake <br>Plans</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">4</div>
+                                <div class="step-name"><a href="wake-addons.html">Wake <br>Add-ons</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">5</div>
+                                <div class="step-name"><a href="funeral-plans.html">Funeral <br>Plans</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">6</div>
+                                <div class="step-name"><a href="resting-place.html">Final Resting<br>Place</a></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">7</div>
+                                <div class="step-name">Plan<br>Executor(s)</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">8</div>
+                                <div class="step-name">Confirmation<br>& Payment</div>
+                            </div>
+                        </div>
+                        <h5 style="display: inline-block;"><u>Executor Details</u></h5> (*Required to fill in or select)<br>
+                        Your executor plays an important role in ensuring a smooth end-of-life transition, as they are the key point-of-contact upon your passing. If you opt-in for future payment, your executor(s) would also be the payee.<br><br>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <h5>Executor 1</h5>
+                                <input type="checkbox" id="selectExecutor1" name="selectExecutor1" value="selectExecutor1" onclick="executor1Change();">
+                                <label for="selectExecutor1"> Select an executor from my will/AMD.</label><br>
+                            </div>
+
+                            <div class="form-group col-md-3" name="executor1FillIn">
+                                Full Name:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor1FillIn">
+                                <input name="name" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor1FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor1FillIn">
+                                Relationship:
+                            </div>
+                            <div class="form-group col-md-4" name="executor1FillIn">
+                                <select class="form-select">
+                                    <option selected>Select Relationship</option>
+                                    <option value="child">Children</option>
+                                    <option value="siblings">Sibling</option>
+                                    <option value="parents">Parent</option>
+                                    <option value="friend">Friend</option>
+                                    <option value="other">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-5" name="executor1FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor1FillIn">
+                                Email:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor1FillIn">
+                                <input name="email" type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor1FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor1FillIn">
+                                Contact Number:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor1FillIn">
+                                <input name="phone" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor1FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-3" name="executor1DDL" style="display:none;">
+                                Select Executor:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor1DDL" style="display:none;">
+                                <select class="form-select">
+                                    <option selected>Select Executor</option>
+                                    <option value="tan wen jie">TAN WEN JIE (SON)</option>
+                                    <option value="tan hock fu">TAN HOCK FU (SIBLING)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-5" name="executor1DDL" style="display:none;">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-12">
+                                <input type="checkbox" id="addExecutor2" name="addExecutor2" value="addExecutor2" onclick="executor2Change();">
+                                <label for="addExecutor2"> Add a backup executor (recommended)</label><br>
+                            </div>
+
+                            <div class="form-group col-md-12" id="executor2">
+                                <hr>
+                                <h5>Executor 2</h5>
+                                <input type="checkbox" id="selectExecutor2" name="selectExecutor2" value="selectExecutor2" onclick="executor2Change();">
+                                <label for="selectExecutor2"> Select an executor from my will/AMD.</label><br>
+                            </div>
+
+
+                            <div class="form-group col-md-3" name="executor2FillIn">
+                                Full Name:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor2FillIn">
+                                <input name="name" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor2FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor2FillIn">
+                                Relationship:
+                            </div>
+                            <div class="form-group col-md-4" name="executor2FillIn">
+                                <select class="form-select">
+                                    <option selected>Select Relationship</option>
+                                    <option value="child">Children</option>
+                                    <option value="siblings">Sibling</option>
+                                    <option value="parents">Parent</option>
+                                    <option value="friend">Friend</option>
+                                    <option value="other">Others</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-5" name="executor2FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor2FillIn">
+                                Email:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor2FillIn">
+                                <input name="email" type="email" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor2FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3" name="executor2FillIn">
+                                Contact Number:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor2FillIn">
+                                <input name="phone" type="text" class="form-control" required>
+                            </div>
+                            <div class="form-group col-md-5" name="executor2FillIn">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-3" name="executor2DDL" style="display:none;">
+                                Select Executor:*
+                            </div>
+                            <div class="form-group col-md-4" name="executor2DDL" style="display:none;">
+                                <select class="form-select">
+                                    <option selected>Select Executor</option>
+                                    <option value="tan wen jie">TAN WEN JIE (SON)</option>
+                                    <option value="tan hock fu">TAN HOCK FU (SIBLING)</option>
+                                </select>
+                            </div>
+                            <div class="form-group col-md-5" name="executor2DDL" style="display:none;">
+                                <!-- Intentionally left blank -->
+                                <script>function executor1Change() {
+											var executor1FillIn = document.getElementsByName("executor1FillIn");
+											var executor1DDL = document.getElementsByName("executor1DDL");
+											var selectExecutor1 = document.getElementById("selectExecutor1");
+											if (selectExecutor1.checked == true){
+												for (i=0; i<executor1FillIn.length; i++){
+													executor1FillIn[i].style.display = 'none';
+												}
+												for (i=0; i<executor1DDL.length; i++){
+													executor1DDL[i].style.display = 'block';
+												}
+											}
+											else {
+												for (i=0; i<executor1FillIn.length; i++){
+													executor1FillIn[i].style.display = 'block';
+												}
+												for (i=0; i<executor1DDL.length; i++){
+													executor1DDL[i].style.display = 'none';
+												}
+											}
+										}
+
+										function executor2Change() {
+											var executor2FillIn = document.getElementsByName("executor2FillIn");
+											var executor2DDL = document.getElementsByName("executor2DDL");
+											var selectExecutor2 = document.getElementById("selectExecutor2");
+											var addExecutor2 = document.getElementById("addExecutor2");
+											document.getElementById("executor2").style.display = 'block';
+											if (selectExecutor2.checked == true){
+												for (i=0; i<executor2FillIn.length; i++){
+													executor2FillIn[i].style.display = 'none';
+												}
+												for (i=0; i<executor2DDL.length; i++){
+													executor2DDL[i].style.display = 'block';
+												}
+											}
+											else {
+												for (i=0; i<executor2FillIn.length; i++){
+													executor2FillIn[i].style.display = 'block';
+												}
+												for (i=0; i<executor2DDL.length; i++){
+													executor2DDL[i].style.display = 'none';
+												}
+											}
+
+											if (!addExecutor2.checked){
+												for (i=0; i<executor2FillIn.length; i++){
+													executor2FillIn[i].style.display = 'none';
+												}
+												for (i=0; i<executor2DDL.length; i++){
+													executor2DDL[i].style.display = 'none';
+												}
+												document.getElementById("executor2").style.display = 'none';
+											}
+										}
+										executor2Change();</script>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'wake-location.html';">Previous</button>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg" onclick="location.href = 'funeral-confirm.html';">Save & Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

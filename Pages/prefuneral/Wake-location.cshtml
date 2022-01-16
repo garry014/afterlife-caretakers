@@ -1,0 +1,301 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.Wake_locationModel
+@{
+    ViewData["Title"] = "Wake Location - Wake/Funeral Planning";
+}
+
+<style type="text/css">
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 5px solid #565ace;
+        }
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    .checkboxes label {
+        font-size: 17px;
+    }
+
+    .textImgContainer {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .textImgContainer img {
+            vertical-align: middle;
+        }
+
+        .textImgContainer .content {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Fallback color */
+            background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+            color: #f1f1f1;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+</style>
+
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post" id="theForm">
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name"><a href="/prefuneral/religion">Religion</a></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">2</div>
+                                <div class="step-name">Wake <br>Location</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">3</div>
+                                <div class="step-name">Wake <br>Plans</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">4</div>
+                                <div class="step-name">Wake <br>Add-ons</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">5</div>
+                                <div class="step-name">Funeral <br>Plans</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">6</div>
+                                <div class="step-name">Final Resting<br>Place</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">7</div>
+                                <div class="step-name">Plan<br>Executor(s)</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">8</div>
+                                <div class="step-name">Confirmation<br>& Payment</div>
+                            </div>
+                        </div>
+                        <h5><u>What is a Wake?</u></h5> A wake is a social gathering associated with death, held before a funeral, typically over 3 days.<br><br>
+                        <h5>Location of Wake:*</h5>
+                        *Required to fill in or select.<br><br>
+                        <!--Hidden Fields-->
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div style="display:none;">
+                            <input type="hidden" asp-for="Funeral.Id" />
+                            <input type="hidden" asp-for="Funeral.TimeStamp">
+                            <input type="text" asp-for="Funeral.Religion">
+                            <input type="text" asp-for="Funeral.LocationAttire">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.FinalRestingPlace">
+                            <input type="text" asp-for="Funeral.ColumbariumName">
+                            <input type="text" asp-for="Funeral.PlaqueName">
+                            <input type="text" asp-for="Funeral.CasketID">
+                            <input type="text" asp-for="Funeral.WakeDuration" />
+                            <input type="text" asp-for="Funeral.PhotoFramed" />
+                        </div>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="row">
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.WakeLocationIn", "Void Deck", new { @onchange = "showPlaceInput('others');" })
+                                        <img src="/images/funeral/voiddeck.png">
+                                        <div class="content">$@Model.fp.VoidDeck per day</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.WakeLocationIn", "Landed Property", new { @onchange = "showPlaceInput('others');" })
+                                        <img src="/images/funeral/landed.png">
+                                        <div class="content">$@Model.fp.LandedProperty per day</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.WakeLocationIn", "Funeral Parlour", new { @onchange = "showPlaceInput('parlour');" })
+                                        <img src="/images/funeral/parlour.png">
+                                        <div class="content">$730-1100 per day</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <span class="text-danger"></span>
+                            <div class="form-group col-md-12" id="parlour" style="display: none;">
+                                <span style="font-weight:bold">Parlour Location:*</span>
+                                <select class="form-select" id="parlourddl" onchange="onParlourChange()" required>
+                                    <option selected>Select Parlour</option>
+                                    <option value="575712">AYS Remembrance Hall at 38 Sin Ming Drive (+$@Model.fp.AYSParlour per day)</option>
+                                    <option value="575711">Sin Ming Parlour at 37 Sin Ming Drive (+$@Model.fp.SinMingParlour per day)</option>
+                                    <option value="699815">Garden of Remembrance at 920 Old Choa Chu Kang Road (+$@Model.fp.GardenParlour per day)</option>
+                                    <option value="408609">Teo Chew Parlour at 10 Ubi Road 4. (+$@Model.fp.TeoChewParlour per day)</option>
+                                    <option value="528746">Singapore Funeral Parlour at 91 Tampines Link (+$@Model.fp.SGParlour per day)</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group col-md-3" id="others">
+                                <span style="font-weight:bold">Postal Code:*</span>
+                                <input type="number" id="postalcode" class="form-control" asp-for="Funeral.WakePostalCode" onchange="findLocation();">
+                            </div>
+                            <div class="form-group col-md-2" id="others0">
+                                <br>
+                                <button onclick="findLocation();" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-search"></i> Search</button>
+                            </div>
+                            <div class="form-group col-md-3" id="others1">
+                                <br>
+                                <button onclick="getCurrentLocation();" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-map-marker" aria-hidden="true"></i> Use current location</button>
+                            </div>
+                            <div class="form-group col-md-auto">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <span id="googleValidator" class="text-danger" style="display: none;">Please input a valid postal code.</span>
+                            <span asp-validation-for="Funeral.WakePostalCode" class="text-danger">@Model.PostalCodeVal</span>
+                            <div class="form-group col-md-8" id="others2">
+                                <span style="font-weight:bold">Address:</span>
+                                <input type="text" id="address" required class="form-control" readonly>
+                            </div>
+
+
+
+                            <div class="form-group col-md-12">
+                                <span style="font-weight:bold">Disclaimer:</span> In an event the location chosen is occupied or does not has enough space to host, we will leave the location to your executor to decide.
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'religion.html';">Previous</button>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                            </div>
+
+                            <div class="form-group col-md-12">
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function showPlaceInput(src) {
+            if (src == "parlour") {
+                document.getElementById('parlour').style.display = 'block';
+                document.getElementById('others').style.display = 'none';
+                document.getElementById('others0').style.display = 'none';
+                document.getElementById('others1').style.display = 'none';
+                document.getElementById('others2').style.display = 'none';
+            }
+            else if (src == "planout") { // Catholic church wake??
+                document.getElementById('placeDetails').style.display = 'none';
+            }
+            else {
+                document.getElementById('parlour').style.display = 'none';
+                document.getElementById('others').style.display = 'block';
+                document.getElementById('others0').style.display = 'block';
+                document.getElementById('others1').style.display = 'block';
+                document.getElementById('others2').style.display = 'block';
+            }
+        }
+
+        // Google Map API
+        function findLocation() {
+            var zipcode = document.getElementById('postalcode').value;
+            var url = "https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + zipcode + "|country:SG&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY";
+            console.log(String(zipcode.length));
+
+            if (zipcode.length == 6) {
+                $.get(url, function (data) {
+                    if (data.status == "OK") {
+                        //console.log(data);
+                        var lat = data.results[0].geometry.location.lat;
+                        var lng = data.results[0].geometry.location.lng;
+                        //console.log(lat);
+                        $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY", function (addressData) {
+                            //console.log(addressData.results[0].formatted_address);
+                            document.getElementById('address').value = addressData.results[0].formatted_address;
+                        });
+                    }
+                    else if (data.status == "ZERO_RESULTS") {
+                        document.getElementById('googleValidator').style.display = 'block';
+                    }
+                    else {
+                        alert("Google Server currently down.");
+                    }
+                });
+            }
+        }
+
+        // Use current location
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    console.log(position);
+                    $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY", function (addressData) {
+                        document.getElementById('postalcode').value = addressData.results[1].address_components[5].long_name;
+                        //console.log(addressData.results[0].address_components[5].long_name);
+                        document.getElementById('address').value = addressData.results[0].formatted_address;
+                    });
+                });
+            }
+            else
+                alert("Current location not supported in browser");
+        }
+
+
+        function onParlourChange() {
+            var parlourSelected = document.getElementById("parlourddl").value;
+            document.getElementById("postalcode").value = parlourSelected;
+            //getPlaceID(parlourSelected);
+        }
+    </script>
+}

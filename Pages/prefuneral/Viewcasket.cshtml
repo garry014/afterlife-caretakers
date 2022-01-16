@@ -1,0 +1,71 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.ViewcasketModel
+@{
+}
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Catalouge</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Catalouge</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>@Html.DisplayNameFor(model => model.allcaskets[0].Id)</th>
+                                <th>@Html.DisplayNameFor(model => model.allcaskets[0].Name)</th>
+                                <th>Price</th>
+                                <th>Image</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{ if (Model.allcaskets != null)
+                                {
+
+                                    @foreach (var item in Model.allcaskets)
+                                    {
+
+                                        if (item.IsDeleted == false)
+                                        {
+                                            <tr>
+                                                <td>@item.Id</td>
+                                                <td>@item.Name</td>
+                                                <td>@item.Price</td>
+                                                <td><img src="/images/funeral/catalouge/@item.ImageLink" alt="@item.Name" width="200" height="auto"></td>
+                                                <td>
+                                                    <a asp-page="/prefuneral/EditCasket" asp-route-id="@item.Id"> <i class="fas fa-edit"></i> Edit</a> |
+                                                    <a asp-page="/prefuneral/DeleteCasket" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

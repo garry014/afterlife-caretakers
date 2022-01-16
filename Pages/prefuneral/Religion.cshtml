@@ -1,0 +1,306 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.ReligionModel
+@{
+    ViewData["Title"] = "Religion - Wake/Funeral Planning";
+}
+
+<style type="text/css">
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 5px solid #f4925a;
+        }
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    .checkboxes label {
+        font-size: 17px;
+    }
+
+    .textImgContainer {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .textImgContainer img {
+            vertical-align: middle;
+        }
+
+        .textImgContainer .content {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Fallback color */
+            background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+            color: #f1f1f1;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+
+            <div class="col-lg-12 mb-30">
+                <form class="form-wraper contact-form" method="post">
+                    <div class="stepper-wrapper">
+                        <div class="stepper-item active">
+                            <div class="step-counter">1</div>
+                            <div class="step-name">Religion</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">2</div>
+                            <div class="step-name">Wake <br>Location</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">3</div>
+                            <div class="step-name">Wake <br>Plans</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">4</div>
+                            <div class="step-name">Wake <br>Add-ons</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">5</div>
+                            <div class="step-name">Funeral <br>Plans</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">6</div>
+                            <div class="step-name">Final Resting<br>Place</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">7</div>
+                            <div class="step-name">Plan<br>Executor(s)</div>
+                        </div>
+                        <div class="stepper-item">
+                            <div class="step-counter">8</div>
+                            <div class="step-name">Confirmation<br>& Payment</div>
+                        </div>
+                    </div>
+                    <h5>Select Religion:*</h5>
+                    *Required to fill in or select.<br><br>
+                    <div class="row">
+                        <!--Hidden Fields-->
+                        <div style="display:none;">
+                            <input type="hidden" asp-for="Funeral.Id" />
+                            <input type="hidden" asp-for="Funeral.TimeStamp">
+                            <input type="text" asp-for="Funeral.WakeLocationIn">
+                            <input type="text" asp-for="Funeral.WakePostalCode">
+                            <input type="text" asp-for="Funeral.LocationAttire">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.FinalRestingPlace">
+                            <input type="text" asp-for="Funeral.ColumbariumName">
+                            <input type="text" asp-for="Funeral.PlaqueName">
+                            <input type="text" asp-for="Funeral.CasketID">
+                        </div>
+                        
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <div class="textImgContainer">
+                                    <!--<input type="radio" id="rbl" name="test" value="buddhist" onchange="religionChange('buddhist');">-->
+                                    @Html.RadioButton("Funeral.Religion", "buddhist", new { @onchange = "religionChange('buddhist');" })
+                                    <img src="/images/funeral/buddhist.png" alt="Buddhist">
+                                    <div class="content">Buddhist</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <div class="textImgContainer">
+                                    @Html.RadioButton("Funeral.Religion", "christian", new { @onchange = "religionChange('christian');" })
+                                    <img src="/images/funeral/christian.png" alt="Christian">
+                                    <div class="content">Christian</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <div class="textImgContainer">
+                                    @Html.RadioButton("Funeral.Religion", "taoist", new { @onchange = "religionChange('taoist');" })
+                                    <img src="/images/funeral/taoist.png" alt="Taoist">
+                                    <div class="content">Taoist</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <div class="textImgContainer">
+                                    @Html.RadioButton("Funeral.Religion", "catholic", new { @onchange = "religionChange('catholic');" })
+                                    <img src="/images/funeral/catholic.png" alt="Catholic">
+                                    <div class="content">Catholic</div>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>
+                                <div class="textImgContainer">
+                                    @Html.RadioButton("Funeral.Religion", "free-thinker", new { @onchange = "religionChange('free-thinker');" })
+                                    <img src="/images/funeral/free-thinker.png" alt="Free-Thinker">
+                                    <div class="content">Free-Thinker</div>
+                                </div>
+                            </label>
+                        </div>
+                        <span asp-validation-for="Funeral.Religion" class="text-danger"></span>
+                        <div class="form-group col-md-12" id="showRites">
+                            <input type="checkbox" id="rite" asp-for="Funeral.RequireRites" onclick="showRites();">
+                            <label for="rite" style="font-size: medium; display: inline" id="riteLabel"> Require religious rites?</label>
+                        </div>
+                        <div class="form-group col-md-12" id="riteSettings" style="display: none;">
+                            <span style="font-weight:bold">How do you wish we will conduct your religious rite?*</span>
+                            <select class="form-select" onchange="riteChange()" id="riteOptions" asp-for="Funeral.ConductOptions" required>
+                                <option value="" selected></option>
+                                <option value="personal">Contact my religious place^ (eg: my temple/church)</option>
+                                <option value="planout">Plan it out for me (+$@Model.fp.RitePlanned per day)</option>
+                            </select>
+                            <sup>^subjective to religious's place's fees/donations required, additional fees will be posted to the executor.</sup>
+                            <br /><span asp-validation-for="Funeral.ConductOptions" class="text-danger"></span>
+                            <div id="placeDetails" style="display: none;">
+                                <span style="font-weight:bold">Religious Place Name*:</span>
+                                <input list="religiousNameList" asp-for="Funeral.ReligiousPName" class="form-control" placeholder="Choose from list or type into the box if name cannot be found." required/>
+                                <datalist id="religiousNameList">
+                                    <option value="Lin San Temple"></option>
+                                    <option value="Buddha Tooth Relic Temple"></option>
+                                    <option value="Kong Meng San Phor Kark See Monastery"></option>
+                                    <option value="Hai Inn Temple"></option>
+                                    <option value="Buddha Tooth Relic Temple"></option>
+                                </datalist>
+                                <span asp-validation-for="Funeral.ReligiousPName" class="text-danger"></span>
+                                <br />Point of Contact Name: <input asp-for="Funeral.ReligiousPOCName" class="form-control">
+                                Point of Contact Number (without country code):  <input asp-for="Funeral.ReligiousPOCNumber" class="form-control">
+                                <br /><span asp-validation-for="Funeral.ReligiousPOCNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-lg-9">
+                            <!-- Intentionally left blank -->
+                        </div>
+                        <div class="col-lg-3">
+                            <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function showRites() {
+            if (document.getElementById('rite').checked == true) {
+                document.getElementById('riteSettings').style.display = 'block';
+            }
+            else {
+                document.getElementById('riteSettings').style.display = 'none';
+            }
+        }
+
+        function riteChange() {
+            if (document.getElementById("riteOptions").value == "personal") {
+                document.getElementById('placeDetails').style.display = 'block';
+            }
+            else if (document.getElementById("riteOptions").value == "planout") {
+                document.getElementById('placeDetails').style.display = 'none';
+            }
+            else {
+                document.getElementById('placeDetails').style.display = 'none';
+            }
+        }
+
+        function religionChange(src) {
+            var christian = ['Inspire Church Singapore', 'Tai Seng Christian Church', 'Central Christian Church', 'Kim Tian Christian Church', 'Grace (SCC) Church', 'Community For Christ Church', 'Singapore Christian Canaan Church', 'Bartley Christian Church', 'PENTECOSTAL MISSIONARY CHURCH OF CHRIST Singapore', 'Assemblies of God Church - Church of Christ the Rock', 'Renewal Christian Church', 'Singapore Christian Fellowship Ltd', 'Trinity Christian Centre', 'New Life Christian Church', 'Christ Commission Fellowship Singapore (CCF Singapore)', 'Bethany Christian Centre', 'Mount Calvary Baptist Church', 'River Glory Church Ltd', 'Newton Life Church'];
+            var catholic = ['Inspire Church Singapore', 'Church of St. Francis Xavier', 'Church of the Holy Spirit', 'Our Lady of Lourdes Church', 'Church of Saints Peter & Paul', 'Church of St. Stephen', 'Church of the Sacred Heart', 'Church of The Immaculate Heart of Mary', 'Church of Christ the King', 'St Joseph Church (Victoria Street)', 'Church of St. Vincent de Paul', 'Church of St Teresa', 'Cathedral of the Good Shepherd', 'Church of St Michael', 'Church of the Holy Family', 'St. Joseph Church', 'Church of Saint Alphonsus', 'St Mary of the Angels', 'St Anne Church', 'Church of the Transfiguration', 'Church of Our Lady Queen of Peace'];
+            var buddhist = ['Lin San Temple', 'Buddha Tooth Relic Temple', 'Kong Meng San Phor Kark See Monastery', 'Hai Inn Temple', 'Buddha Tooth Relic Temple'];
+            var taoist = ['Tiong Bahru Qi Tian Gong Temple', 'Thian Hock Keng Temple', 'Tou Mu Kung Temple', 'Dou Tian Gong Temple', 'Chee Tong Temple', 'Yueh Hai Ching Temple', 'Chu Sheng Temple', 'Siang Cho Keong Temple', 'Tien Sen Tua Temple', 'Chong Tuck Tong Chineese Temple'];
+            var list = document.getElementById('religiousNameList');
+            $("#religiousNameList").empty();
+            document.getElementById('showRites').style.display = 'block';
+
+
+            if (src == "buddhist") {
+
+                buddhist.forEach(function (item) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    list.appendChild(option);
+                });
+            }
+            else if (src == "christian") {
+                christian.forEach(function (item) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    list.appendChild(option);
+                });
+            }
+            else if (src == "catholic") {
+                catholic.forEach(function (item) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    list.appendChild(option);
+                });
+            }
+            else if (src == "taoist") {
+                taoist.forEach(function (item) {
+                    var option = document.createElement('option');
+                    option.value = item;
+                    list.appendChild(option);
+                });
+            }
+            else {
+                document.getElementById("rite").checked = false;
+                showRites();
+                document.getElementById('showRites').style.display = 'none';
+            }
+
+
+        }
+
+        // On init
+        showRites();
+        riteChange();
+    </script>
+}

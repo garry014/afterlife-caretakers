@@ -21,7 +21,10 @@ namespace afterlife_caretakers.Models
             string connectionString = _config.GetConnectionString("MyConn");
             optionsBuilder.UseSqlServer(connectionString);
         }
-        // Map Employee entity to Employees table in databse
-        //public DbSet<Employee> Employees { get; set; }
+
+        // Map entity to table in databse
+        public DbSet<Casket> Caskets { get; set; }
+        public DbSet<Funeral> FuneralPlans { get; set; }
+        public DbSet<FExecutorPermission> FExecutorPermission { get; set; }
     }
 }

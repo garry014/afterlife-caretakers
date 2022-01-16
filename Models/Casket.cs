@@ -1,4 +1,6 @@
-﻿using System;
+﻿using afterlife_caretakers.CustomValidation;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,19 +10,33 @@ namespace afterlife_caretakers.Models
 {
     public class Casket
     {
-        [Required]
-        public int id { get; set; }
+        public int Id { get; set; }
         [Required, MinLength(3, ErrorMessage ="Enter at least 3 characters.")]
-        public string name { get; set; }
+        public string Name { get; set; }
         [Required]
-        public string category { get; set; }
-        [Required]
-        public string imageLink { get; set; }
+        public string Category { get; set; }
+        public string ImageLink { get; set; }
+
         [Range(0,19999, ErrorMessage ="Enter valid price from 0 to 19999")]
-        public float price { get; set; }
+        public double Price { get; set; }
+        public Int16 SelectedTimes { get; set; }
+        
         [Required]
-        public int selectedTimes { get; set; }
-        [Required]
-        public Boolean isDeleted { get; set; }
+        public Boolean IsDeleted { get; set; }
+    }
+
+    public class ImageClass
+    {
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        [MaxFileSize(5 * 1024 * 1024)]
+        public IFormFile Image { get; set; }
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        [MaxFileSize(5 * 1024 * 1024)]
+        public IFormFile Image2 { get; set;}
+    }
+
+    public enum Category
+    {
+        Casket, Urn
     }
 }

@@ -1,10 +1,10 @@
-﻿CREATE TABLE [dbo].[casketCatalouge]
+﻿CREATE TABLE [dbo].[Caskets]
 (
-	[casketID] INT NOT NULL PRIMARY KEY, 
-    [name] VARCHAR(100) NOT NULL, 
-    [category] VARCHAR(20) NOT NULL, 
-    [imageLink] VARCHAR(100) NOT NULL, 
-    [price] FLOAT NOT NULL, 
-    [selectedTimes] SMALLINT NOT NULL, 
-    [isDeleted] BIT NOT NULL
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [Name] VARCHAR(100) NOT NULL, 
+    [Category] VARCHAR(20) NOT NULL, 
+    [ImageLink] VARCHAR(100) NOT NULL, 
+    [Price] FLOAT NOT NULL, 
+    [SelectedTimes] SMALLINT NOT NULL, 
+    [IsDeleted] BIT NOT NULL
 )

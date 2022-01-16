@@ -1,0 +1,278 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.wake_plansModel
+@{
+    ViewData["Title"] = "Wake Plans - Wake/Funeral Planning";
+}
+
+<style type="text/css">
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 5px solid #f4925a;
+        }
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    .checkboxes label {
+        font-size: 17px;
+    }
+
+    .textImgContainer {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .textImgContainer img {
+            vertical-align: middle;
+        }
+
+        .textImgContainer .content {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Fallback color */
+            background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+            color: #f1f1f1;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post" enctype="multipart/form-data">
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name"><a href="religion.html">Religion</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name"><a href="wake-location.html">Wake <br>Location</a></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">3</div>
+                                <div class="step-name">Wake <br>Plans</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">4</div>
+                                <div class="step-name">Wake <br>Add-ons</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">5</div>
+                                <div class="step-name">Funeral <br>Plans</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">6</div>
+                                <div class="step-name">Final Resting<br>Place</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">7</div>
+                                <div class="step-name">Plan<br>Executor(s)</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">8</div>
+                                <div class="step-name">Confirmation<br>& Payment</div>
+                            </div>
+                        </div>
+                        <h5><u>About wake plans</u></h5>
+                        *Required to fill in or select.<br><br>
+                        <!--Hidden Fields-->
+                        <div style="display:none;">
+                            <input type="hidden" asp-for="Funeral.Id" />
+                            <input type="hidden" asp-for="Funeral.TimeStamp">
+                            <input type="text" asp-for="Funeral.Religion">
+                            <input type="text" asp-for="Funeral.WakeLocationIn">
+                            <input type="text" asp-for="Funeral.WakePostalCode">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.FinalRestingPlace">
+                            <input type="text" asp-for="Funeral.ColumbariumName">
+                            <input type="text" asp-for="Funeral.PlaqueName">
+                        </div>
+                        <div class="row">
+                            <label><span style="font-weight:bold">Casket Selection:* </span></label><br>
+                            <label>We will recommend taking the more economical options unless it's for burial purposes.</label><br>
+                            @{ if (Model.allcaskets != null)
+                                {
+
+                                    @foreach (var item in Model.allcaskets)
+                                    {
+
+                                        if (item.IsDeleted == false && item.Category == "Casket")
+                                        {
+                                            <div class="form-group col-md-4">
+                                                <label>
+                                                    <div class="textImgContainer">
+                                                        <input type="radio" asp-for="Funeral.CasketID" value="@item.Id">
+                                                        <img src="/images/funeral/catalouge/@item.ImageLink">
+                                                        <div class="content">@item.Name - $@item.Price</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+                            
+                            <div class="form-group col-md-12">
+                                <span asp-validation-for="Funeral.CasketID"></span>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label><span style="font-weight:bold">Number of days:* </span></label> <i class="fa fa-question-circle" title="It will be advisable to take into account of your amount of friends, relatives and direct family members's friends, along with your budget. Typically a wake is conducted over 3 days."></i>
+                                <select class="form-select" id="wakeDuration" asp-for="Funeral.WakeDuration">
+                                    <option selected>Select Number of Days</option>
+                                    <option value="2">2 days</option>
+                                    <option value="3">3 days [RECOMMENDED]</option>
+                                    <option value="4">4 days</option>
+                                    <option value="5">5 days</option>
+                                    <option value="6">6 days</option>
+                                    <option value="7">7 days</option>
+                                </select>
+                                <span asp-validation-for="Funeral.WakeDuration" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label><span style="font-weight:bold">Photo to be framed:*  </span></label><br>
+                                @{ if (@Model.Funeral.PhotoFramed != null)
+                                    {
+                                        <img src="/images/uploads/funeral_photoFramed/@Model.Funeral.PhotoFramed" width="250" height="auto"><br />
+                                    }
+                                }
+                                <input type="hidden" asp-for="Funeral.PhotoFramed" />
+                                <input asp-for="Image.Image">
+                                <br /><span asp-validation-for="Image.Image" class="text-danger"></span>
+                                @{ if (@Model.PhotoFrameVal == true)
+                                    {
+                                        <span class="text-danger">Please upload an image for your photo to be framed.</span>
+                                    }
+                                }
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label><span style="font-weight:bold">Photo of attire to be worn:* </span></label>
+                                <i class="fa fa-question-circle" title="This photo saves as a reference for your loved-ones to be able to find the attire you would want."></i></a>
+                                @{ if (@Model.Funeral.PhotoAttire != null)
+                                    {
+                                        <br /><img src="/images/uploads/funeral_photoAttire/@Model.Funeral.PhotoAttire" width="250" height="auto"><br />
+                                    }
+                                }
+                                <input type="hidden" asp-for="Funeral.PhotoAttire" />
+                                <input asp-for="Image.Image2">
+                                <br /><span asp-validation-for="Image.Image2" class="text-danger"></span>
+                                @{ if (@Model.PhotoAttireVal == true)
+                                    {
+                                        <span class="text-danger">Please upload an image for your attire desired.</span>
+                                    }
+                                }
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label><span style="font-weight:bold">Location of attire:* </span> (eg: 3rd shelve of brown drawer in bedroom)</label>
+                                <i class="fa fa-question-circle" title="Please indicate where you would place this attire, to ease your family members from finding it."></i>
+                                <input asp-for="Funeral.LocationAttire" type="text" required class="form-control" placeholder="Location of attire">
+                                <span asp-validation-for="Funeral.LocationAttire" class="text-danger"></span>
+                            </div>
+
+                            <hr>
+                            <h5><u>Expected Setup</u></h5>
+                            <div class="form-group col-md-6">
+                                <label><span style="font-weight:bold">Guests Expected per Day:* </span> </label>
+                                <i class="fa fa-question-circle" title="This is the number of expected number of guests you expect in a day. Using this data, we will estimate on the next few choices you make."></i>
+                                <select class="form-select" onchange="guestsChange()" id="guests" asp-for="Funeral.WakeGuestsExpected">
+                                    <option selected></option>
+                                    <option value="1">0-50 (+$@Model.fp.WGuestsExpected50)</option>
+                                    <option value="2">51-100 (+$@Model.fp.WGuestsExpected100)</option>
+                                    <option value="3">100-200 (+$@Model.fp.WGuestsExpected200)</option>
+                                    <option value="4">200 (+$@Model.fp.WGuestsExpectedMT200)</option>
+                                </select>
+                                <span asp-validation-for="Funeral.WakeGuestsExpected" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <span id="expectedSetup">Please select your guests expected, to be able to view the expected setup.</span>
+                                <br>Photo, frame, bathing/dressing services comes as a complimentary service.
+
+
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'wake-location.html';">Previous</button>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        function guestsChange() {
+            if (document.getElementById("guests").value == 1) {
+                document.getElementById("expectedSetup").innerHTML = "According to your expected number of guests, the basic setup are as followed; <br>- 5 round tables <br>- 35 chairs <br>- Lighting & 4 fans <br>- Sound Systems, Carpet flooring, section curtains, table cloth & religion backdrop.";
+            }
+            else if (document.getElementById("guests").value == 2) {
+                document.getElementById("expectedSetup").innerHTML = "According to your expected number of guests, the basic setup are as followed; <br>- 10 round tables <br>- 70 chairs <br>- Lighting & 8 fans <br>- Sound Systems, Carpet flooring, section curtains, table cloth & religion backdrop.";
+            }
+            else if (document.getElementById("guests").value == 3) {
+                document.getElementById("expectedSetup").innerHTML = "According to your expected number of guests, the basic setup are as followed; <br>- 20 round tables <br>- 140 chairs <br>- Lighting & 16 fans <br>- Sound Systems, Carpet flooring, section curtains, table cloth & religion backdrop.";
+            }
+            else if (document.getElementById("guests").value == 4) {
+                document.getElementById("expectedSetup").innerHTML = "According to your expected number of guests, the basic setup are as followed; <br>- 30 round tables <br>- 210 chairs <br>- Lighting & 30 fans <br>- Sound Systems, Carpet flooring, section curtains, table cloth & religion backdrop.";
+            }
+            else {
+                document.getElementById("expectedSetup").innerHTML = "Please select your guests expected, to be able to view the expected setup.";
+            }
+        }
+
+        
+    </script>
+}

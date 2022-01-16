@@ -1,0 +1,204 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.wake_addonsModel
+@{
+    ViewData["Title"] = "Wake Add-ons - Wake/Funeral Planning";
+}
+
+<style type="text/css">
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 5px solid #f4925a;
+        }
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    .checkboxes label {
+        font-size: 17px;
+    }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post">
+
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name"><a href="religion.html">Religion</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name"><a href="wake-location.html">Wake <br>Location</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">3</div>
+                                <div class="step-name"><a href="wake-plans.html">Wake <br>Plans</a></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">4</div>
+                                <div class="step-name">Wake <br>Add-ons</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">5</div>
+                                <div class="step-name">Funeral <br>Plans</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">6</div>
+                                <div class="step-name">Final Resting<br>Place</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">7</div>
+                                <div class="step-name">Plan<br>Executor(s)</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">8</div>
+                                <div class="step-name">Confirmation<br>& Payment</div>
+                            </div>
+                        </div>
+                        <h5><u>Add-ons</u></h5>
+                        <p>These services are <span style="font-weight:bold">OPTIONAL</span>. Check the boxes next to it if ONLY you <span style="font-weight:bold">require</span> the service.</p>
+                        <!--Hidden Fields-->
+                        <div style="display:none;">
+                            <input type="hidden" asp-for="Funeral.Id" />
+                            <input type="hidden" asp-for="Funeral.TimeStamp">
+                            <input type="text" asp-for="Funeral.Religion" />
+                            <input type="text" asp-for="Funeral.WakeLocationIn">
+                            <input type="text" asp-for="Funeral.WakePostalCode">
+                            <input type="text" asp-for="Funeral.LocationAttire">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.FinalRestingPlace">
+                            <input type="text" asp-for="Funeral.ColumbariumName">
+                            <input type="text" asp-for="Funeral.PlaqueName">
+                            <input type="text" asp-for="Funeral.CasketID">
+                        </div>
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="row">
+                            <label><span style="font-weight:bold">Highly Recommended: </span></label><br>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasMakeupServices">
+                                <label asp-for="Funeral.HasMakeupServices"> Make-up Services (+$@Model.fp.Makeup)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasHairstylingServices">
+                                <label asp-for="Funeral.HasHairstylingServices"> Hairstyling Services (+$@Model.fp.Hairstyling)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasMobileToilet">
+                                <label asp-for="Funeral.HasMobileToilet"> Mobile Toilet (+$@Model.fp.MobileToilet per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+
+                            <label><span style="font-weight:bold">Good to have: </span></label><br>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasBeverages">
+                                <label asp-for="Funeral.HasBeverages"> Beverages (+$@Model.fp.Beverages per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasTibits">
+                                <label asp-for="Funeral.HasTibits"> Titbits (+$@Model.fp.Titbits per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasFridge">
+                                <label asp-for="Funeral.HasFridge"> Fridge (+$@Model.fp.Fridge per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <label><span style="font-weight:bold">Catering: (for 30 pax)	</span></label><br>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasLunch">
+                                <label asp-for="Funeral.HasLunch"> Lunch (+$@Model.fp.Lunch per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasDinner">
+                                <label asp-for="Funeral.HasDinner"> Dinner (+$@Model.fp.Dinner per day)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+
+                            <label><span style="font-weight:bold">Others: </span></label><br>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasRegisterBook">
+                                <label asp-for="Funeral.HasRegisterBook"> Register Book (+$@Model.fp.RegisterBook)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <input type="checkbox" asp-for="Funeral.HasMemorialFolders">
+                                <label asp-for="Funeral.HasMemorialFolders"> Memorial Folders (+$@Model.fp.MemorialFolders)</label>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'wake-plans.html';">Previous</button>
+                            </div>
+
+                            <div class="form-group col-md-3">
+                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

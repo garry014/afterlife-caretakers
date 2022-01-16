@@ -1,0 +1,401 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.resting_placeModel
+@{
+    ViewData["Title"] = "Final Resting Place - Wake/Funeral Planning";
+}
+<style type="text/css">
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 5px solid #f4925a;
+        }
+
+    input[type=checkbox] {
+        transform: scale(1.5);
+    }
+
+    .checkboxes label {
+        font-size: 17px;
+    }
+
+    .textImgContainer {
+        position: relative;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+        .textImgContainer img {
+            vertical-align: middle;
+        }
+
+        .textImgContainer .content {
+            position: absolute;
+            bottom: 0;
+            background: rgb(0, 0, 0); /* Fallback color */
+            background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+            color: #f1f1f1;
+            width: 100%;
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+            font-size: 18px;
+        }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post" enctype="multipart/form-data">
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name"><a href="religion.html">Religion</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name"><a href="wake-location.html">Wake <br>Location</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">3</div>
+                                <div class="step-name"><a href="wake-plans.html">Wake <br>Plans</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">4</div>
+                                <div class="step-name"><a href="wake-addons.html">Wake <br>Add-ons</a></div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">5</div>
+                                <div class="step-name"><a href="funeral-plans.html">Funeral <br>Plans</a></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">6</div>
+                                <div class="step-name">Final Resting<br>Place</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">7</div>
+                                <div class="step-name">Plan<br>Executor(s)</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">8</div>
+                                <div class="step-name">Confirmation<br>& Payment</div>
+                            </div>
+                        </div>
+                        <h5>Select your final resting place:*</h5>
+                        *Required to fill in or select.<br><br>
+                        <!--Hidden Fields-->
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div style="display:none;">
+                            <input type="hidden" asp-for="Funeral.Id" />
+                            <input type="hidden" asp-for="Funeral.TimeStamp">
+                            <input type="text" id="religion" asp-for="Funeral.Religion" />
+                            <input type="text" asp-for="Funeral.WakeLocationIn">
+                            <input type="text" asp-for="Funeral.WakePostalCode">
+                            <input type="text" asp-for="Funeral.LocationAttire">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.CasketID">
+                            <input type="text" asp-for="Funeral.PhotoFramed" />
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12" id="cremation" style="display: none;">
+                                <span style="color:red;">Note: Cemetery Burial period is limited to 15 years only. After that, the remains have to be cremated or re-interred, at additional fees.</span>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.FinalRestingPlace", "Government Columbarium", new { @onchange = "burialChange('gov');" })
+                                        <img src="/images/funeral/gov-columbarium.png" alt="gov-columbarium">
+                                        <div class="content">Government Columbarium - Cremation, Urn, Plaque & Niche inclusive (+$@Model.fp.Govcolum)</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.FinalRestingPlace", "Chua Chao Kang Cemetery", new { @onchange = "burialChange('cemetery');" })
+                                        <img src="/images/funeral/cemetery.png" alt="cemetery">
+                                        <div class="content">Chua Chao Kang Cemetery - Plaque & Space inclusive (+$@Model.fp.Cckcemetery)</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.FinalRestingPlace", "Sea Burial", new { @onchange = "burialChange('sea');" })
+                                        <img src="/images/funeral/sea-burial.png" alt="sea-burial">
+                                        <div class="content">Sea Burial - Yacht inclusive (+$@Model.fp.Seaburial)</div>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.FinalRestingPlace", "Religious Institution Columbarium", new { @onchange = "burialChange('religious');" })
+                                        <img src="/images/funeral/religious.png" alt="religious">
+                                        <div class="content">Religious Institution Columbarium - Cremation, Urn, Plaque & Niche inclusive (+$@Model.fp.Religiouscolum)</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label>
+                                    <div class="textImgContainer">
+                                        @Html.RadioButton("Funeral.FinalRestingPlace", "Inland Ash Scattering Facility", new { @onchange = "burialChange('inland');" })
+                                        <img src="/images/funeral/in-land.png" alt="in-land">
+                                        <div class="content">Inland Ash Scattering Facility - Cremation & Niche inclusive (+$@Model.fp.Inlandash)</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <!-- Intentionally left blank -->
+                            </div>
+
+                            <div class="form-group col-md-12" style="display:none;" id="religiousCremation">
+                                <h5>Select Columbarium:*</h5>
+                                <select class="form-select" id="religiousNameList" asp-for="Funeral.ColumbariumName" required>
+                                    <option selected>Select Columbarium</option>
+                                </select>
+                            </div>
+
+                            <hr name="plaque" style="display:none;">
+                            <h5 name="plaque" style="display:none;">Plaque Printing</h5>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <span style="font-weight:bold">Photo:*</span><br>
+                            </div>
+                            <div class="form-group col-md-9" name="plaque" style="display:none;">
+                                <input type="checkbox" id="useFramePhoto" asp-for="Photo.isReused" onchange="onFramePhotoCBChange();" checked>
+                                <label for="useFramePhoto"> Use wake frame photo</label><br>
+                                <input type="file" id="myFile" style="display:none;" asp-for="Image.Image">
+                                <br /><span asp-validation-for="Image.Image" class="text_danger"></span>
+                                @{ if (@Model.PhotoVal == true)
+                                    {
+                                        <span class="text-danger">Please upload an image for your photo to be framed.</span>
+                                    }
+                                }
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <span style="font-weight:bold">Name to be printed:*</span><br>
+                            </div>
+                            <div class="form-group col-md-4" name="plaque" style="display:none;">
+                                <input type="text" required class="form-control" placeholder="Best to have full name printed." asp-for="Funeral.PlaqueName">
+                            </div>
+                            <div class="form-group col-md-5" name="plaque" style="display:none;">
+                                <!--Intentionally left blank-->
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <span style="font-weight:bold">Date(s) to be printed :</span><br>
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <input type="checkbox" id="birthDate" asp-for="Funeral.PlaqueHasBday">
+                                <label asp-for="Funeral.PlaqueHasBday"> Print Birth Date</label><br>
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <input type="checkbox" id="departedDate" asp-for="Funeral.PlaqueHasDday">
+                                <label asp-for="Funeral.PlaqueHasDday"> Print Departed Date</label>
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <!--Intentionally left blank-->
+                            </div>
+                            <div class="form-group col-md-3" name="plaque" style="display:none;">
+                                <span style="font-weight:bold">Scriptures/Quotes:</span><br>
+                            </div>
+                            <div class="form-group col-md-9" name="plaque" style="display:none;">
+                                <textarea asp-for="Funeral.PlaqueQuotes" id="plaquequote" rows="4" cols="50" class="form-control"></textarea>
+                                <span style=" float:right;">Maximum characters: <span id="dcount">0</span>/170 <span id="maxCountReached" style="color:red; display: none;">(Max characters reached!)</span></span>
+                            </div>
+
+                            <hr name="urnDiv" style="display:none;">
+                            <h5 name="urnDiv" style="display:none;">Urn Selection:*</h5>
+                            @{ if (Model.allcaskets != null)
+                                {
+
+                                    @foreach (var item in Model.allcaskets)
+                                    {
+
+                                        if (item.IsDeleted == false && item.Category == "Urn")
+                                        {
+                                            <div class="form-group col-md-4" name="urnDiv" style="display:none;">
+                                                <label>
+                                                    <div class="textImgContainer">
+                                                        <input type="radio" asp-for="Funeral.UrnId" value="@item.Id">
+                                                        <img src="/images/funeral/catalouge/@item.ImageLink">
+                                                        <div class="content">@item.Name</div>
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        }
+                                    }
+                                }
+                            }
+
+                            <div class="col-lg-6">
+                                <!-- Intentionally left blank -->
+                            </div>
+                            <div class="form-group col-md-3">
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'wake-addons.html';">Previous</button>
+                            </div>
+                            <div class="col-lg-3">
+                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        var myFile = document.getElementById("myFile");
+        function onFramePhotoCBChange() {
+            if (document.getElementById("useFramePhoto").checked) {
+                myFile.style.display = 'none';
+            }
+            else {
+                myFile.style.display = 'block';
+            }
+        }
+
+        var urnDiv = document.getElementsByName("urnDiv");
+        var plaque = document.getElementsByName("plaque");
+        var cremation = document.getElementById("cremation");
+        var religiousCremation = document.getElementById("religiousCremation");
+
+        function burialChange(src) {
+            if (src == 'gov' || src == 'cemetery' || src == 'religious') {
+                for (i = 0; i < plaque.length; i++) {
+                    plaque[i].style.display = 'block';
+                }
+            }
+            else {
+                for (i = 0; i < plaque.length; i++) {
+                    plaque[i].style.display = 'none';
+                }
+            }
+
+            if (src == 'gov' || src == 'religious') {
+                for (i = 0; i < urnDiv.length; i++) {
+                    urnDiv[i].style.display = 'block';
+                }
+            }
+            else {
+                for (i = 0; i < urnDiv.length; i++) {
+                    urnDiv[i].style.display = 'none';
+                }
+            }
+
+            if (src == 'cemetery') {
+                cremation.style.display = 'block';
+            }
+            else {
+                cremation.style.display = 'none';
+            }
+
+            if (src == 'religious') {
+                religiousCremation.style.display = 'block';
+            }
+            else {
+                religiousCremation.style.display = 'none';
+            }
+
+        }
+
+        // Character count
+        var plaquequote = document.getElementById('plaquequote');
+        var dcount = document.getElementById('dcount');
+        var maxCountReached = document.getElementById('maxCountReached');
+
+        plaquequote.addEventListener('keyup', function (e) {
+            checkDesc();
+        });
+
+        function checkDesc() {
+            if (plaquequote.value.length > 170) {
+                plaquequote.value = plaquequote.value.slice(0, 170);
+                maxCountReached.style.display = '';
+            }
+            else {
+                maxCountReached.style.display = 'none';
+            }
+
+            if (plaquequote.value.length == 170)
+                maxCountReached.style.display = '';
+
+            dcount.innerText = plaquequote.value.length;
+        }
+
+        var religion = document.getElementById("religion").value;
+
+        var christian = ['All Saints Memorial Chapel', 'Franciscan Columbarium'];
+        var catholic = ['Spiritual Grace Presbyterian Church', 'Church of The Immaculate Heart of Mary', 'Church of St Teresa'];
+        var others = ['Tse Tho Aum Temple', 'Tian Jue Columbarium', 'Columbarium Niche'];
+        var list = document.getElementById('religiousNameList');
+
+
+        if (religion == "christian") {
+            christian.forEach(function (item) {
+                var option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                list.appendChild(option);
+            });
+        }
+        else if (religion == "catholic") {
+            catholic.forEach(function (item) {
+                var option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                list.appendChild(option);
+            });
+        }
+        else {
+            others.forEach(function (item) {
+                var option = document.createElement('option');
+                option.value = item;
+                option.text = item;
+                list.appendChild(option);
+            });
+        }
+
+    </script>
+}

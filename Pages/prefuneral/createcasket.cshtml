@@ -9,7 +9,7 @@
     <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
         <div class="container">
             <div class="page-banner-entry text-center">
-                <h1>Contact Us</h1>
+                <h1>Add Item</h1>
                 <!-- Breadcrumb row -->
                 <nav aria-label="breadcrumb" class="breadcrumb-row">
                     <ul class="breadcrumb">
@@ -32,19 +32,29 @@
         <div class="contact-wraper">
             <div class="row">
                 <div class="col-lg-12 mb-30">
-                    <form class="form-wraper contact-form ajax-form" action="script/contact.php">
-                        <div class="ajax-message"></div>
-                        <h5><u>Add Coffin into Catalouge</u></h5>
+                    <form class="form-wraper contact-form" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <h5><u>Add Item into Catalouge</u></h5>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <input type="text" id="fname" name="fname" required class="form-control" placeholder="Name of product">
+                                <input asp-for="Casket.Name" class="form-control" placeholder="Name of product">
+                                <span asp-validation-for="Casket.Name" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-6">
-                                <input type="text" id="fname" name="fname" required class="form-control" placeholder="Price">
+                                <input asp-for="Casket.Price" class="form-control" placeholder="Price">
+                                <span asp-validation-for="Casket.Price" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-md-6">
+                                @using Models
+                                @Html.DropDownList("Casket.Category", new SelectList(Enum.GetValues(typeof(Category))), "--Select Category--",
+                                new { @class = "form-select" })
+                                <span asp-validation-for="Casket.Category" class="text-danger"></span>
                             </div>
                             <div class="form-group col-md-12">
-                                <label>Image: </label><br>
-                                <input type="file" id="myFile" name="filename">
+                                <label asp-for="Image.Image"></label>
+                                <input asp-for="Image.Image">
+                                <span asp-validation-for="Image.Image" class="text-danger"></span>
+
                             </div>
                             <div class="col-lg-12">
                                 <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Submit</button>
@@ -57,3 +67,7 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
