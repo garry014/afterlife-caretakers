@@ -178,20 +178,20 @@
                             </div>
                             <div class="form-group col-md-2" id="others0">
                                 <br>
-                                <button onclick="findLocation();" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-search"></i> Search</button>
+                                <button onclick="findLocation(); return false;" type="button" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-search"></i> Search</button>
                             </div>
                             <div class="form-group col-md-3" id="others1">
                                 <br>
-                                <button onclick="getCurrentLocation();" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-map-marker" aria-hidden="true"></i> Use current location</button>
+                                <button onclick="getCurrentLocation(); return false;" type="button" class="form-control" style="background-color: #565ace; color: white;"><i class="fa fa-map-marker" aria-hidden="true"></i> Use current location</button>
                             </div>
                             <div class="form-group col-md-auto">
                                 <!-- Intentionally left blank -->
                             </div>
                             <span id="googleValidator" class="text-danger" style="display: none;">Please input a valid postal code.</span>
                             <span asp-validation-for="Funeral.WakePostalCode" class="text-danger">@Model.PostalCodeVal</span>
-                            <div class="form-group col-md-8" id="others2">
-                                <span style="font-weight:bold">Address:</span>
-                                <input type="text" id="address" required class="form-control" readonly>
+                            <div class="form-group col-md-8" id="others2" style="display:none;">
+                                Please check if the above entered postal code reflects the desired address
+                                <input type="text" id="address" required class="form-control" style="background-color:#e0ded7" readonly>
                             </div>
 
 
@@ -263,6 +263,7 @@
                         $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + lng + "&sensor=false&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY", function (addressData) {
                             //console.log(addressData.results[0].formatted_address);
                             document.getElementById('address').value = addressData.results[0].formatted_address;
+                            document.getElementById('others2').style.display = "block";
                         });
                     }
                     else if (data.status == "ZERO_RESULTS") {
@@ -281,9 +282,10 @@
                 navigator.geolocation.getCurrentPosition(function (position) {
                     console.log(position);
                     $.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY", function (addressData) {
-                        document.getElementById('postalcode').value = addressData.results[1].address_components[5].long_name;
-                        //console.log(addressData.results[0].address_components[5].long_name);
+                        document.getElementById('postalcode').value = addressData.results[0].address_components[5].long_name;
+                        //console.log(addressData);
                         document.getElementById('address').value = addressData.results[0].formatted_address;
+                        document.getElementById('others2').style.display = "block";
                     });
                 });
             }

@@ -29,7 +29,7 @@
         <div class="contact-wraper">
             <div class="row">
                 <div class="col-lg-12 mb-30">
-                    <form class="form-wraper contact-form" method="post">
+                    <form class="form-wraper contact-form" method="post" id="theForm">
                         <div class="stepper-wrapper">
                             <div class="stepper-item completed">
                                 <div class="step-counter">1</div>
@@ -66,7 +66,9 @@
                         </div>
                         <h5 style="display: inline-block;"><u>Executor Details</u></h5> (*Required to fill in or select)<br>
                         Your executor plays an important role in ensuring a smooth end-of-life transition, as they are the key point-of-contact upon your passing. If you opt-in for future payment, your executor(s) would also be the payee.<br><br>
+                        <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="row">
+                            <input type="hidden" asp-for="Id"/>
                             <div class="form-group col-md-12">
                                 <h5>Executor 1</h5>
                                 <input type="checkbox" id="selectExecutor1" name="selectExecutor1" value="selectExecutor1" onclick="executor1Change();">
@@ -121,10 +123,10 @@
                                 Select Executor:*
                             </div>
                             <div class="form-group col-md-4" name="executor1DDL" style="display:none;">
-                                <select class="form-select">
+                                <select class="form-select" asp-for="Permission.executor_id">
                                     <option selected>Select Executor</option>
-                                    <option value="tan wen jie">TAN WEN JIE (SON)</option>
-                                    <option value="tan hock fu">TAN HOCK FU (SIBLING)</option>
+                                    <option value="3">TAN WEN JIE (SON)</option>
+                                    <option value="4">TAN HOCK FU (SIBLING)</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-5" name="executor1DDL" style="display:none;">
@@ -192,10 +194,10 @@
                                 Select Executor:*
                             </div>
                             <div class="form-group col-md-4" name="executor2DDL" style="display:none;">
-                                <select class="form-select">
+                                <select class="form-select" asp-for="Permission2.executor_id">
                                     <option selected>Select Executor</option>
-                                    <option value="tan wen jie">TAN WEN JIE (SON)</option>
-                                    <option value="tan hock fu">TAN HOCK FU (SIBLING)</option>
+                                    <option value="3">TAN WEN JIE (SON)</option>
+                                    <option value="4">TAN HOCK FU (SIBLING)</option>
                                 </select>
                             </div>
                             <div class="form-group col-md-5" name="executor2DDL" style="display:none;">
@@ -266,7 +268,7 @@
                             </div>
 
                             <div class="form-group col-md-3">
-                                <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg" onclick="location.href = 'funeral-confirm.html';">Save & Next</button>
+                                <button onclick="document.getElementById('theForm').submit()" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
                             </div>
                         </div>
                     </form>

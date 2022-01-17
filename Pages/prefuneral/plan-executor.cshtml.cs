@@ -19,15 +19,22 @@ namespace afterlife_caretakers.Pages.prefuneral
 
         [BindProperty]
         public FExecutorPermission Permission { get; set; }
+        [BindProperty]
+        public FExecutorPermission Permission2 { get; set; }
+        [BindProperty]
+        public string Id { get; set; }
 
         // Sample Data
-        class Executors
+        public class Executors
         {
             public int id { get; set; }
             public string fullname { get; set; }
             public string email { get; set; }
 
         }
+        [BindProperty]
+        public List<Executors> Executor { get; set; }
+        // End of sample data
 
         public IActionResult OnGet(string id)
         {
@@ -42,14 +49,34 @@ namespace afterlife_caretakers.Pages.prefuneral
             int x = 0;
             Int32.TryParse(id, out x);
             List<FExecutorPermission> listAllPermission = _svc.GetAllPermissions();
-            List<int> finalPermission = new List<int>(); ;
+            List<int> finalPermission = new List<int>();
             foreach (var permission in listAllPermission)
             {
                 if (permission.funeral_id == x)
                 {
                     finalPermission.Add(permission.executor_id);
-                    System.Diagnostics.Debug.WriteLine(permission.executor_id);
                 }
+            }
+
+            Id = id;
+            return Page();
+        }
+
+        public IActionResult OnPost()
+        {
+            Permission.funeral_id = Int32.Parse(Id);
+            if (_svc.DeletePermissions(Permission) && _svc.AddPermission(Permission))
+            {
+                System.Diagnostics.Debug.WriteLine(Permission2.executor_id);
+                if(Permission2.executor_id != 0)
+                {
+                    if (_svc.AddPermission(Permission2))
+                    {
+                        return Redirect("/prefuneral/funeral-confirm?id=" + Id);
+                    }
+                    return Page();
+                }
+                return Redirect("/prefuneral/funeral-confirm?id=" + Id);
             }
             
             return Page();

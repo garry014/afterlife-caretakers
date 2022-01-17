@@ -1,4 +1,5 @@
 ﻿using afterlife_caretakers.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,15 +15,38 @@ namespace afterlife_caretakers.Services
             _context = context;
         }
 
-        public bool AddCasket(FExecutorPermission newpermission)
+        public bool AddPermission(FExecutorPermission newpermission)
         {
-            if (PermissionMappingExists(newpermission.executor_id, newpermission.funeral_id))
-            {
-                return false;
-            }
+            //if (PermissionMappingExists(newpermission.executor_id, newpermission.funeral_id))
+            //{
+            //    return false;
+            //}
             _context.Add(newpermission);
             _context.SaveChanges();
             return true;
+        }
+
+        // Remove multiple 
+        public bool DeletePermissions(FExecutorPermission permission)
+        {
+            try
+            {
+                //var itemToRemove = _context.FExecutorPermission.SingleOrDefault(x => x.funeral_id == permission.funeral_id); //returns a single item.
+
+                //if (itemToRemove != null)
+                //{
+                //    _context.FExecutorPermission.Remove(itemToRemove);
+                //    _context.SaveChanges();
+                //}
+
+                _context.FExecutorPermission.RemoveRange(_context.FExecutorPermission.Where(x => x.funeral_id == permission.funeral_id));
+                _context.SaveChanges();
+                return true;
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return false;
+            }
         }
         public List<FExecutorPermission> GetAllPermissions()
         {
