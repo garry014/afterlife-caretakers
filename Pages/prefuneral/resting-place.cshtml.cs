@@ -111,7 +111,7 @@ namespace afterlife_caretakers.Pages.prefuneral
 
             if (_svc.UpdateFuneral(Funeral, included) == true)
             {
-                return Redirect("/prefuneral/funeral-confirm?id=" + Funeral.Id); //temp link
+                return Redirect("/prefuneral/plan-executor?id=" + Funeral.Id);
             }
             else
                 return BadRequest();

@@ -1,0 +1,276 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.funeral_packagesModel
+@{
+    ViewData["Title"] = "Packages - Wake/Funeral Planning";
+}
+
+<div class="banner-wraper">
+    <div class="page-banner" style="background-image:url(/images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h2>Choose and modify from our well-designed packages.</h2>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Funeral Plan Package</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+
+@if (Model.errorMsg != null)
+{
+    <div class="alert alert-danger" style="margin: 50px; margin-bottom:80px;">
+        ERROR: @Model.errorMsg
+    </div>
+}
+
+<section class="section-area section-sp3 team-wraper" style="margin-top:-130px;">
+    <div class="container">
+
+        <div class="row justify-content-center">
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <div class="team-member">
+
+                    <div class="team-info">
+                        <div class="team-info-comntent">
+                            <h4 class="title" style="color: #7c9ce6;">Basic Package</h4>
+                            <span style="font-size: 20px;">From</span><br>
+                            <span style="font-size: 40px;">$3,070</span>
+                            <br>A common wake at HDB void deck with the most <span style="font-weight: bold;">basic necessities</span> a wake should have, with
+                            a resting place of <u>Inland Ash Scattering</u>. <br><br>Best for economical
+                            needs. <button type="button" class="accordion-button collapsed"
+                                           data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false"
+                                           aria-controls="collapse2">
+                                See what this plan includes
+                            </button>
+                            <div id="collapse2" class="accordion-collapse collapse"
+                                 aria-labelledby="heading2" data-bs-parent="#accordionRow1">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Includes</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Wake at HDB Void Deck</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wood Light Casket</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2 days</td>
+                                        </tr>
+                                        <tr>
+                                            <td>for 51-100 guests per day</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mobile Toilet</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Make-up Services</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Hairstyling Services</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Van Hearse</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Funeral Ceremony & Public Viewing</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bus Catered for Visitors</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Inland Ash Scattering - Cremation & Niche inclusive.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br><a onclick='getPackage(1);' class="btn btn-outline-primary btn-sm">
+                                SELECT
+                                BASIC<i class="btn-icon-bx fas fa-chevron-right"></i>
+                            </a>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <div class="team-member active">
+                    <div class="team-info">
+                        <h4 class="title" style="color: #56c197;">Standard Package</h4>
+                        <span style="font-size: 20px;">From</span><br>
+                        <span style="font-size: 40px;">$3,975</span>
+                        <br>A wake at HDB void deck with the most <span style="font-weight: bold;">
+                            basic
+                            necessities
+                        </span> a wake should have, with a resting place of <u>
+                            Government
+                            Columbarium.
+                        </u> <br><br>Best for medium-economical needs. <button type="button"
+                                                                               class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                               data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">
+                            See
+                            what this plan includes
+                        </button>
+                        <div id="collapse3" class="accordion-collapse collapse" aria-labelledby="heading2"
+                             data-bs-parent="#accordionRow1">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Includes</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Wake at HDB Void Deck</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Wood White Casket</td>
+                                    </tr>
+                                    <tr>
+                                        <td>3 days</td>
+                                    </tr>
+                                    <tr>
+                                        <td>for 101-150 guests per day</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mobile Toilet</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Make-up Services</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hairstyling Services</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Van Hearse</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Funeral Ceremony & Public Viewing</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bus Catered for Visitors</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            Government Columbarium - Cremation, Urn, Plaque & Niche
+                                            inclusive
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <br><a onclick='getPackage(2);' class="btn btn-outline-primary btn-sm">
+                            SELECT STANDARD<i class="btn-icon-bx fas fa-chevron-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-sm-6 mb-30">
+                <div class="team-member">
+                    <h4 class="title" style="color: #e78f99;">Premium Package</h4>
+                    <span style="font-size: 20px;">From</span><br>
+                    <span style="font-size: 40px;">$7,500</span>
+                    <br>A wake at Singapore Funeral Parlour with the <span style="font-weight: bold;">
+                        best of
+                        the best
+                    </span> a wake would have, with a resting place of <u>
+                        Government
+                        Columbarium.
+                    </u> <br><br>Best for family members who owns a business. <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                                                                      data-bs-target="#collapse4" aria-expanded="false" aria-controls="collapse4">
+                        See what
+                        this plan includes
+                    </button>
+                    <div id="collapse4" class="accordion-collapse collapse" aria-labelledby="heading2"
+                         data-bs-parent="#accordionRow1">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Includes</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Wake at Singapore Funeral Parlour</td>
+                                </tr>
+                                <tr>
+                                    <td>Metal Black</td>
+                                </tr>
+                                <tr>
+                                    <td>5 days</td>
+                                </tr>
+                                <tr>
+                                    <td>for 151-200 guests per day</td>
+                                </tr>
+                                <tr>
+                                    <td>Make-up Services</td>
+                                </tr>
+                                <tr>
+                                    <td>Hairstyling Services</td>
+                                </tr>
+                                <tr>
+                                    <td>Van Hearse</td>
+                                </tr>
+                                <tr>
+                                    <td>Funeral Ceremony & Public Viewing</td>
+                                </tr>
+                                <tr>
+                                    <td>Bus Catered for Visitors</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Government Columbarium - Cremation, Urn, Plaque & Niche inclusive
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br><a onclick='getPackage(3);' class="btn btn-outline-primary btn-sm">
+                        SELECT PREMIUM<i class="btn-icon-bx fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div style="display:none;">
+    <form method="post" id="theForm">
+        <input asp-for="PackageId" id="packageid" />
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+        function getPackage(pid) {
+            if (pid == 1)
+                document.getElementById("packageid").value = 1;
+            else if (pid == 2)
+                document.getElementById("packageid").value = 2;
+            else
+                document.getElementById("packageid").value = 3;
+
+            document.getElementById('theForm').submit();
+        }
+    </script>
+}

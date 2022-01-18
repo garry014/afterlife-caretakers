@@ -22,15 +22,18 @@ namespace afterlife_caretakers.Services
             newfuneral.RequireRites = false;
             //newfuneral.ConductOptions = "SampleText";
             //newfuneral.ReligiousPName = "SampleText";
-            newfuneral.WakeLocationIn = "SampleText";
+            if (string.IsNullOrEmpty(newfuneral.WakeLocationIn))
+                newfuneral.WakeLocationIn = "SampleText";
             newfuneral.WakePostalCode = "999999";
-            newfuneral.CasketID = 0;
-            newfuneral.WakeDuration = 0;
+            //newfuneral.CasketID = 0;
+            //newfuneral.WakeDuration = 0;
             newfuneral.LocationAttire = "SampleText";
-            newfuneral.WakeGuestsExpected = 0;
-            newfuneral.FuneralVechicle = "SampleText";
+            //newfuneral.WakeGuestsExpected = 0;
+            if (string.IsNullOrEmpty(newfuneral.FuneralVechicle))
+                newfuneral.FuneralVechicle = "SampleText";
             newfuneral.FGuestsExpected = 0;
-            newfuneral.FinalRestingPlace = "SampleText";
+            if (string.IsNullOrEmpty(newfuneral.FinalRestingPlace))
+                newfuneral.FinalRestingPlace = "SampleText";
             newfuneral.ColumbariumName = "SampleText";
             newfuneral.PlaqueName = "SampleText";
             newfuneral.UrnId = 0;
