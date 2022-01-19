@@ -63,6 +63,8 @@ namespace afterlife_caretakers.Pages.prefuneral
             {
                 Funeral.LocationAttire = "";
             }
+            if (Funeral.PlaqueName == "SampleText")
+                Funeral.PlaqueName = "";
 
             if (string.IsNullOrEmpty(Funeral.Religion))
             {

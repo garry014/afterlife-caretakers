@@ -10,10 +10,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace afterlife_caretakers.Pages.prefuneral
 {
-    public class start_planningModel : PageModel
+    public class plan_controlsModel : PageModel
     {
         private readonly Services.FuneralService _svc;
-        public start_planningModel(Services.FuneralService service, IWebHostEnvironment hostEnvironment)
+        public plan_controlsModel(Services.FuneralService service, IWebHostEnvironment hostEnvironment)
         {
             _svc = service;
             webHostEnvironment = hostEnvironment;
@@ -23,26 +23,30 @@ namespace afterlife_caretakers.Pages.prefuneral
 
         [BindProperty]
         public Funeral Funeral { get; set; }
-        
-        public void OnGet()
+        [BindProperty]
+        public string errorMsg { get; set; }
+
+        public IActionResult OnGet()
         {
             HttpContext.Session.SetInt32("SSId", 6);
+            if (HttpContext.Session.GetInt32("SSId") != null)
+            {
+                Funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("SSId"));
+                if (Funeral == null)
+                {
+                    errorMsg = "You do not have a plan yet.";
+                }
+                return Page();
+            }
+            errorMsg = "Please login to view this page";
+            return Page();
         }
 
         public IActionResult OnPost()
         {
-            if (HttpContext.Session.GetInt32("SSId") != null)
+            if (_svc.DeleteFuneral(Funeral))
             {
-                Funeral funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("SSId"));
-                if (funeral != null)
-                {
-                    return Redirect("/prefuneral/Religion?id=" + funeral.Id);
-                }
-                else
-                {
-                    Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("SSId"));
-                    return Redirect("/prefuneral/Religion?id=" + Funeral.Id);
-                }
+                return Redirect("/prefuneral/deleteplansuccess");
             }
             return Page();
         }

@@ -1,0 +1,231 @@
+﻿@page
+@model afterlife_caretakers.Pages.prefuneral.plan_controlsModel
+@{
+    ViewData["Title"] = "Funeral Plan Controls";
+}
+
+<style>
+    /* The Modal (background) */
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1000;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+    #dynamicParent {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    @@media (min-width:1000px) {
+        #dynamicParent {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+    }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                     stroke-linecap="round" stroke-linejoin="round"
+                                     class="feather feather-home">
+                                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                </svg> Home
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+
+@if (Model.errorMsg != null)
+{
+<div class="alert alert-danger" style="margin: 50px; margin-bottom:80px;">
+    ERROR: @Model.errorMsg
+</div>
+}
+
+<!-- About us -->
+<section class="">
+
+    @if (Model.errorMsg == null)
+    {
+
+        <div class="container">
+            <div class="contact-wraper">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <div id="dynamicParent">
+                            <!--<span style="font-weight: bold;">Executor Status:</span> <br>
+    TAN WEI JIE – VERIFIED<br>
+    TAN WEN YI – PENDING VERIFICATION <span style="font-weight: bold; color:red;">
+        (6
+        days left)
+    </span><br>-->
+                            <br>
+
+                            <span style="font-weight: bold;">Payment Status:</span> Payment to be made in the
+                            future.<br><br>
+                            <button name="back" type="back" value="Back" class="btn w-75 btn-secondary btn-lg"
+                                    style="background-color: #5559cd; color: white; border:none;"
+                                    onclick="window.open('downloadables/sample.pdf')">
+                                <i class="far fa-eye"></i>
+                                View/Download My Plan
+                            </button><br><br>
+                            <a class="btn w-75 btn-secondary btn-lg"
+                                    href="./religion?id=@Model.Funeral.Id">
+                                <i class="fas fa-edit"></i> Edit My
+                                Plan
+                            </a><br><br>
+                            <button type="button" class="btn w-75 btn-secondary btn-lg"
+                                    style="background-color: #f82c54; color: white; border:none;" id="myBtn">
+                                <i class="fas fa-trash-alt"></i> Delete My Plan
+                            </button>
+
+                            <form method="post" id="theForm">
+                                <input type="hidden" asp-for="Funeral.Id" />
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    }
+    </section>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <span class="close" style="text-align: right;">&times;</span>
+        <center>
+            <h4>Delete Plan?</h4>
+        </center>
+
+        <center>
+            <p class="text-danger">
+                <span style="font-weight:bold">WARNING:</span> This action cannot be undone!
+            </p>
+            <p>
+                We are sad to see you go, but if you have made up your mind, <br>we will honour our promise and
+                provide you with a full refund.
+            </p>
+            <p style="font-weight:bold">FINAL REFUND AMOUNT: $2,456.10</p>
+            <p>Type in "delete" into the textbox to continue.</p>
+            <input type="text" class="form-control" style="width:250px;" id="confirmText"
+                   placeholder="Type keyword to continue" />
+        </center><br />
+        <div id="dynamicParent">
+            <button type="button" class="btn btn-light" style="background-color: #D3D3D3; color: black"
+                    id="close">
+                Cancel
+            </button>
+            <button type="button" class="btn btn-danger" style="color: white"
+                    onclick="deletePlan();">
+                Delete
+            </button>
+        </div>
+    </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+        var close = document.getElementById("close");
+
+        // When the user clicks the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        close.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        function deletePlan() {
+            if (document.getElementById("confirmText").value == "delete") {
+                document.getElementById('theForm').submit();
+            }
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+}

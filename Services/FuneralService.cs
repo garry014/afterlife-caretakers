@@ -123,31 +123,52 @@ namespace afterlife_caretakers.Services
         }
 
         // Soft delete
-        public bool DeleteCasket(Funeral thefuneral)
-        {
-            bool updated = true;
-            _context.Attach(thefuneral).State = EntityState.Modified;
+        //public bool DeleteCasket(Funeral thefuneral)
+        //{
+        //    bool updated = true;
+        //    _context.Attach(thefuneral).State = EntityState.Modified;
 
+        //    try
+        //    {
+        //        _context.SaveChanges();
+        //        updated = true;
+
+        //    }
+        //    catch (DbUpdateConcurrencyException)
+        //    {
+        //        if (!FuneralExists(thefuneral.Id))
+        //        {
+        //            updated = false;
+        //        }
+        //        else
+        //        {
+        //            throw;
+        //        }
+        //    }
+        //    return updated;
+
+
+        //}
+
+        public bool DeleteFuneral(Funeral thefuneral)
+        {
+            //System.Diagnostics.Debug.WriteLine(thefuneral.Id);
             try
             {
+                var itemToRemove = _context.FuneralPlans.SingleOrDefault(x => x.Id == thefuneral.Id);
+
+                if (itemToRemove == null)
+                {
+                    return false;
+                }
+                _context.FuneralPlans.Remove(itemToRemove);
                 _context.SaveChanges();
-                updated = true;
-
+                return true;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!FuneralExists(thefuneral.Id))
-                {
-                    updated = false;
-                }
-                else
-                {
-                    throw;
-                }
+                return false;
             }
-            return updated;
-
-
         }
     }
 }

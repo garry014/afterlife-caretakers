@@ -119,6 +119,8 @@ namespace afterlife_caretakers.Pages.prefuneral
             if (postal.Length != 6)
                 return "ZERO_RESULTS";
 
+            System.Diagnostics.Debug.WriteLine(postal);
+
             HttpWebRequest req = (HttpWebRequest)WebRequest.Create("https://maps.googleapis.com/maps/api/geocode/json?components=postal_code:" + postal + "|country:SG&key=AIzaSyBO0MrrmlS2Fyp_DWfjlPy_ymuZCHiCqYY");
 
             try

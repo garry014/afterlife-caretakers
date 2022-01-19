@@ -31,19 +31,11 @@ namespace afterlife_caretakers.Services
         {
             try
             {
-                //var itemToRemove = _context.FExecutorPermission.SingleOrDefault(x => x.funeral_id == permission.funeral_id); //returns a single item.
-
-                //if (itemToRemove != null)
-                //{
-                //    _context.FExecutorPermission.Remove(itemToRemove);
-                //    _context.SaveChanges();
-                //}
-
                 _context.FExecutorPermission.RemoveRange(_context.FExecutorPermission.Where(x => x.funeral_id == permission.funeral_id));
                 _context.SaveChanges();
                 return true;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
                 return false;
             }

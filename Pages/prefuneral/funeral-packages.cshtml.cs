@@ -30,7 +30,7 @@ namespace afterlife_caretakers.Pages.prefuneral
 
         public void OnGet()
         {
-            HttpContext.Session.SetInt32("SSId", 5);
+            HttpContext.Session.SetInt32("SSId", 6);
         }
 
         public IActionResult OnPost()

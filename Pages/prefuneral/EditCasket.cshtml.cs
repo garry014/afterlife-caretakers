@@ -69,6 +69,14 @@ namespace afterlife_caretakers.Pages.prefuneral
 
             if (Image != null)
             {
+                // check if file is an image file
+                var _extensions = new string[] { ".jpg", ".png" };
+                var extension = Path.GetExtension(Image.Image.FileName);
+                if (!_extensions.Contains(extension.ToLower()))
+                {
+                    return uniqueFileName;
+                }
+
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images/funeral/catalouge/");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.Image.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
