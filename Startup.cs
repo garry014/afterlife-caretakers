@@ -27,6 +27,7 @@ namespace afterlife_caretakers
         {
             services.AddRazorPages();
             services.AddSession();
+            services.AddControllers();
             services.AddDbContext<ALCDBContext>();
             services.AddTransient<CasketService>();
             services.AddTransient<FuneralService>();
@@ -60,6 +61,9 @@ namespace afterlife_caretakers
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Video}/{action=Index}/{id?}");
             });
 
         }
