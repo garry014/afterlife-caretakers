@@ -1,5 +1,5 @@
 ﻿@{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Start Recording - Last Message";
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
@@ -7,29 +7,87 @@
 <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
 <script src="~/js/Video.js" asp-append-version="true" async></script>
 
-<div id="container">
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(/images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <br />
+                <br />
+                <br />
+                <br />
 
-    <h1>
-        <a href="//webrtc.github.io/samples/" title="WebRTC samples homepage">ASP.NET Core 3.1 samples</a>
-        <span>Audio/Video Recording</span>
-    </h1>
-    <p>
-        For more information see the MediaStream Recording API <a href="http://w3c.github.io/mediacapture-record/MediaRecorder.html"
-                                                                  title="W3C MediaStream Recording API Editor's Draft">Editor's&nbsp;Draft</a>.
-    </p>
-    <video id="gum" playsinline autoplay muted style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
-    <video id="recorded" playsinline loop style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
-    <div>
-        <button id="start" class="btn btn-success">Start camera</button>
-        <button id="record" disabled class="btn btn-info">Start Recording</button>
-        <button id="play" disabled class="btn btn-warning">Play</button>
-        <button id="download" disabled class="btn btn-dark">Download</button>
-        <button id="stop" class="btn btn-danger">Stop camera</button>
+
+                <h1>Create Last Message</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Create Last Message</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     </div>
-    <div> Recording format: <select id="codecPreferences" disabled></select> </div>
-    <div>
-        <h4>Media Stream Constraints options</h4>
-        <p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
-    </div>
-    <div><span id="errorMsg"></span></div>
+    <!-- Breadcrumb row END -->
 </div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                        <center><h5><i>Life is unpredictable.</i> Record or write your last message making sure that it is told to your loved ones, <br>and we will only release it to them on the time you desired.</h5></center>
+                        <br />
+                        <div class="row">
+                            <div class="col-lg-12 mb-30">
+                                    
+                                <div class="stepper-wrapper">
+                                    <div class="stepper-item active">
+                                        <div class="step-counter">1</div>
+                                        <div class="step-name">Record Video</div>
+                                    </div>
+                                    <div class="stepper-item">
+                                        <div class="step-counter">2</div>
+                                        <div class="step-name">Last Message<br>Administrative</div>
+                                    </div>
+                                </div>
+                        </div>
+                </div>
+
+                    <br />
+                    <div class="form-group">
+                        <p>Record Your Last Message Here:</p>
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <center>
+                                    <h5>Currently Recording</h5>
+                                    <video id="gum" playsinline autoplay muted style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
+                                    <h5>Review Recording</h5>
+                                    <video id="recorded" playsinline style="border: 1px solid rgb(15, 158, 238); height: 240px; width: 320px;"></video>
+                                    <div>
+                                        <button id="start" class="btn btn-success">Start camera</button>
+                                        <button id="record" disabled class="btn btn-info">Start Recording</button>
+                                        <button id="play" disabled class="btn btn-warning">Play</button>
+                                        <button id="download" disabled class="btn btn-dark">Next</button>
+                                        <button id="stop" class="btn btn-danger">Stop camera</button>
+                                    </div>
+                                    <div style="display: none;"> Recording format: <select id="codecPreferences" disabled></select> </div>
+                                    <div>
+                                        <h4>Media Stream Constraints options</h4>
+                                        <p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
+                                    </div>
+                                    <div><span id="errorMsg" class="text-danger"></span></div>
+
+                                </center>
+                            </div>
+                        </div>
+                        <br />
+                        
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+</section>

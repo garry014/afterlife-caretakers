@@ -94,5 +94,8 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\P
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\prefuneral\funeral-packages.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\prefuneral\plan-controls.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\prefuneral\deleteplansuccess.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Views\Video\Index.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\create.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Views\Video\Index.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\View.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\update.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\updatevideo.cshtml.g.cs

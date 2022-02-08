@@ -38,16 +38,16 @@ downloadButton.addEventListener('click', () => {
     const blob = new Blob(recordedBlobs, { type: 'video/webm' });
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
-    a.style.display = 'none';
-    a.href = url;
-    a.download = 'test.webm';
-    document.body.appendChild(a);
-    a.click();
+    //a.style.display = 'none';
+    //a.href = url;
+    //a.download = 'test.webm';
+    //document.body.appendChild(a);
+    //a.click();
     PostBlob(blob);
-    setTimeout(() => {
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
-    }, 100);
+    //setTimeout(() => {
+    //    document.body.removeChild(a);
+    //    window.URL.revokeObjectURL(url);
+    //}, 100);
 
 });
 

@@ -26,5 +26,6 @@ namespace afterlife_caretakers.Models
         public DbSet<Casket> Caskets { get; set; }
         public DbSet<Funeral> FuneralPlans { get; set; }
         public DbSet<FExecutorPermission> FExecutorPermission { get; set; }
+        public DbSet<Video> VideoMemo { get; set; }
     }
 }

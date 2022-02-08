@@ -6,7 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="SQL Scripts\" />
     <Folder Include="wwwroot\images\uploads\funeral_photoFramed\" />
     <Folder Include="wwwroot\images\uploads\funeral_photoAttire\" />
     <Folder Include="wwwroot\UploadedFiles\" />
