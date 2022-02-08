@@ -9,10 +9,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace afterlife_caretakers.Pages.lastmsg
 {
-    public class ViewModel : PageModel
+    public class deletevideoModel : PageModel
     {
         private readonly Services.VideoMemoService _svc;
-        public ViewModel(Services.VideoMemoService service)
+        public deletevideoModel(Services.VideoMemoService service)
         {
             _svc = service;
         }
@@ -26,20 +26,18 @@ namespace afterlife_caretakers.Pages.lastmsg
                 HttpContext.Session.SetInt32("SSId", 3);
                 //return NotFound();
             }
-
-            Video = _svc.GetVideoByWillMakerId(3); //temp var
+            Video = _svc.GetVideoByWillMakerId((int)HttpContext.Session.GetInt32("SSId")); //temp var
             if (Video == null)
             {
                 return NotFound();
             }
-            Console.WriteLine(Video.videoLink);
-            return Page();
-        }
 
-        public IActionResult OnPost()
-        {
-            HttpContext.Session.SetInt32("IsUpdatingVideo", 1);
-            return LocalRedirect("/Video");
+            if (_svc.DeleteVideo(Video) == true)
+            {
+                return RedirectToPage("/prefuneral/viewcasket");
+            }
+            else
+                return BadRequest();
         }
     }
 }

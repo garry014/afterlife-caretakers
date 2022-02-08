@@ -99,3 +99,4 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\V
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\View.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\update.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\updatevideo.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\deletevideo.cshtml.g.cs

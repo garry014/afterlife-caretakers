@@ -74,32 +74,26 @@ namespace afterlife_caretakers.Services
 
         }
 
-        // Soft delete
-        public bool DeleteCasket(Video theVideo)
+        // Hard delete - with willmaker id
+        public bool DeleteVideo(Video thevideo)
         {
-            bool updated = true;
-            _context.Attach(theVideo).State = EntityState.Modified;
-
+            //System.Diagnostics.Debug.WriteLine(thefuneral.Id);
             try
             {
+                var itemToRemove = _context.VideoMemo.SingleOrDefault(x => x.willMakerID == thevideo.willMakerID);
+
+                if (itemToRemove == null)
+                {
+                    return false;
+                }
+                _context.VideoMemo.Remove(itemToRemove);
                 _context.SaveChanges();
-                updated = true;
-
+                return true;
             }
-            catch (DbUpdateConcurrencyException)
+            catch
             {
-                if (!VideoExists(theVideo.Id))
-                {
-                    updated = false;
-                }
-                else
-                {
-                    throw;
-                }
+                return false;
             }
-            return updated;
-
-
         }
     }
 }
