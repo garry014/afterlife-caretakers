@@ -6,7 +6,6 @@ using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using BCrypt = BCrypt.Net.BCrypt;
 
 namespace afterlife_caretakers.Pages.Account
 {
