@@ -33,6 +33,7 @@ namespace afterlife_caretakers
             services.AddTransient<FuneralService>();
             services.AddTransient<FExecutorPermissionService>();
             services.AddTransient<VideoMemoService>();
+            services.AddTransient<UserService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
