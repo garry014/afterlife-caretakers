@@ -1,0 +1,104 @@
+﻿@page
+@using afterlife_caretakers.Models;
+@model afterlife_caretakers.Pages.Register.Register_BeneficiaryModel
+@{
+    ViewData["Title"] = "Registration Beneficiary";
+}
+
+<div class="section-area account-wraper2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="appointment-form form-wraper">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane active" id="formRegister" role="tabpanel" aria-labelledby="formRegister">
+                            <div class="tab-pane fade show active" id="register-home" role="tabpanel" aria-labelledby="register-home">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link" aria-current="page" href="/Register/Register_WillMaker">Will Maker</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active" aria-current="page" href="/Register/Register_Beneficiary">Beneficiary</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="/Register/Register_WillExecutor">Will Executor</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link " href="/Register/Register_Witness">Witness</a>
+                                    </li>
+                                </ul>
+                                <form method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div> <label class="text-danger">@Model.MyMessage</label> </div>
+                                    <div class="form-group">
+                                        <input asp-for="MyUsers.name" placeholder="Full Name" class="form-control" />
+                                        <span asp-validation-for="MyUsers.name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" asp-for="MyUsers.email" class="form-control" placeholder="Email">
+                                        <span asp-validation-for="MyUsers.email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" asp-for="MyUsers.phoneno" class="form-control" placeholder="Phone Number">
+                                        <span asp-validation-for="MyUsers.phoneno" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group" align="left">
+                                        <label class="col-sm-2 col-form-label">Gender:</label>
+                                        @Html.RadioButton("MyUsers.gender", "M")  <span>Male</span>
+                                        @Html.RadioButton("MyUsers.gender", "F")  <span>Female</span>
+                                        <span asp-validation-for="MyUsers.gender" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" asp-for="MyUsers.willformID" placeholder="WillForm ID (if applicable)">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="NRIC" asp-for="MyUsers.NRIC">
+                                        <span asp-validation-for="MyUsers.NRIC" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group" align="left">
+                                        <div class="form-group col-md-12">
+                                            <label asp-for="Image.Image"></label><br />
+                                            <input asp-for="Image.Image">
+                                            <span asp-validation-for="Image.Image" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" asp-for="MyUsers.password">
+                                        <span asp-validation-for="MyUsers.password" class="text-danger"></span>
+                                        <input type="checkbox" onclick="showpassword()">Show Password
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" placeholder="Re-type Password">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="submit" class="btn btn-primary w-100 radius-xl">Register Now</button>
+                                    </div>
+                                    <div class="text-center mt-40">
+                                        <p class="mt-0">Already have an account?</p>
+                                        <a class="btn btn-lg btn-secondary w-100" data-toggle="tab" href="/Main_Login">Login</a>
+                                    </div>
+                                </form>
+                                @section Scripts {
+                                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showpassword() {
+        var x = document.getElementById("passwordInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>
