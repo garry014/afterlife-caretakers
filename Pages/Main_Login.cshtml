@@ -1,0 +1,43 @@
+﻿@page
+@model afterlife_caretakers.Pages.Main_LoginModel
+@{
+}
+
+<div class="section-area account-wraper2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-5 col-lg-6 col-md-8">
+                <div class="appointment-form form-wraper">
+                    <div class="logo">
+                        <img src="images/logo.png" alt="">
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="formLogin" role="tabpanel" aria-labelledby="formLogin">
+                            <form method="post">
+                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                <div class="form-group">
+                                    <label asp-for="Credential.email"></label>
+                                    <input type="text" asp-for="Credential.email" />
+                                </div>
+                                <span class="text-danger" asp-validation-for="Credential.email"></span>
+                                <div class="form-group">
+                                    <label asp-for="Credential.password"></label>
+                                    <input type="text" asp-for="Credential.password" />
+                                </div>
+                                <span class="text-danger" asp-validation-for="Credential.password"></span>
+                                <div class="form-group">
+                                    <button type="submit" value="Login" class="btn mb-30 btn-lg btn-primary w-100">Login</button>
+                                    <a href="#formForget" data-toggle="tab">Forgot Password</a>
+                                </div>
+                                <div class="text-center mt-40">
+                                    <p class="mt-0">First Time Login?</p>
+                                    <a class="btn btn-lg btn-secondary w-100" data-toggle="tab" href="/Register_Beneficiary">Register Here</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
