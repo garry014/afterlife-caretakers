@@ -1,4 +1,4 @@
-﻿using afterlife_caretakers.Models;
+using afterlife_caretakers.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
