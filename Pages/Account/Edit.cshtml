@@ -1,0 +1,66 @@
+﻿@page
+@model afterlife_caretakers.Pages.Account.EditModel
+@{
+}
+
+<h1>Edit Account Details</h1>
+
+<div class="row">
+    @if (TempData["AlertMessage"] != null)
+    {
+        <div class="alert alert-success">
+            <strong>
+                Success!
+            </strong> @TempData["AlertMessage"]
+        </div>
+    }
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input type="hidden" asp-for="MyUser.Id" />
+            <div class="form-group">
+                <label asp-for="MyUser.NRIC" class="control-label"></label>
+                <input asp-for="MyUser.NRIC" readonly class="form-control" />
+                <span asp-validation-for="MyUser.NRIC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyUser.name" class="control-label"></label>
+                <input asp-for="MyUser.name" class="form-control" />
+                <span asp-validation-for="MyUser.name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyUser.email" class="control-label"></label>
+                <input asp-for="MyUser.email" readonly class="form-control" />
+                <span asp-validation-for="MyUser.email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyUser.phoneno" class="control-label"></label>
+                <input asp-for="MyUser.phoneno" readonly class="form-control" />
+                <span asp-validation-for="MyUser.phoneno" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyUser.gender" class="control-label"></label>
+                <input asp-for="MyUser.gender" readonly class="form-control" />
+                <span asp-validation-for="MyUser.gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyUser.password" class="control-label"></label>
+                <input asp-for="MyUser.password" readonly class="form-control" />
+                <span asp-validation-for="MyUser.password" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="MyUser.usertype" />
+            <input type="hidden" asp-for="MyUser.NRIC_upload" />
+            <input type="hidden" asp-for="MyUser.activation_status" />
+            <input type="hidden" asp-for="MyUser.deathcert_upload" />
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />&nbsp;
+                @*<a asp-page="./Index" class="btn btn-primary">Back to List</a>*@
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
