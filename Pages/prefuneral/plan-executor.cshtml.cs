@@ -68,15 +68,17 @@ namespace afterlife_caretakers.Pages.prefuneral
             if (_svc.DeletePermissions(Permission) && _svc.AddPermission(Permission))
             {
                 System.Diagnostics.Debug.WriteLine(Permission2.executor_id);
-                if(Permission2.executor_id != 0)
+                string referralLink = "/prefuneral/funeral-confirm?id=" + Id;
+                HttpContext.Session.SetString("SignatureRedirectBack", referralLink);
+                if (Permission2.executor_id != 0)
                 {
                     if (_svc.AddPermission(Permission2))
                     {
-                        return Redirect("/prefuneral/funeral-confirm?id=" + Id);
+                        return LocalRedirect("/Signature");
                     }
                     return Page();
                 }
-                return Redirect("/prefuneral/funeral-confirm?id=" + Id);
+                return LocalRedirect("/Signature");
             }
             
             return Page();

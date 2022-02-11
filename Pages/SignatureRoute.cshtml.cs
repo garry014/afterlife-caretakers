@@ -17,14 +17,15 @@ namespace afterlife_caretakers.Pages
                 return NotFound();
             }
 
-            // 3. Add a else if loop, to redirect back to your route
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString("SignatureReferral")))
+            
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString("SignatureRedirectBack")))
             {
                 return NotFound();
             }
-            else if (HttpContext.Session.GetString("SignatureReferral") == "funeral") // example
+            else
             {
-                return RedirectToPage("/prefuneral/funeral-confirm");
+                // DO NOT CHANGE THIS
+                return Redirect(HttpContext.Session.GetString("SignatureRedirectBack"));
             }
             return NotFound();
         }
