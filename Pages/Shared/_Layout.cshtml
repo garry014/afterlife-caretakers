@@ -27,6 +27,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
+    
 </head>
 <body>
     <div class="page-wraper">
@@ -173,7 +174,7 @@
         <!-- header END -->
 
         <div class="page-content bg-white">
-        @RenderBody()
+            @RenderBody()
         </div>
 
         <!-- Footer ==== -->
@@ -188,11 +189,6 @@
                                     <a href="index.html"><img src="/images/logo.png" alt=""></a>
                                 </div>
                                 <div class="ft-contact">
-                                    <p>
-                                        Company registered number:<br />
-                                        100451356
-                                    </p>
-
                                     <div class="contact-bx">
                                         <div class="icon"><i class="fas fa-phone-alt"></i></div>
                                         <div class="contact-number">
@@ -200,6 +196,11 @@
                                             <h4 class="number">+65 6551 3554</h4>
                                         </div>
                                     </div>
+
+                                    <br />
+                                    <span>Change Language?</span>
+                                    <div id="google_translate_element"></div>
+
                                 </div>
                             </div>
                         </div>
@@ -265,6 +266,7 @@
         <button class="back-to-top fa fa-chevron-up"></button>
     </div>
     <!-- JAVASCRIPT FILES ========================================= -->
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/vendor/bootstrap-select/js/bootstrap-select.min.js"></script>
@@ -272,6 +274,13 @@
     <script src="/vendor/magnific-popup/jquery.magnific-popup.js"></script>
     <script src="/js/functions.js"></script>
     <script src="/js/contact.js"></script>
+
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+        }
+    </script>
+
     @RenderSection("Scripts", required: false)
 </body>
 </html>

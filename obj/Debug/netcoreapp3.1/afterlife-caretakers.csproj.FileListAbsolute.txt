@@ -109,3 +109,4 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\afterli
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\afterlife-caretakers.pdb
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\afterlife-caretakers.genruntimeconfig.cache
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Views\Signature\Index.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\SignatureRoute.cshtml.g.cs
