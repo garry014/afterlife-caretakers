@@ -75,10 +75,13 @@ namespace afterlife_caretakers.Pages
             if(account != null)
             {
                 Console.WriteLine(password);
-                if(BCrypt.Net.BCrypt.Verify(password, account.password))
+                int salt = 12;
+                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password, salt);
+                if (BCrypt.Net.BCrypt.Verify(account.password, passwordHash))
                 {
                     return account;
                 }
+                return null;
             }
             return null;
         }
