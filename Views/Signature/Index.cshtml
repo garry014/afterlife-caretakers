@@ -1,0 +1,97 @@
+﻿@{
+    ViewData["Title"] = "Signature - Final Step!";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@2.3.2/dist/signature_pad.min.js"></script>
+
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(/images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+
+                
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <div class="form-group">
+                        
+                        <div class="row">
+                            <div class="form-group col-md-12">
+                                <center>
+                                    As you are proceeding with a legal document, your signature is required in order for it to be approved.
+                                    <h5>Sign within the box:</h5>
+                                    <p>
+                                        <canvas width="500" height="400" id="signature"
+                                                style="border:1px solid black"></canvas><br>
+                                        <button type="button" onclick="clearCanvas();"
+                                                class="btn btn-primary">
+                                            Clear
+                                        </button>
+
+                                        <button id="save"
+                                                class="btn btn-primary">
+                                            Save
+                                        </button><br>
+
+                                        <input id="SignatureDataUrl" type="hidden">
+                                    </p>
+
+                                </center>
+                            </div>
+                        </div>
+                        <br />
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<script>
+    function clearCanvas() {
+        var canvas = document.getElementById("signature");
+        var ctx = canvas.getContext("2d");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
+
+    $(function () {
+        var canvas = document.querySelector('#signature');
+        var pad = new SignaturePad(canvas);
+
+        $('#save').click(function () {
+            var data = pad.toDataURL();
+            //$('#savetarget').attr('src', data);
+            $('#SignatureDataUrl').val(data);
+            pad.off();
+            $.ajax({
+                url: "Signature/get_signature",
+                type: "POST",
+                data: { base64png: $('#SignatureDataUrl').val() },
+                success: function (data) {
+                    if (data) {
+                        console.log("success");
+                        window.location.replace("/SignatureRoute");
+                    }
+
+                },
+                error: function (data) {
+                    alert("Sorry, something went wrong! Please try again.");
+                    console.log(data);
+                }
+            });
+        });
+    });
+</script>

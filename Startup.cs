@@ -66,6 +66,9 @@ namespace afterlife_caretakers
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Video}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Signature}/{action=Index}/{id?}");
             });
 
         }
