@@ -26,21 +26,21 @@ namespace afterlife_caretakers.Pages.prefuneral
         
         public void OnGet()
         {
-            HttpContext.Session.SetInt32("SSId", 6);
+            
         }
 
         public IActionResult OnPost()
         {
-            if (HttpContext.Session.GetInt32("SSId") != null)
+            if (HttpContext.Session.GetInt32("user_id") != null)
             {
-                Funeral funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("SSId"));
+                Funeral funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("user_id"));
                 if (funeral != null)
                 {
                     return Redirect("/prefuneral/Religion?id=" + funeral.Id);
                 }
                 else
                 {
-                    Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("SSId"));
+                    Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("user_id"));
                     return Redirect("/prefuneral/Religion?id=" + Funeral.Id);
                 }
             }

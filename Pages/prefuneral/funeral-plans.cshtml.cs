@@ -25,11 +25,9 @@ namespace afterlife_caretakers.Pages.prefuneral
         public IActionResult OnGet(string id)
         {
             // Validate if session exists
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
-                // Testing Script
-                HttpContext.Session.SetInt32("SSId", 1);
-                //return NotFound();
+                return NotFound();
             }
 
             int x = 0;
@@ -70,11 +68,11 @@ namespace afterlife_caretakers.Pages.prefuneral
                 return Page();
             }
 
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
                 return NotFound();
             }
-            Funeral.LastUpdatedById = (int)HttpContext.Session.GetInt32("SSId");
+            Funeral.LastUpdatedById = (int)HttpContext.Session.GetInt32("user_id");
 
             var included = new[] { "FuneralVechicle", "HasMemorialService", "HasBusCatering", "HasFuneralCermony", "FGuestsExpected" };
             if (_svc.UpdateFuneral(Funeral, included) == true)

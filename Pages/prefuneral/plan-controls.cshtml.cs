@@ -28,10 +28,9 @@ namespace afterlife_caretakers.Pages.prefuneral
 
         public IActionResult OnGet()
         {
-            HttpContext.Session.SetInt32("SSId", 6);
-            if (HttpContext.Session.GetInt32("SSId") != null)
+            if (HttpContext.Session.GetInt32("user_id") != null)
             {
-                Funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("SSId"));
+                Funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("user_id"));
                 if (Funeral == null)
                 {
                     errorMsg = "You do not have a plan yet.";

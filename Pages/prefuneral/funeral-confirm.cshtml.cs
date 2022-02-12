@@ -35,11 +35,9 @@ namespace afterlife_caretakers.Pages.prefuneral
         public IActionResult OnGet(string id)
         {
             // Validate if session exists
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
-                // Testing Script
-                HttpContext.Session.SetInt32("SSId", 1);
-                //return NotFound();
+                return NotFound();
             }
 
             int x = 0;
@@ -68,7 +66,7 @@ namespace afterlife_caretakers.Pages.prefuneral
                 return Page();
             }
 
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
                 return NotFound();
             }
@@ -78,7 +76,7 @@ namespace afterlife_caretakers.Pages.prefuneral
             Payment Payment = new Payment();
             Payment.Item = "Pre-funeral planning"; // Change this to your own item name
             Payment.Price = totalSum; // Change this to your own pricing
-            Payment.UserID = (int)HttpContext.Session.GetInt32("SSId");
+            Payment.UserID = (int)HttpContext.Session.GetInt32("user_id");
 
             bool AddPaymentSuccess = _psvc.AddPayment(Payment);
             //if you dont need additional processing on your table
@@ -92,7 +90,7 @@ namespace afterlife_caretakers.Pages.prefuneral
             //}
 
             // If you want to update your personal table
-            Funeral.LastUpdatedById = (int)HttpContext.Session.GetInt32("SSId");
+            Funeral.LastUpdatedById = (int)HttpContext.Session.GetInt32("user_id");
             Funeral.PaymentAmount = totalSum;
             var included = new[] { "PaymentAmount" };
             if (_svc.UpdateFuneral(Funeral, included) == true)

@@ -20,11 +20,9 @@ namespace afterlife_caretakers.Pages.lastmsg
         public Video Video { get; set; }
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
-                // Testing Script
-                HttpContext.Session.SetInt32("SSId", 3);
-                //return NotFound();
+                return NotFound();
             }
             if (HttpContext.Session.GetInt32("IsUpdatingVideo") != 1)
             {

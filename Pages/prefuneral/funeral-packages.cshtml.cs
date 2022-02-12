@@ -30,15 +30,15 @@ namespace afterlife_caretakers.Pages.prefuneral
 
         public void OnGet()
         {
-            HttpContext.Session.SetInt32("SSId", 6);
+            
         }
 
         public IActionResult OnPost()
         {
             System.Diagnostics.Debug.WriteLine(PackageId);
-            if (HttpContext.Session.GetInt32("SSId") != null)
+            if (HttpContext.Session.GetInt32("user_id") != null)
             {
-                Funeral funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("SSId"));
+                Funeral funeral = _svc.GetFuneralByUserId((int)HttpContext.Session.GetInt32("user_id"));
                 if (funeral != null)
                 {
                     errorMsg = "You have an existing plan, please delete your current plan before enrolling into a package.";
@@ -58,7 +58,7 @@ namespace afterlife_caretakers.Pages.prefuneral
                     {
                         generatePackage("Void Deck", 1002, 2, 2, true, true, true, "van hearse", true, true, "Inland Ash Scattering Facility");
                     }
-                    Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("SSId"));
+                    Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("user_id"));
                     return Redirect("/prefuneral/Religion?id=" + Funeral.Id);
                 }
             }

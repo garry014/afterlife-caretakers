@@ -34,15 +34,13 @@ namespace afterlife_caretakers.Pages.lastmsg
                 return RedirectToPage("/lastmsg/updatevideo");
             }
 
-            if (HttpContext.Session.GetInt32("SSId") == null)
+            if (HttpContext.Session.GetInt32("user_id") == null)
             {
-                // Testing Script
-                HttpContext.Session.SetInt32("SSId", 3);
-                //return NotFound();
+                return NotFound();
             }
 
             // if user alr have existing video, redirect them back
-            Video = _svc.GetVideoByWillMakerId((int)HttpContext.Session.GetInt32("SSId")); //temp var
+            Video = _svc.GetVideoByWillMakerId((int)HttpContext.Session.GetInt32("user_id")); //temp var
             if (Video != null)
             {
                 return RedirectToPage("/lastmsg/view");
@@ -55,7 +53,7 @@ namespace afterlife_caretakers.Pages.lastmsg
             if (ModelState.IsValid) // && session is valid
             {
                 Video.videoLink = HttpContext.Session.GetString("VideoName"); 
-                Video.willMakerID = (int)HttpContext.Session.GetInt32("SSId");
+                Video.willMakerID = (int)HttpContext.Session.GetInt32("user_id");
                 if (_svc.AddVideo(Video))
                 {
                     return RedirectToPage("/prefuneral/viewcasket");
