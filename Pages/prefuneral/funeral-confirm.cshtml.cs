@@ -14,13 +14,15 @@ namespace afterlife_caretakers.Pages.prefuneral
         private readonly Services.FuneralService _svc;
         private readonly Services.CasketService _csvc;
         private readonly Services.PaymentService _psvc; // add this line in
-        public funeral_confirmModel(Services.FuneralService service, Services.CasketService cservice, Services.PaymentService pservice)
+        private readonly Services.FExecutorPermissionService _fsvc;
+        public funeral_confirmModel(Services.FuneralService service, Services.CasketService cservice, Services.PaymentService pservice, Services.FExecutorPermissionService fservice)
         {
             _svc = service;
             _csvc = cservice;
             _psvc = pservice; // Add this line in with Services.PaymentService pservice
+            _fsvc = fservice;
         }
-
+        public FExecutorPermission FExecutor { get; set; }
         [BindProperty]
         public Funeral Funeral { get; set; }
         [BindProperty]
@@ -54,6 +56,15 @@ namespace afterlife_caretakers.Pages.prefuneral
             
             allcaskets = _csvc.GetAllCaskets();
 
+            // execution rights
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                if (_fsvc.PermissionMappingExists((int)HttpContext.Session.GetInt32("user_id"), x))
+                {
+                    return Page();
+                }
+                return NotFound();
+            }
             return Page();
         }
 

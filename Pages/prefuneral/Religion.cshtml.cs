@@ -14,10 +14,13 @@ namespace afterlife_caretakers.Pages.prefuneral
     public class ReligionModel : PageModel
     {
         private readonly Services.FuneralService _svc;
-        public ReligionModel(Services.FuneralService service)
+        private readonly Services.FExecutorPermissionService _fsvc;
+        public ReligionModel(Services.FuneralService service, Services.FExecutorPermissionService fservice)
         {
             _svc = service;
+            _fsvc = fservice;
         }
+        public FExecutorPermission FExecutor { get; set; }
 
         [BindProperty]
         public Funeral Funeral { get; set; }
@@ -42,6 +45,7 @@ namespace afterlife_caretakers.Pages.prefuneral
             {
                 return NotFound();
             }
+            
 
             fp = new FuneralPricing();
 
@@ -50,6 +54,15 @@ namespace afterlife_caretakers.Pages.prefuneral
                 Funeral.Religion = "";
             }
 
+            // execution rights
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                if (_fsvc.PermissionMappingExists((int)HttpContext.Session.GetInt32("user_id"), x))
+                {
+                    return Page();
+                }
+                return NotFound();
+            }
             return Page();
         }
 

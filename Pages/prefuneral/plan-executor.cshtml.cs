@@ -12,15 +12,19 @@ namespace afterlife_caretakers.Pages.prefuneral
     public class plan_executorModel : PageModel
     {
         private readonly Services.FExecutorPermissionService _svc;
-        public plan_executorModel(Services.FExecutorPermissionService service)
+        private readonly Services.FuneralService _fsvc;
+        public plan_executorModel(Services.FExecutorPermissionService service, Services.FuneralService fservice)
         {
             _svc = service;
+            _fsvc = fservice;
         }
 
         [BindProperty]
         public FExecutorPermission Permission { get; set; }
         [BindProperty]
         public FExecutorPermission Permission2 { get; set; }
+        [BindProperty]
+        public Funeral Funeral { get; set; }
         [BindProperty]
         public string Id { get; set; }
 
@@ -57,6 +61,16 @@ namespace afterlife_caretakers.Pages.prefuneral
             }
 
             Id = id;
+
+            Funeral = _fsvc.GetFuneralByFuneralId(x);
+            if (Funeral == null)
+            {
+                return NotFound();
+            }
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                return RedirectToPage("/");
+            }
             return Page();
         }
 
@@ -70,6 +84,7 @@ namespace afterlife_caretakers.Pages.prefuneral
                 HttpContext.Session.SetString("SignatureRedirectBack", referralLink);
                 if (Permission2.executor_id != 0)
                 {
+                    Permission2.funeral_id = Int32.Parse(Id);
                     if (_svc.AddPermission(Permission2))
                     {
                         return LocalRedirect("/Signature");

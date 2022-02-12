@@ -51,7 +51,7 @@ namespace afterlife_caretakers.Services
             FExecutorPermission thePermission = _context.FExecutorPermission.Where(c => c.executor_id == funeral_id).FirstOrDefault();
             return thePermission;
         }
-        private bool PermissionMappingExists(int executor_id, int funeral_id)
+        public bool PermissionMappingExists(int executor_id, int funeral_id)
         {
             return _context.FExecutorPermission.Any(c => c.executor_id == executor_id && c.funeral_id == funeral_id);
         }

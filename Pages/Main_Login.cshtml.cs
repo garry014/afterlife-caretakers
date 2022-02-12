@@ -75,10 +75,7 @@ namespace afterlife_caretakers.Pages
             var account = db.users.FirstOrDefault(a => a.email.Equals(email));
             if(account != null)
             {
-                Console.WriteLine(password);
-                int salt = 12;
-                string passwordHash = BCrypt.Net.BCrypt.HashPassword(password, salt);
-                if (BCrypt.Net.BCrypt.Verify(account.password, passwordHash))
+                if (BCrypt.Net.BCrypt.Verify(password, account.password))
                 {
                     return account;
                 }

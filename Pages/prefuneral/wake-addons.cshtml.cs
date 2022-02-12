@@ -12,11 +12,13 @@ namespace afterlife_caretakers.Pages.prefuneral
     public class wake_addonsModel : PageModel
     {
         private readonly Services.FuneralService _svc;
-        public wake_addonsModel(Services.FuneralService service)
+        private readonly Services.FExecutorPermissionService _fsvc;
+        public wake_addonsModel(Services.FuneralService service, Services.FExecutorPermissionService fservice)
         {
             _svc = service;
+            _fsvc = fservice;
         }
-
+        public FExecutorPermission FExecutor { get; set; }
         [BindProperty]
         public Funeral Funeral { get; set; }
         [BindProperty]
@@ -53,6 +55,16 @@ namespace afterlife_caretakers.Pages.prefuneral
             }
 
             fp = new FuneralPricing();
+
+            // execution rights
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                if (_fsvc.PermissionMappingExists((int)HttpContext.Session.GetInt32("user_id"), x))
+                {
+                    return Page();
+                }
+                return NotFound();
+            }
             return Page();
         }
 

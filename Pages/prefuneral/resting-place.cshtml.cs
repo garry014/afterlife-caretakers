@@ -17,12 +17,15 @@ namespace afterlife_caretakers.Pages.prefuneral
     {
         private readonly Services.FuneralService _svc;
         private readonly Services.CasketService _csvc;
-        public resting_placeModel(Services.FuneralService service, Services.CasketService cservice, IWebHostEnvironment hostEnvironment)
+        private readonly Services.FExecutorPermissionService _fsvc;
+        public resting_placeModel(Services.FuneralService service, Services.CasketService cservice, IWebHostEnvironment hostEnvironment, Services.FExecutorPermissionService fservice)
         {
             _svc = service;
             _csvc = cservice;
+            _fsvc = fservice;
             webHostEnvironment = hostEnvironment;
         }
+        public FExecutorPermission FExecutor { get; set; }
         private readonly IWebHostEnvironment webHostEnvironment;
 
         [BindProperty]
@@ -75,6 +78,16 @@ namespace afterlife_caretakers.Pages.prefuneral
 
             fp = new FuneralPricing();
             allcaskets = _csvc.GetAllCaskets();
+
+            // execution rights
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                if (_fsvc.PermissionMappingExists((int)HttpContext.Session.GetInt32("user_id"), x))
+                {
+                    return Page();
+                }
+                return NotFound();
+            }
             return Page();
         }
 

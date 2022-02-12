@@ -12,10 +12,13 @@ namespace afterlife_caretakers.Pages.prefuneral
     public class funeral_plansModel : PageModel
     {
         private readonly Services.FuneralService _svc;
-        public funeral_plansModel(Services.FuneralService service)
+        private readonly Services.FExecutorPermissionService _fsvc;
+        public funeral_plansModel(Services.FuneralService service, Services.FExecutorPermissionService fservice)
         {
             _svc = service;
+            _fsvc = fservice;
         }
+        public FExecutorPermission FExecutor { get; set; }
 
         [BindProperty]
         public Funeral Funeral { get; set; }
@@ -58,6 +61,15 @@ namespace afterlife_caretakers.Pages.prefuneral
             }
 
             fp = new FuneralPricing();
+            // execution rights
+            if (Funeral.WillMaker_ID != HttpContext.Session.GetInt32("user_id"))
+            {
+                if (_fsvc.PermissionMappingExists((int)HttpContext.Session.GetInt32("user_id"), x))
+                {
+                    return Page();
+                }
+                return NotFound();
+            }
             return Page();
         }
 
