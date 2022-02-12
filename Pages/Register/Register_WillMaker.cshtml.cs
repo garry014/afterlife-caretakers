@@ -35,6 +35,9 @@ namespace afterlife_caretakers.Pages.Register
         public IActionResult OnPost()
         {
             MyUsers.usertype = "WillMaker";
+            MyUsers.activation_status = "inactive";
+            int salt = 12;
+            MyUsers.password = BCrypt.Net.BCrypt.HashPassword(MyUsers.password, salt);
             if (ModelState.IsValid)
             {
                 if (_svc.AddUsers(MyUsers))
