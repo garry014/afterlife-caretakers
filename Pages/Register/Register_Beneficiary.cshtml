@@ -11,7 +11,7 @@
             <div class="col-xl-8 col-lg-6 col-md-8">
                 <div class="appointment-form form-wraper">
                     <div class="logo">
-                        <img src="images/logo.png" alt="">
+                        <img src="../images/logo.png" alt="">
                     </div>
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane active" id="formRegister" role="tabpanel" aria-labelledby="formRegister">
@@ -34,16 +34,21 @@
                                     <div asp-validation-summary="All" class="text-danger"></div>
                                     <div> <label class="text-danger">@Model.MyMessage</label> </div>
                                     <div class="form-group">
+
                                         <input asp-for="MyUsers.name" placeholder="Full Name" class="form-control" />
                                         <span asp-validation-for="MyUsers.name" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="email" asp-for="MyUsers.email" class="form-control" placeholder="Email">
-                                        <span asp-validation-for="MyUsers.email" class="text-danger"></span>
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" asp-for="MyUsers.phoneno" class="form-control" placeholder="Phone Number">
-                                        <span asp-validation-for="MyUsers.phoneno" class="text-danger"></span>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="email" asp-for="MyUsers.email" class="form-control" placeholder="Email">
+                                                <span asp-validation-for="MyUsers.email" class="text-danger"></span>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" asp-for="MyUsers.phoneno" class="form-control" placeholder="Phone Number">
+                                                <span asp-validation-for="MyUsers.phoneno" class="text-danger"></span>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="form-group" align="left">
                                         <label class="col-sm-2 col-form-label">Gender:</label>
@@ -52,11 +57,15 @@
                                         <span asp-validation-for="MyUsers.gender" class="text-danger"></span>
                                     </div>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" asp-for="MyUsers.willformID" placeholder="WillForm ID (if applicable)">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="NRIC" asp-for="MyUsers.NRIC">
-                                        <span asp-validation-for="MyUsers.NRIC" class="text-danger"></span>
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" class="form-control" asp-for="MyUsers.willformID" placeholder="WillForm ID (if applicable)">
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" class="form-control" placeholder="NRIC" asp-for="MyUsers.NRIC">
+                                                <span asp-validation-for="MyUsers.NRIC" class="text-danger"></span>
+                                            </div>
+                                        </div>    
                                     </div>
                                     <div class="form-group" align="left">
                                         <div class="form-group col-md-12">
@@ -66,12 +75,16 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="passwordInput" placeholder="Password" asp-for="MyUsers.password">
-                                        <span asp-validation-for="MyUsers.password" class="text-danger"></span>
-                                        <input type="checkbox" onclick="showpassword()">Show Password
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Re-type Password">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="password" class="form-control" id="passwordInput" placeholder="Password" asp-for="MyUsers.password">
+                                                <span asp-validation-for="MyUsers.password" class="text-danger"></span>
+                                                <input type="checkbox" onclick="showpassword()">Show Password
+                                            </div>
+                                            <div class="col">
+                                                <input type="password" class="form-control" placeholder="Re-type Password">
+                                            </div>
+                                        </div>                    
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" value="submit" class="btn btn-primary w-100 radius-xl">Register Now</button>
