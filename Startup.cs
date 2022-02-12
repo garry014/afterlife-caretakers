@@ -33,6 +33,7 @@ namespace afterlife_caretakers
             services.AddTransient<FuneralService>();
             services.AddTransient<FExecutorPermissionService>();
             services.AddTransient<VideoMemoService>();
+            services.AddTransient<PaymentService>();
             services.AddTransient<UserService>();
         }
 

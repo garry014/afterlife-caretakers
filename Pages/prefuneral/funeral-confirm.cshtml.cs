@@ -13,10 +13,12 @@ namespace afterlife_caretakers.Pages.prefuneral
     {
         private readonly Services.FuneralService _svc;
         private readonly Services.CasketService _csvc;
-        public funeral_confirmModel(Services.FuneralService service, Services.CasketService cservice)
+        private readonly Services.PaymentService _psvc; // add this line in
+        public funeral_confirmModel(Services.FuneralService service, Services.CasketService cservice, Services.PaymentService pservice)
         {
             _svc = service;
             _csvc = cservice;
+            _psvc = pservice; // Add this line in with Services.PaymentService pservice
         }
 
         [BindProperty]
@@ -29,6 +31,7 @@ namespace afterlife_caretakers.Pages.prefuneral
         public double totalSum { get; set; }
         public double totalSumFinal;
 
+        // make sure open your db here, so u can pass in the $$ to paypal later.
         public IActionResult OnGet(string id)
         {
             // Validate if session exists
@@ -56,6 +59,8 @@ namespace afterlife_caretakers.Pages.prefuneral
             return Page();
         }
 
+
+        // Copy this to your code
         public IActionResult OnPost()
         {
             if (!ModelState.IsValid)
@@ -67,7 +72,28 @@ namespace afterlife_caretakers.Pages.prefuneral
             {
                 return NotFound();
             }
+            fp = new FuneralPricing();
+            totalSum = fp.CalculateTotal(Funeral) - Funeral.PaymentAmount;
+
+            Payment Payment = new Payment();
+            Payment.Item = "Pre-funeral planning"; // Change this to your own item name
+            Payment.Price = totalSum; // Change this to your own pricing
+            Payment.UserID = (int)HttpContext.Session.GetInt32("SSId");
+
+            bool AddPaymentSuccess = _psvc.AddPayment(Payment);
+            //if you dont need additional processing on your table
+            //if (AddPaymentSuccess == true)
+            //{
+            //    return Redirect("");
+            //}
+            //else
+            //{
+            //    return BadRequest();
+            //}
+
+            // If you want to update your personal table
             Funeral.LastUpdatedById = (int)HttpContext.Session.GetInt32("SSId");
+            Funeral.PaymentAmount = totalSum;
             var included = new[] { "PaymentAmount" };
             if (_svc.UpdateFuneral(Funeral, included) == true)
             {

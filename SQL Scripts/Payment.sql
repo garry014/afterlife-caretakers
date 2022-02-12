@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Payment]
+(
+	[Id] INT NOT NULL IDENTITY(1,1) PRIMARY KEY, 
+    [Item] VARCHAR(100) NOT NULL,
+	[Price] FLOAT NOT NULL,
+	[UserID] INT NOT NULL,
+	[TimeStamp] DATETIME NOT NULL
+)

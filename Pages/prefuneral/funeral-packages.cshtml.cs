@@ -50,6 +50,14 @@ namespace afterlife_caretakers.Pages.prefuneral
                     {
                         generatePackage("Void Deck", 1002, 2, 2, true, true, true, "van hearse", true, true, "Inland Ash Scattering Facility");
                     }
+                    else if (PackageId == 2)
+                    {
+                        generatePackage("Void Deck", 1002, 2, 2, true, true, true, "van hearse", true, true, "Inland Ash Scattering Facility");
+                    }
+                    else
+                    {
+                        generatePackage("Void Deck", 1002, 2, 2, true, true, true, "van hearse", true, true, "Inland Ash Scattering Facility");
+                    }
                     Boolean flag = _svc.AddFuneral(Funeral, (int)HttpContext.Session.GetInt32("SSId"));
                     return Redirect("/prefuneral/Religion?id=" + Funeral.Id);
                 }

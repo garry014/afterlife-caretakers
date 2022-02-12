@@ -65,6 +65,7 @@ namespace afterlife_caretakers.Models
         public Boolean HasExecutorVerifiedWake { get; set; }
         public int ExecutorID { get; set; }
         public int WillMaker_ID { get; set; }
+        public string Signature { get; set; }
         public DateTime TimeStamp { get; set; }
         public DateTime LastUpdatedTime { get; set; }
         public int LastUpdatedById { get; set; }
