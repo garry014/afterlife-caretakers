@@ -148,18 +148,18 @@
                             </div>
 
                             <div class="form-group col-md-3">
-                                <label><span style="font-weight:bold">Catering: (for 30 pax)	</span></label><br>
+                                <label><span style="font-weight:bold">Catering for @(Model.Funeral.WakeGuestsExpected * 30) pax: (figures derived from guests expected)	</span></label><br>
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="checkbox" asp-for="Funeral.HasLunch">
-                                <label asp-for="Funeral.HasLunch"> Lunch (+$@Model.fp.Lunch per day)</label>
+                                <label asp-for="Funeral.HasLunch"> Lunch (+$@(Model.fp.Lunch * Model.Funeral.WakeGuestsExpected) per day)</label>
                             </div>
                             <div class="form-group col-md-3">
                                 <input type="checkbox" asp-for="Funeral.HasDinner">
-                                <label asp-for="Funeral.HasDinner"> Dinner (+$@Model.fp.Dinner per day)</label>
+                                <label asp-for="Funeral.HasDinner"> Dinner (+$@(Model.fp.Dinner * Model.Funeral.WakeGuestsExpected) per day)</label>
                             </div>
                             <div class="form-group col-md-3">
-                                <!-- Intentionally left blank -->
+                                
                             </div>
 
 
@@ -189,6 +189,9 @@
 
                             <div class="form-group col-md-3">
                                 <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>
+                            </div>
+                            <div class="form-group col-md-12" style="text-align:right;">
+                                <sup>Pricing reflected is only valid for today's payment. Prices are subjected to changes for future payment.</sup>
                             </div>
                         </div>
                     </form>
