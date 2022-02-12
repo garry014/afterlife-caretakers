@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using afterlife_caretakers.Models;
 using afterlife_caretakers.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
@@ -21,9 +22,19 @@ namespace afterlife_caretakers.Pages.prefuneral
             _logger = logger;
             _svc = service;
         }
-        public void OnGet()
+        
+        public IActionResult OnGet()
         {
-            allcaskets = _svc.GetAllCaskets();
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "Admin")
+            {
+                allcaskets = _svc.GetAllCaskets();
+                return Page();
+            }
+            return NotFound();
         }
         public void OnPost()
         {

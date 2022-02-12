@@ -30,15 +30,34 @@ namespace afterlife_caretakers.Pages.prefuneral
         [BindProperty]
         public ImageClass Image { get; set; }
         
-        public void OnGet()
+        public IActionResult OnGet()
         {
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "Admin")
+            {
+                return Page();
+            }
+            return NotFound();
         }
 
         public IActionResult OnPost(ImageClass Image)
         {
             if (ModelState.IsValid)
             {
-                string uniqueFileName = UploadedFile(Image);
+                string uniqueFileName = "";
+                var file = Image as IFormFile;
+                if (file != null)
+                {
+                    uniqueFileName = UploadedFile(Image);
+                }
+                else
+                {
+                    return Page();
+                }
+                
                 Casket.ImageLink = uniqueFileName;
                 if (_svc.AddCasket(Casket))
                 {
@@ -52,8 +71,8 @@ namespace afterlife_caretakers.Pages.prefuneral
         private string UploadedFile(ImageClass Image)
         {
             string uniqueFileName = null;
-
-            if (Image != null)
+            var file = Image as IFormFile;
+            if (file != null)
             {
                 // check if file is an image file
                 var _extensions = new string[] { ".jpg", ".png" };

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -27,6 +28,16 @@ namespace afterlife_caretakers.Pages.prefuneral
         public ImageClass Image { get; set; }
         public IActionResult OnGet(string id)
         {
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "Admin")
+            {
+                return Page();
+            }
+            return NotFound();
+            
             if (id == null)
             {
                 return NotFound();
@@ -49,7 +60,8 @@ namespace afterlife_caretakers.Pages.prefuneral
                 return Page();
             }
 
-            if (Image != null)
+            var file = Image as IFormFile;
+            if (file != null)
             {
                 string uniqueFileName = UploadedFile(Image);
                 Casket.ImageLink = uniqueFileName;
@@ -66,7 +78,6 @@ namespace afterlife_caretakers.Pages.prefuneral
         private string UploadedFile(ImageClass Image)
         {
             string uniqueFileName = null;
-
             if (Image != null)
             {
                 // check if file is an image file

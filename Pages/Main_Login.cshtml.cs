@@ -61,6 +61,7 @@ namespace afterlife_caretakers.Pages
             {
                 HttpContext.Session.SetString("name", acc.name);
                 HttpContext.Session.SetInt32("user_id", acc.Id);
+                HttpContext.Session.SetString("usertype", acc.usertype);
                 Console.WriteLine("Login with: " + acc.Id);
                 return RedirectToPage("Index");
             }

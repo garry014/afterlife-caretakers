@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -26,6 +27,17 @@ namespace afterlife_caretakers.Pages.prefuneral
         public ImageClass Image { get; set; }
         public IActionResult OnGet(string id)
         {
+            
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "Admin")
+            {
+                return Page();
+            }
+            return NotFound();
+            
             if (id == null)
             {
                 return NotFound();
