@@ -31,5 +31,7 @@ namespace afterlife_caretakers.Models
         public DbSet<Payment> Payment { get; set; }
         public DbSet<Users> users { get; set; }
         public static object Users { get; internal set; }
+        public DbSet<AMDWitness> amdwitness { get; set; }
+        
     }
 }
