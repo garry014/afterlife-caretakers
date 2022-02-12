@@ -32,5 +32,7 @@ namespace afterlife_caretakers.Models
         public string activation_status { get; set; }
        
         public string deathcert_upload { get; set; }
+        
+        public string deathdate_setting { get; set; }
     }
 }
