@@ -38,6 +38,8 @@ namespace afterlife_caretakers.Pages.Register
         {
             MyUsers.usertype = "Will Executor";
             MyUsers.activation_status = "inactive";
+            int salt = 12;
+            MyUsers.password = BCrypt.Net.BCrypt.HashPassword(MyUsers.password, salt);
             if (ModelState.IsValid)
             {
                 if (_svc.AddUsers(MyUsers))
