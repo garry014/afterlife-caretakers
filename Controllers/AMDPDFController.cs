@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Syncfusion.Pdf;
 using Syncfusion.Pdf.Graphics;
-using Syncfusion.HtmlConverter;
 using Microsoft.AspNetCore.Hosting;
 using Syncfusion.Drawing;
 using System.IO;
