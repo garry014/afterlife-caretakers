@@ -81,7 +81,7 @@
                         <div class="stepper-wrapper">
                             <div class="stepper-item completed">
                                 <div class="step-counter">1</div>
-                                <div class="step-name"><a href="/prefuneral/religion">Religion</a></div>
+                                <div class="step-name"><a href="./religion?id=@Model.Funeral.Id">Religion</a></div>
                             </div>
                             <div class="stepper-item active">
                                 <div class="step-counter">2</div>
@@ -204,7 +204,7 @@
                                 <!-- Intentionally left blank -->
                             </div>
                             <div class="form-group col-md-3">
-                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = 'religion.html';">Previous</button>
+                                <button name="back" type="back" value="Back" class="btn w-100 btn-secondary btn-lg" style="background-color: #e0ded7; color: black" onclick="location.href = './religion?id=@Model.Funeral.Id';">Previous</button>
                             </div>
                             <div class="form-group col-md-3">
                                 <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Save & Next</button>

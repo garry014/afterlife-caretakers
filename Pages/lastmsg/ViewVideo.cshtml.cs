@@ -29,7 +29,6 @@ namespace afterlife_caretakers.Pages.lastmsg
 
         public IActionResult OnGet(string id)
         {
-            HttpContext.Session.SetString("user_email", "merlion@gmail.com");
             
             if (HttpContext.Session.GetString("user_email") == null)
             {
@@ -63,7 +62,7 @@ namespace afterlife_caretakers.Pages.lastmsg
             // uncomment once amelia is done
             //else if (User.death_date < DateTime.Now.AddDays(Video.releasePeriod * 7))
             //{
-            //    ErrorMsg = "We are sorry, your loved ones had only enabled the viewing to you after " + DateTime.Now.AddDays(Video.releasePeriod * 7).ToString();
+            //    ErrorMsg = "We are sorry, your loved ones had only enabled the viewing to you after " + DateTime.Now.AddDays(Video.releasePeriod * 7).ToString() + ". Please come back then.";
             //}
             
             return Page();
