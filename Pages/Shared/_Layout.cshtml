@@ -87,12 +87,13 @@
                                                 <li><a href="about-us.html"><span>Make a Will</span></a></li>
                                                 <li><a href="team.html"><span>Our Advisors</span></a></li>
                                                 <li><a href="team.html"><span>Our Witnesses</span></a></li>
-                                                <li><a href="faq.html"><span>Create Last Message</span></a></li>
+                                                <li><a asp-page="/lastmsg/create"><span>Create My Last Message</span></a></li>
+                                                <li><a asp-page="/lastmsg/view"><span>View My Last Message</span></a></li>
                                                 <!--
-                            <li><a href="booking.html"><span>Booking</span></a></li>
-                            <li><a href="error-404.html"><span>Error 404</span></a></li>
-                            <li><a href="login.html"><span>Login / Register</span></a></li>
-                                -->
+    <li><a href="booking.html"><span>Booking</span></a></li>
+    <li><a href="error-404.html"><span>Error 404</span></a></li>
+    <li><a href="login.html"><span>Login / Register</span></a></li>
+        -->
                                             </ul>
                                         </li>
                                     </ul>
@@ -104,7 +105,7 @@
                                             <ul>
                                                 <li><a asp-page="/prefuneral/preplan-intro"><span>Start Planning</span></a></li>
                                                 <li><a asp-page="/prefuneral/funeral-packages"><span>Funeral Package</span></a></li>
-                                                <li><a asp-page="/prefuneral/plan-controls"><span>View my Plan</span></a></li>
+                                                <li><a asp-page="/prefuneral/plan-controls"><span>View/Edit my Plan</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -125,7 +126,7 @@
                                     <ul class="sub-menu">
                                         <li class="add-menu-left">
                                             <ul>
-                                                <li><a href="about-us.html"><span>View Last Message</span></a></li>
+                                                <li><a asp-page="/lastmsg/BView"><span>View Loved-ones Last Message</span></a></li>
                                                 <li><a href="team.html"><span>Counselling</span></a></li>
                                                 <li><a href="team.html"><span>Our Counsellors</span></a></li>
                                                 <li><a href="faq.html"><span>View my Appointments</span></a></li>
