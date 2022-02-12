@@ -7,7 +7,7 @@
     <div class="page-banner banner-lg contact-banner" style="background-image:url(/images/banner/img1.jpg);">
         <div class="container">
             <div class="page-banner-entry text-center">
-                <h1>Leave Last Message</h1>
+                <h1>View Last Message</h1>
                 <!-- Breadcrumb row -->
                 <nav aria-label="breadcrumb" class="breadcrumb-row">
                     <ul class="breadcrumb">
@@ -27,33 +27,36 @@
     <div class="container">
         <div class="contact-wraper">
             <div class="row">
-                <div class="col-lg-12 mb-30">
-                    <center>
-                        <h5>Video</h5>
-                       
-                        <video id="recorded" width="800" style="display: block; margin: 0 auto;" controls>
-                            <source src="/UploadedFiles/@Model.Video.videoLink" type="video/webm">
-                            Your browser does not support HTML video.
-                        </video>
-                        <br />Release the video
-                        @if (@Model.Video.releasePeriod == 0)
-                        {
-                            <span>immediately after my passing</span>
-                        }
-                        else
-                        {
-                            <span>after @Model.Video.releasePeriod week(s) from my passing.</span>
-                        }
-                    </center>
-                </div>
-                <div class="col-lg-12 mb-30">
-                    @if (@Model.Video.writtenMemo != null)
-                    {
-                        <span>Written Memo: </span>
-                        <span>@Model.Video.writtenMemo</span>
-                    }
+                @if (@Model.ErrorMsg == null)
+                {
+                    <div class="col-lg-12 mb-30">
+                        <center>
+                            <h5>Video</h5>
 
-                </div>
+                            <video id="recorded" width="800" style="display: block; margin: 0 auto;" controls>
+                                <source src="/UploadedFiles/@Model.Video.videoLink" type="video/webm">
+                                Your browser does not support HTML video.
+                            </video>
+
+                        </center>
+                    </div>
+                    <div class="col-lg-12 mb-30">
+                        @if (@Model.Video.writtenMemo != null)
+                        {
+                            <span>Written Memo: </span>
+                            <span>@Model.Video.writtenMemo</span>
+                        }
+
+                    </div>
+                }
+                @if (@Model.ErrorMsg != null) { 
+                    <div class="col-lg-12 mb-30">
+                        @Model.ErrorMsg
+                    </div>
+                }
+
+
+
             </div>
         </div>
 </section>
