@@ -36,6 +36,7 @@ namespace afterlife_caretakers
             services.AddTransient<BVideoPermissionService>();
             services.AddTransient<PaymentService>();
             services.AddTransient<UserService>();
+            services.AddTransient<AdminService>();
             services.AddTransient<AMDService>();
         }
 
