@@ -1,0 +1,98 @@
+﻿@page
+@model afterlife_caretakers.Pages.amd.amdpdfModel
+@{
+    ViewData["Title"] = "AMD Completed";
+}
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <!--<br /><br /><br /><br /><br />-->
+                <h1 style="font-size:45px">Advanced Medical Directive Form</h1>
+                <!--<br /><br /><br />-->
+                <!-- Breadcrumb row -->
+                <!--<nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active"><a href="amdinfo.html">Your Details</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="amdwitness.html">Witness</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="amdview.html">View Details</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="index.html">Payment</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="index.html"><div style="color: coral; font-weight: 700">Download</div></a></li>
+                    </ul>
+                </nav>-->
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+
+    <!-- Breadcrumb row END -->
+</div>
+
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container" style="width:70%; margin-bottom:-30px">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+
+                    <div class="stepper-wrapper">
+                        <div class="stepper-item completed">
+                            <div class="step-counter">1</div>
+                            <div class="step-name">Your Info</div>
+                        </div>
+                        <div class="stepper-item completed">
+                            <div class="step-counter">2</div>
+                            <div class="step-name">Witness<br></div>
+                        </div>
+                        <div class="stepper-item completed">
+                            <div class="step-counter">3</div>
+                            <div class="step-name">View Details</div>
+                        </div>
+                        <div class="stepper-item completed">
+                            <div class="step-counter">4</div>
+                            <div class="step-name">Payment<br></div>
+                        </div>
+                        <div class="stepper-item active">
+                            <div class="step-counter">5</div>
+                            <div class="step-name">Download</div>
+                        </div>
+                    </div>
+
+                    <h2 style="text-align:center; padding-bottom:20px">Thank you for using <br /> our service!</h2>
+                    <div style="text-align:center">Click here to download your AMD form.</div>
+                    <!--style="margin-left:20px; margin-bottom:30px; width:45%"-->
+                    @*<a href="javascript:void(0);" class="download-link center" style=" width:50% ; margin-left: auto; margin-right:auto">
+                <img src="/images/icon/pdf.png" alt="">
+                <h5 class="title">Download PDF</h5>
+                <span>AMD Form</span>
+            </a>*@
+
+                </div>
+                <!--pdf button here! 
+                    1. change CreateAMDPDF to CreateWillPDF/CreateFuneralPDF
+                    2. change AMDPDF to WillPDF/FuneralPDF-->
+                @{Html.BeginForm("CreateAMDPDF", "AMDPDF", FormMethod.Get);
+                    {
+                        <div class="download-link center" style=" width:50% ; margin-left: auto; margin-right:auto; margin-bottom:30px">
+                            <img src="/images/icon/pdf.png" alt="">
+                            <h5 class="title">Download PDF</h5>
+                            <span>
+                                <input type="submit" value="AMD Form" style="background-color: transparent; border: none; color:white; " />
+                            </span>
+                        </div>
+                    }
+                    Html.EndForm();
+
+                }
+            </div>
+    </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />
