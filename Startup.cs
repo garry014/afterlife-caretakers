@@ -36,6 +36,7 @@ namespace afterlife_caretakers
             services.AddTransient<BVideoPermissionService>();
             services.AddTransient<PaymentService>();
             services.AddTransient<UserService>();
+            services.AddTransient<AMDService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,6 +72,18 @@ namespace afterlife_caretakers
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Signature}/{action=Index}/{id?}");
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=AMDPDF}/{action=Index}/{id?}"
+                    );
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=WillPDF}/{action=Index}/{id?}"
+                    );                 
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=FuneralPDF}/{action=Index}/{id?}"
+                    ); 
             });
 
         }
