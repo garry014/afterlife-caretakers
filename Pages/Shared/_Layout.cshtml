@@ -134,6 +134,22 @@
                                         </li>
                                     </ul>
                                 </li>
+                                
+                                <li>
+                                    @if (Context.Session.GetString("user_id") != null)
+                                    {
+                                    <a>@Context.Session.GetString("name")<i class="fas fa-plus"></i></a> 
+                                   
+                                    <ul class="sub-menu">
+                                        <li class="add-menu-left">
+                                            <ul>
+                                                <li><a asp-page="/Account/Edit"><span>Edit Account</span></a></li>
+                                                <li><a asp-page="Main_Login" asp-page-handler="Logout"><span>Logout</span></a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    }
+                                </li>
 
                                 <!--
                 <li>
