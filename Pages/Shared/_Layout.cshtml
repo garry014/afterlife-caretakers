@@ -1,3 +1,4 @@
+@using Microsoft.AspNetCore.Http
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-    
+
 </head>
 <body>
     <div class="page-wraper">
@@ -57,10 +58,13 @@
                         </button>
 
                         <!-- extra nav -->
+                        @if (Context.Session.GetString("user_id") == null)
+                        {
+                            <div class="secondary-menu" style="margin-left:-20px">
+                                <li><a href="/Main_Login" class="btn btn-primary shadow">LOGIN  <i class="btn-icon-bx fas fa-chevron-right"></i></a></li>
+                            </div>
+                        }
 
-                        <div class="secondary-menu" style="margin-left:-20px">
-                            <li><a href="/Main_Login" class="btn btn-primary shadow">LOGIN  <i class="btn-icon-bx fas fa-chevron-right"></i></a></li>
-                        </div>
                         <!-- Search Box ==== -->
                         <div class="nav-search-bar">
                             <form action="#">
@@ -85,10 +89,10 @@
                                                 <li><a href="team.html"><span>Our Witnesses</span></a></li>
                                                 <li><a href="faq.html"><span>Create Last Message</span></a></li>
                                                 <!--
-                                                <li><a href="booking.html"><span>Booking</span></a></li>
-                                                <li><a href="error-404.html"><span>Error 404</span></a></li>
-                                                <li><a href="login.html"><span>Login / Register</span></a></li>
-                                                    -->
+                            <li><a href="booking.html"><span>Booking</span></a></li>
+                            <li><a href="error-404.html"><span>Error 404</span></a></li>
+                            <li><a href="login.html"><span>Login / Register</span></a></li>
+                                -->
                                             </ul>
                                         </li>
                                     </ul>
@@ -131,36 +135,36 @@
                                 </li>
 
                                 <!--
-                                    <li>
-                                        <a href="javascript:;">fsd <i class="fas fa-plus"></i></a>
-                                        <ul class="sub-menu">
-                                            <li class="add-menu-left">
-                                                <ul>
-                                                    <li><a href="services.html"><span>Service</span> </a></li>
-                                                    <li><a href="service-detail.html"><span>Service Detail</span></a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
+                <li>
+                    <a href="javascript:;">fsd <i class="fas fa-plus"></i></a>
+                    <ul class="sub-menu">
+                        <li class="add-menu-left">
+                            <ul>
+                                <li><a href="services.html"><span>Service</span> </a></li>
+                                <li><a href="service-detail.html"><span>Service Detail</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
 
-                                    <li>
-                                        <a href="javascript:;">Blog <i class="fas fa-plus"></i></a>
-                                        <ul class="sub-menu left">
-                                            <li><a href="blog-grid.html"><span>Blogs</span></a></li>
-                                            <li><a href="blog-details.html"><span>Blog Details</span></a></li>
-                                        </ul>
-                                    </li>
+                <li>
+                    <a href="javascript:;">Blog <i class="fas fa-plus"></i></a>
+                    <ul class="sub-menu left">
+                        <li><a href="blog-grid.html"><span>Blogs</span></a></li>
+                        <li><a href="blog-details.html"><span>Blog Details</span></a></li>
+                    </ul>
+                </li>
 
-                                                        <li><a href="contact-us.html">Contact Us</a></li>
-                                                    </ul>
-
-                                <ul class="social-media">
-                                    <li><a target="_blank" href="https://www.facebook.com/" class="btn btn-primary"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a target="_blank" href="https://www.google.com/" class="btn btn-primary"><i class="fab fa-google"></i></a></li>
-                                    <li><a target="_blank" href="https://www.linkedin.com/" class="btn btn-primary"><i class="fab fa-linkedin-in"></i></a></li>
-                                    <li><a target="_blank" href="https://twitter.com/" class="btn btn-primary"><i class="fab fa-twitter"></i></a></li>
+                                    <li><a href="contact-us.html">Contact Us</a></li>
                                 </ul>
-                                    -->
+
+            <ul class="social-media">
+                <li><a target="_blank" href="https://www.facebook.com/" class="btn btn-primary"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a target="_blank" href="https://www.google.com/" class="btn btn-primary"><i class="fab fa-google"></i></a></li>
+                <li><a target="_blank" href="https://www.linkedin.com/" class="btn btn-primary"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a target="_blank" href="https://twitter.com/" class="btn btn-primary"><i class="fab fa-twitter"></i></a></li>
+            </ul>
+                -->
                                 <div class="menu-close">
                                     <i class="ti-close"></i>
                                 </div>
