@@ -44,7 +44,8 @@ namespace afterlife_caretakers.Pages
         
         public IActionResult OnGetLogout()
         {
-            HttpContext.Session.Remove("name");
+            HttpContext.Session.Remove("user_id");
+            HttpContext.Session.Clear();
             return Page();
         }
 
