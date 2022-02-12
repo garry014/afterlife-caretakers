@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[Users] (
+CREATE TABLE [dbo].[Users] (
     [Id]                INT           IDENTITY (1, 1) NOT NULL,
     [name]              VARCHAR (500) NOT NULL,
     [email]             VARCHAR (254) NOT NULL,
@@ -11,6 +11,7 @@
     [NRIC_upload]       VARCHAR (100) NULL,
     [activation_status] VARCHAR (200) NULL,
     [deathcert_upload]  VARCHAR (100) NULL,
+    [deathdate_setting] VARCHAR(50) NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
