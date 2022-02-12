@@ -1,0 +1,131 @@
+﻿@page
+@model afterlife_caretakers.Pages.amd.amdviewModel
+@{
+    ViewData["Title"] = "View AMD Details";
+}
+<!-- Inner Banner -->
+
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <!--<br /><br /><br /><br /><br />-->
+                <h1 style="font-size:45px">Advanced Medical Directive Form</h1>
+                <!--<br /><br /><br />-->
+                <!-- Breadcrumb row -->
+                <!--<nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item active"><a href="amdinfo.html">Your Details</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="amdwitness.html">Witness</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="amdview.html"><div style="color: coral; font-weight: 700">View Details</div></a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="index.html">Payment</a></li>
+                        <li class="breadcrumb-item" aria-current="page"><a href="amdpdf.html">Download</a></li>
+                    </ul>
+                </nav>-->
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+
+    <!-- Breadcrumb row END -->
+</div>
+
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container" style="width:70%">
+        <div class="contact-wraper">
+            <div class="row ">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name">Your Info</div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name">Witness<br></div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">3</div>
+                                <div class="step-name">View Details</div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">4</div>
+                                <div class="step-name">Payment<br></div>
+                            </div>
+                            <div class="stepper-item">
+                                <div class="step-counter">5</div>
+                                <div class="step-name">Download</div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="col-lg-12 mb-30">
+                        <div class="ajax-message"></div>
+                        <div class="row" style="text-align: center">
+                            <div class="form-group col-md-6">
+                                <div style="resize: none; text-align: center; border-radius: 40px; padding-top: 40px; padding-bottom: 40px; margin-left: 20px; margin-right: 20px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                                    <h4>Your Details</h4>
+                                    Name: Nina Tan<br />
+                                    NRIC: S1234567A<br />
+                                    Gender: Female<br />
+                                    Date of Birth: 08/15/1950<br />
+                                    Address: Yishun Ave 2, Blk 700<br />
+                                    Postal Code: Singapore 769098<br />
+                                    Home Number: 6598 5462<br />
+                                    Office Number: 6366 3248<br />
+                                    <br />
+                                    <div class="text-center">
+                                        <button type="submit" class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" onclick="location.href = 'amdinfo.html';">Edit</button>
+                                    </div>
+                                </div>
+                            </div>
+                            @if (Model.AllWitness != null)
+                            {
+                                @foreach (var item in Model.AllWitness)
+                                {
+                                    <div class="form-group col-md-6">
+                                        <div style="text-align: center; border-radius: 40px; padding-top: 40px; padding-bottom: 40px; margin-left: 20px; margin-right: 20px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                                            <strong>Doctor:</strong> Dr. Anna Goh
+                                            <br /><br />
+                                            <h4>Witness Details</h4>
+                                            Name: @item.name<br />
+                                            NRIC: @item.nric<br />
+                                            Address: @item.address<br />
+                                            Postal Code: @item.postal<br />
+                                            Home Number: @item.homeno<br />
+                                            Office Number: @item.officeno<br />
+                                            <br />
+                                            <div class="text-center">
+                                                <a class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" asp-page="amdwitnessu" asp-route-id="@item.Id">Edit</a>
+                                                @*<button type="submit" class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" onclick="location.href = 'amdwitness.html';">Edit</button>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            }
+                            <div class="col-lg-12">
+                                <br /><br />
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-secondary" style="padding-left:100px; padding-right:100px; font-size:15px" onclick="location.href = 'amdpayment';">Confirm</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+</section>
+
+<br />
+<br />
+<br />
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
