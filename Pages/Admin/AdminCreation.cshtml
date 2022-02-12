@@ -1,0 +1,97 @@
+﻿@page
+@model afterlife_caretakers.Pages.Admin.AdminCreationModel
+@{
+    ViewData["Title"] = "Admin Account Creation";
+}
+
+<div class="section-area account-wraper2">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 col-lg-6 col-md-8">
+                <div class="appointment-form form-wraper">
+                    <div class="logo">
+                        <img src="../images/logo.png" alt="">
+                    </div>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane active" id="formRegister" role="tabpanel" aria-labelledby="formRegister">
+                            <v class="tab-pane fade show active" id="register-home" role="tabpanel" aria-labelledby="register-home">
+                                <form method="post">
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <div> <label class="text-danger">@Model.MyMessage</label> </div>
+                                    <div class="form-group">
+                                        <input asp-for="MyAdmin.name" placeholder="Full Name" class="form-control" />
+                                        <span asp-validation-for="MyAdmin.name" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" asp-for="MyAdmin.email" class="form-control" placeholder="Email">
+                                        <span asp-validation-for="MyAdmin.email" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group" align="left">
+                                        <label class="col-sm-2 col-form-label">Gender:</label>
+                                        @Html.RadioButton("MyAdmin.gender", "M")  <span>Male</span>
+                                        @Html.RadioButton("MyAdmin.gender", "F")  <span>Female</span>
+                                        <span asp-validation-for="MyAdmin.gender" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group" align="left">
+                                        <label class="col-sm-2 col-form-label">Admin Role:</label>
+                                        @Html.DropDownList("MyAdmin.admin_role", new SelectList(Enum.GetValues(typeof(Models.AdminRoles))), "--Select an option--")
+                                        <span asp-validation-for="MyAdmin.admin_role" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="text" asp-for="MyAdmin.clinic_address" class="form-control" placeholder="Clinic Address">
+                                                <span asp-validation-for="MyAdmin.clinic_address" class="text-danger"></span>
+                                            </div>
+                                            <div class="col">
+                                                <input type="text" asp-for="MyAdmin.office_num" class="form-control" placeholder="Office Number">
+                                                <span asp-validation-for="MyAdmin.office_num" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" asp-for="MyAdmin.specialisation" class="form-control" placeholder="Specialisation(Doctor):">
+                                        <span asp-validation-for="MyAdmin.specialisation" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 col-form-label"> Status:</label>
+                                        @Html.DropDownList("MyAdmin.status", new SelectList(Enum.GetValues(typeof(Models.AdminStatus))), "--Select an option--")
+                                        <span asp-validation-for="MyAdmin.status" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="password" class="form-control" id="passwordInput" placeholder="Password" asp-for="MyAdmin.password">
+                                                <span asp-validation-for="MyAdmin.password" class="text-danger"></span>
+                                                <input type="checkbox" onclick="showpassword()">Show Password
+                                            </div>
+                                            <div class="col">
+                                                <input type="password" class="form-control" placeholder="Re-type Password">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="submit" class="btn btn-primary w-100 radius-xl">Create Account</button>
+                                    </div>
+                                </form>
+                                @section Scripts {
+                                    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function showpassword() {
+        var x = document.getElementById("passwordInput");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    </script>
