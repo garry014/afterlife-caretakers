@@ -1,6 +1,6 @@
-﻿CREATE TABLE [dbo].[ConsultProfiles] (
+CREATE TABLE [dbo].[ConsultProfiles] (
     [Id]            INT           IDENTITY (1, 1) NOT NULL,
-    [ServiceType]   VARCHAR (11)  NULL,
+    [ServiceType]   VARCHAR (20)  NULL,
     [ServiceStatus] BIT           NOT NULL,
     [ConsultName]   VARCHAR (20)  NOT NULL,
     [Rate]          INT           NOT NULL,
@@ -12,3 +12,4 @@
     [UserId]        INT           NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
