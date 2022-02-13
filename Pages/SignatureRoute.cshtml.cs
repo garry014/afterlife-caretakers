@@ -40,13 +40,14 @@ namespace afterlife_caretakers.Pages
                 if (HttpContext.Session.GetString("SignatureRedirectBack").Contains("funeral"))
                 {
                     int x = 0;
-                    string[] linkList = HttpContext.Session.GetString("SignatureRedirectBack").Split("?");
+                    string[] linkList = HttpContext.Session.GetString("SignatureRedirectBack").Split("?id=");
                     Int32.TryParse(linkList[1], out x);
 
+                    System.Diagnostics.Debug.WriteLine(linkList[1],x);
                     Funeral Funeral = _svc.GetFuneralByFuneralId(x);
 
                     var included = new[] { "Signature" };
-                    System.Diagnostics.Debug.WriteLine(HttpContext.Session.GetString("ESignatureFile"));
+                    
                     Funeral.PlaquePhoto = "sss";//HttpContext.Session.GetString("ESignatureFile");
                     if (_svc.UpdateFuneral(Funeral, included) == true)
                     {
