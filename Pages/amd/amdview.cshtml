@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model afterlife_caretakers.Pages.amd.amdviewModel
 @{
     ViewData["Title"] = "View AMD Details";
@@ -73,11 +73,11 @@
                                     Name: Nina Tan<br />
                                     NRIC: S1234567A<br />
                                     Gender: Female<br />
-                                    Date of Birth: 08/15/1950<br />
+                                    Date of Birth: S1234567A<br />
                                     Address: Yishun Ave 2, Blk 700<br />
                                     Postal Code: Singapore 769098<br />
-                                    Home Number: 6598 5462<br />
-                                    Office Number: 6366 3248<br />
+                                    Home Number: 65985462<br />
+                                    Office Number: 63663248<br />
                                     <br />
                                     <div class="text-center">
                                         <button type="submit" class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" onclick="location.href = 'amdinfo.html';">Edit</button>
@@ -90,8 +90,7 @@
                                 {
                                     <div class="form-group col-md-6">
                                         <div style="text-align: center; border-radius: 40px; padding-top: 40px; padding-bottom: 40px; margin-left: 20px; margin-right: 20px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
-                                            <strong>Doctor:</strong> Dr. Anna Goh
-                                            <br /><br />
+                                           <br />
                                             <h4>Witness Details</h4>
                                             Name: @item.name<br />
                                             NRIC: @item.nric<br />
@@ -104,6 +103,7 @@
                                                 <a class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" asp-page="amdwitnessu" asp-route-id="@item.Id">Edit</a>
                                                 @*<button type="submit" class="btn btn-secondary" style="padding-left:60px; padding-right:60px; font-size:15px" onclick="location.href = 'amdwitness.html';">Edit</button>*@
                                             </div>
+                                            <br />
                                         </div>
                                     </div>
                                 }
