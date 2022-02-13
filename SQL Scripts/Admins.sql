@@ -4,7 +4,7 @@ CREATE TABLE [dbo].[Admins] (
     [email]          VARCHAR (254) NOT NULL,
     [password]       VARCHAR (100) NOT NULL,
     [gender]         VARCHAR (10)  NOT NULL,
-    [admin_role]     VARCHAR (20)    NOT NULL,
+    [admin_role]     VARCHAR (20)  NOT NULL,
     [office_num]     VARCHAR (8)   NOT NULL,
     [specialisation] VARCHAR (MAX) NULL,
     [status]         VARCHAR (100) NULL,
