@@ -1,4 +1,4 @@
-﻿@page "{id}"
+@page "{id}"
 @model afterlife_caretakers.Pages.doctor.doctorprofileModel
 @{
     ViewData["Title"] = "Doctor Profile";
@@ -120,12 +120,11 @@
 
                                         @foreach (var doc in Model.allconsults)
                                         {
-                                            @if (doc.ServiceType == "Doctor")
-                                               {
-
-                    
-                                            @if (doc.ServiceStatus == true)
+                                            @if (doc.ServiceType == "Doctor     " && doc.ServiceStatus == true)
                                             {
+
+
+
                                                 <div class="widget-post clearfix">
                                                     <div class="ttr-post-media">  <img src="/images/profiles/counselling/@doc.ProfileImg" width="200" height="143" alt=""> </div>
                                                     <div class="ttr-post-info">
@@ -143,11 +142,8 @@
                                                     </div>
                                                 </div>
                                             }
-                                            else
-                                            {
-
-                                            }
-                                            }
+                                           
+                                            
                                         }
                                     }
                                 }
