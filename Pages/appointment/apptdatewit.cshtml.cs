@@ -22,6 +22,7 @@ namespace afterlife_caretakers.Pages.appointment
         [BindProperty]
         public DateTime Appt { get; set; }
 
+
         [BindProperty]
         public WitnessConsult Witness { get; set; }
 
