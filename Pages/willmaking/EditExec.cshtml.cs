@@ -37,8 +37,8 @@ namespace afterlife_caretakers.Pages.willmaking
 
             if (_svc.UpdateExecutor(MyExecutor) == true)
             {
-
-                return RedirectToPage("willsummary");
+                //redirects back to original page instead of willsummary
+                return RedirectToPage("WillExecutor");
             }
             else
                 return BadRequest();

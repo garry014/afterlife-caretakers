@@ -37,8 +37,8 @@ namespace afterlife_caretakers.Pages.willmaking
 
             if (_svc.UpdateBeneficiary(MyBeneficiary) == true)
             {
-
-                return RedirectToPage("WillSummary");
+                //instead of redirect to willsummary, redirect back to the form to see changes immediately.
+                return RedirectToPage("WillForm3");
             }
             else
                 return BadRequest();

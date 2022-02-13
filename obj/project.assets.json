@@ -6036,19 +6036,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\gary1\\.nuget\\packages\\": {}
+    "C:\\Users\\starp\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gary1\\Desktop\\todo\\afterlife-caretakers\\afterlife-caretakers.csproj",
+      "projectUniqueName": "C:\\Users\\starp\\OneDrive\\Documents\\afterlife-caretakers\\afterlife-caretakers.csproj",
       "projectName": "afterlife-caretakers",
-      "projectPath": "C:\\Users\\gary1\\Desktop\\todo\\afterlife-caretakers\\afterlife-caretakers.csproj",
-      "packagesPath": "C:\\Users\\gary1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gary1\\Desktop\\todo\\afterlife-caretakers\\obj\\",
+      "projectPath": "C:\\Users\\starp\\OneDrive\\Documents\\afterlife-caretakers\\afterlife-caretakers.csproj",
+      "packagesPath": "C:\\Users\\starp\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\starp\\OneDrive\\Documents\\afterlife-caretakers\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\gary1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\starp\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

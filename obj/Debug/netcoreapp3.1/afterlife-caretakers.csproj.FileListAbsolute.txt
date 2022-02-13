@@ -353,3 +353,8 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\P
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewadvisorappt.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewcounselappt.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewdoctorappt.cshtml.g.cs
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\SendGrid.dll
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerification.cshtml.g.cs
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerificationList.cshtml.g.cs
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\EmailConfirmation_Admin.cshtml.g.cs

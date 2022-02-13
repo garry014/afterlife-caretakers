@@ -37,8 +37,8 @@ namespace afterlife_caretakers.Pages.willmaking
 
                 if (_svc.UpdateWitness(MyWitness) == true)
                 {
-
-                    return RedirectToPage("WillSummary");
+                //redirects back to original page instead of willsummary
+                return RedirectToPage("WillWitness");
                 }
                 else
                     return BadRequest();

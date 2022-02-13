@@ -68,8 +68,8 @@ namespace afterlife_caretakers.Pages.willmaking
 
             if (_svc.UpdateAsset(MyGift) == true)
             {
-
-                return RedirectToPage("WillSummary");
+                //redirects back to original page instead of willsummary
+                return RedirectToPage("specificgift");
             }
             else
                 return BadRequest();
