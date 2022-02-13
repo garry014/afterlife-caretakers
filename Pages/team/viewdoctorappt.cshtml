@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model afterlife_caretakers.Pages.team.viewdoctorapptModel
 @{
     ViewData["Title"] = "My AMD Doctor Appointments";
@@ -23,7 +23,7 @@
                                         {
                                             @foreach (var appt in Model.allmyappt)
                                             {
-                                                if (appt.ApptType == "Doctor" && appt.ConsultId == Model.Id)
+                                                if (appt.ApptType == "Doctor     " && appt.ConsultId == Model.Id)
                                                 {
 
                                                     var time = appt.StartTime + (appt.Duration * 100);
@@ -33,14 +33,12 @@
 
                                                         <!-- <img class="avatar photo" src="images/serviceprofiles/counsellors/c2.jpg" alt=""> -->
                                                         <div class="clearfix">
-                                                            <cite class="fn">@appt.ApptType  Appointment with @appt.ConsultName</cite>
+                                                            <cite class="fn">@appt.ApptType  Appointment with @appt.CustName</cite>
                                                             <span class="says">says:</span>
                                                             <div class="comment-meta"> <a href="javascript:void(0);">@appt.Date.ToShortDateString() FROM @appt.StartTime - @time </a> </div>
                                                         </div>
                                                     </div>
-                                                    <p><a href="#" style="text-decoration:underline;">Click here to join Online Appointment</a> <br />Meeting ID: 628 282 113 <br />Password: rG42Fs33</p>
-                                                    <a><i class="fa fa-calendar-o" aria-hidden="true"></i></a>
-                                                    <a href="reschedulecounsellor.html" class="btn btn-primary light">  <i class="fa fa-calendar" aria-hidden="true"></i> RESCHEDULE</a>
+                                                    <p>Contact your consultee to confirm location of physical appointment</p>
                                                 </div>
 
 
@@ -61,45 +59,7 @@
                 <!-- blog END -->
             </div>
 
-            <div class="col-md-12 col-lg-5 col-xl-4 mb-30">
-                <aside class="side-bar sticky-top aside-bx">
-
-                    <div class="widget recent-posts-entry">
-
-                        <div class="widget-post-bx">
-                           
-
-                            @{ if (Model.allmyappt != null)
-                                {
-
-                                    @foreach (var appt in Model.allmyappt)
-                                    {
-                                        if (appt.ApptStatus == true)
-                                        {
-                                            <h4 class="widget-title">Previous Appointments</h4>
-                                            <div class="widget-post clearfix">
-                                                <div class="ttr-post-info">
-                                                    <div class="ttr-post-header">
-                                                        <h6 class="post-title"><a href="blog-details.html">@appt.ApptType Appointment with @appt.ConsultName</a></h6>
-                                                    </div>
-                                                    <ul class="post-meta">
-                                                        <li class="date"><i class="far fa-calendar-alt"></i> @appt.Date.ToShortDateString()</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                        }
-                                    }
-                                }
-
-                            }
-                        </div>
-
-                    </div>
-
-
-                </aside>
-            </div>
+            
 
         </div>
     </div>
