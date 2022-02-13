@@ -12,8 +12,8 @@ namespace afterlife_caretakers.Pages.willmaking
 {
     public class WillFormModel : PageModel
     {
-        [BindProperty]
-        public PersonalInformation PersonalInfo { get; set; }
+        //[BindProperty]
+        //public PersonalInformation PersonalInfo { get; set; }
 
         private readonly Services.WillService _svc;
         private readonly Services.UserService _usvc;
@@ -22,55 +22,73 @@ namespace afterlife_caretakers.Pages.willmaking
         public Users MyUser { get; set; }
         public WillFormModel(Services.WillService service, Services.UserService uservice)
         {
-            PersonalInfo = new PersonalInformation();
+            //PersonalInfo = new PersonalInformation();
             _svc = service;
             _usvc = uservice;
         }
         public IActionResult OnGet(int id)
         {
+
+            if (HttpContext.Session.GetInt32("user_id") == null)
+            {
+                return NotFound();
+            }
             if (HttpContext.Session.GetString("usertype") == null)
             {
                 return NotFound();
             }
             if (HttpContext.Session.GetString("usertype") == "WillMaker")
             {
+                var current_user = (int)HttpContext.Session.GetInt32("user_id");
+                Console.WriteLine("Edit with " + current_user);
+
+
+                MyUser = _usvc.GetUserByID(current_user);
+
+                if (MyUser == null)
+                {
+                    Console.WriteLine("id found:" + MyUser.name);
+                    return NotFound();
+                }
                 return Page();
             }
-            MyUser = _usvc.GetUserByID((int)HttpContext.Session.GetInt32("user_id"));
-            if (WillService.PersonalInfo != null)
-            {
-                PersonalInfo = WillService.PersonalInfo;
-            }
-            Console.WriteLine("On Get Will Form 1");
             return NotFound();
         }
+
         public IActionResult OnPostFirstBack()
         {
-            //WillService.PersonalInfo = null;
             return Redirect("WillManual");
         }
 
         
         public IActionResult OnPost()
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return Page();
-            //}
 
-            WillService.PersonalInfo = PersonalInfo;
+            if (!ModelState.IsValid)
+            {
+
+                return Page();
+            }
+
+            if (_usvc.UpdateUser(MyUser) == true)
+            {
+                return RedirectToPage("WillForm2");
+            }
+            else
+                return BadRequest();
             // jump to 2nd part
-            return RedirectToPage("WillForm2");
         }
 
-        public void ClickNext()
+        public IActionResult ClickNext()
         {
             if (ModelState.IsValid)
             {
-                WillService.PersonalInfo = PersonalInfo;
-
-                // jump to 2nd part
+                if (_usvc.UpdateUser(MyUser) == true)
+                {
+                    return RedirectToPage("/WillForm2");
+                }
             }
+            return Page();
         }
     }
 }

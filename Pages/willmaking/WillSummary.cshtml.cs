@@ -7,17 +7,22 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Http;
+using afterlife_caretakers.Services;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
     public class WillSummaryModel : PageModel
     {
         private readonly Services.WillService _svc;
-        public WillSummaryModel(Services.WillService service)
+        private readonly UserService _usvc;
+
+        public WillSummaryModel(Services.WillService service,Services.UserService uservice)
         {
             _svc = service;
-
+            _usvc = uservice;
         }
+        [BindProperty]
+        public Users MyUser { get; set; }
         [BindProperty]
         public  List<BeneficiaryInformation> MyBeneficiary { get; set; }
         [BindProperty]
@@ -44,6 +49,8 @@ namespace afterlife_caretakers.Pages.willmaking
             ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             ownerExecList = _svc.GetExecutorFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             ownerWitnessList = _svc.GetWitnessFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+            var current_user = (int)HttpContext.Session.GetInt32("user_id");
+            MyUser = _usvc.GetUserByID(current_user);
             initData();
             ////owner id == willmaker id
             if (MyBeneficiary == null)
@@ -60,6 +67,11 @@ namespace afterlife_caretakers.Pages.willmaking
             }
             if (ownerWitnessList == null)
             {
+                return NotFound();
+            }
+            if (MyUser == null)
+            {
+                Console.WriteLine("id found:" + MyUser.name);
                 return NotFound();
             }
             if (HttpContext.Session.GetString("usertype") == null)

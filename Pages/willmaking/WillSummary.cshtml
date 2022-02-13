@@ -67,26 +67,28 @@
                     <div class="form-group col-md-6">
                         <div style="text-align: center; border-radius: 40px; padding-top: 101px; padding-bottom: 95px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
                             <h3 style="margin-top:-25px">Your Personal Information</h3>
-                            @{ @if (Model.PersonalInfo != null)
+                            @{ @if (Model.MyUser != null)
                                 {
 
-                                        <div>
-                                            Name: @Model.PersonalInfo.Name<br />
-                                            NRIC: @Model.PersonalInfo.NRIC<br />
-                                            Mobile Number: @Model.PersonalInfo.MobileNo<br />
-                                            q
-                                            <br />
-                                            <div class="text-center">
-                                                <form action="WillForm3.html">
-                                                    @*<button name="submit" type="submit" value="Edit"
-                                                            class="btn btn-secondary"
-                                                            style="padding-left:60px; padding-right:60px; font-size:15px">
-                                                        Edit
-                                                    </button>*@
-                                                </form>
-                                            </div>
-                                            <br />
-                                        </div>
+                        <div>
+                            Name: @Model.MyUser.name<br />
+                            NRIC: @Model.MyUser.NRIC<br />
+                            Mobile Number: @Model.MyUser.phoneno<br />
+                            Gender: @Model.MyUser.gender<br />
+                            Email: @Model.MyUser.email<br />
+                            Home Address: @Model.MyUser.address<br />
+                            <br />
+                            <div class="text-center">
+                                <form action="WillForm3.html">
+                                    @*<button name="submit" type="submit" value="Edit"
+                        class="btn btn-secondary"
+                        style="padding-left:60px; padding-right:60px; font-size:15px">
+                    Edit
+                </button>*@
+                                </form>
+                            </div>
+                            <br />
+                        </div>
                                 }
                             }
                         </div>

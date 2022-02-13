@@ -62,69 +62,57 @@
                         </div>
                     </div>
                 </div>
-                @{ @if (Model.MyUser != null)
-                    {
-
-                        <div>
-                            Name: @Model.MyUser.name<br />
-                            NRIC: @Model.MyUser.NRIC<br />
-                            Mobile Number: @Model.MyUser.gender<br />
-                            q
-                            <br />
-                            <div class="text-center">
-                                <form action="WillForm3.html">
-                                    @*<button name="submit" type="submit" value="Edit"
-                                    class="btn btn-secondary"
-                                    style="padding-left:60px; padding-right:60px; font-size:15px">
-                                Edit
-                            </button>*@
-                                </form>
-                            </div>
-                            <br />
-                        </div>
-                    }
-                }
                 <div class="col-lg-6 mb-30">
                     <form class="form-wraper contact-form" id="myForm" method="post">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div class="row">
+                            <input hidden asp-for="MyUser.Id" />
+                            <input hidden asp-for="MyUser.password" />
                             <div class="form-group col-md-8">
                                 <label>What is your Full name?</label>
-                                <input type="text" asp-for="PersonalInfo.Name" class="form-control" placeholder="Your full legal Name">
-                                <span asp-validation-for="PersonalInfo.Name" class="text-danger"></span>
+                                <input type="text" asp-for="MyUser.name" class="form-control">
+                                <span asp-validation-for="MyUser.name" class="text-danger"></span>
                             </div>
 
                         </div>
+
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label>What is your Gender?</label>
                                 <br />
-                                @Html.RadioButton("PersonalInfo.Gender", "M")<span>M</span>
+                                @Html.RadioButton("MyUser.gender", "M")<span>M</span>
                                 <br />
-                                @Html.RadioButton("PersonalInfo.Gender", "F")<span>F</span>
-                                <span asp-validation-for="PersonalInfo.Gender" class="text-danger"></span>
+                                @Html.RadioButton("MyUser.gender", "F")<span>F</span>
+                                <span asp-validation-for="MyUser.gender" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label>What is your NRIC?</label>
-                                <input asp-for="PersonalInfo.NRIC" type="text" class="form-control" placeholder="Your NRIC">
-                                <span asp-validation-for="PersonalInfo.NRIC" class="text-danger"></span>
+                                <input asp-for="MyUser.NRIC" type="text" class="form-control">
+                                <span asp-validation-for="MyUser.NRIC" class="text-danger"></span>
                             </div>
 
                         </div>
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label>What is your Mobile Number?</label>
-                                <input type="text" asp-for="PersonalInfo.MobileNo" class="form-control" placeholder="Your MobileNum">
-                                <span asp-validation-for="PersonalInfo.MobileNo" class="text-danger"></span>
+                                <input type="text" asp-for="MyUser.email" class="form-control">
+                                <span asp-validation-for="MyUser.email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label>What is your Mobile Number?</label>
+                                <input type="text" asp-for="MyUser.phoneno" class="form-control">
+                                <span asp-validation-for="MyUser.phoneno" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <label>What is your home address?</label>
-                                <input type="text" asp-for="PersonalInfo.HomeAddr" class="form-control" placeholder="Your Home Address">
-                                <span asp-validation-for="PersonalInfo.HomeAddr" class="text-danger"></span>
+                                <input type="text" asp-for="MyUser.address" class="form-control">
+                                <span asp-validation-for="MyUser.address" class="text-danger"></span>
                             </div>
                         </div>
                         <div class="row">
@@ -136,6 +124,11 @@
                                 <button asp-page-handler="FirstNext" name="submit" type="submit" onclick="document.getElementById('myForm').submit()" class="btn w-100 btn-secondary btn-lg">Next</button>
                             </div>
                         </div>
+                        <input type="hidden" asp-for="MyUser.usertype" />
+                        <input type="hidden" asp-for="MyUser.NRIC_upload" />
+                        <input type="hidden" asp-for="MyUser.activation_status" />
+                        <input type="hidden" asp-for="MyUser.deathcert_upload" />
+                        <input type="hidden" asp-for="MyUser.deathdate_setting" />
                     </form>
 
 
