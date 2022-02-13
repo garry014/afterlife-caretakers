@@ -92,7 +92,7 @@ namespace afterlife_caretakers.Controllers
             graphics.DrawString("Home Address: "+waddress, font, PdfBrushes.Black, new PointF(0, 400));
             graphics.DrawString("Postal Code: " + wpostal, font, PdfBrushes.Black, new PointF(0, 420));
             graphics.DrawString("Home Number: "+whomeno, font, PdfBrushes.Black, new PointF(0, 440));
-            graphics.DrawString("Office Number: "+wofficeno, font, PdfBrushes.Black, new PointF(0, 560));
+            graphics.DrawString("Office Number: "+wofficeno, font, PdfBrushes.Black, new PointF(0, 460));
             
             graphics.DrawString("Date: " + DateTime.Now.ToShortDateString(), font, PdfBrushes.Black, new PointF(0, 730));
 
