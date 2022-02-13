@@ -85,8 +85,8 @@
                                         <li class="add-menu-left">
                                             <ul>
                                                 <li><a asp-page="/willmaking/beforeWill"><span>Make a Will</span></a></li>
-                                                <li><a href="team.html"><span>Our Advisors</span></a></li>
-                                                <li><a href="team.html"><span>Our Witnesses</span></a></li>
+                                                <li><a asp-page="/advisor/teamadvisors"><span>Our Advisors</span></a></li>
+                                                <li><a asp-page="/witness/teamwitnesses"><span>Our Witnesses</span></a></li>
                                                 <li><a asp-page="/lastmsg/intro"><span>Create My Last Message</span></a></li>
                                                 <li><a asp-page="/lastmsg/view"><span>View My Last Message</span></a></li>
                                                 <!--
@@ -116,7 +116,7 @@
                                         <li class="add-menu-left">
                                             <ul>
                                                 <li><a asp-page="/amd/amd1"><span>Make an Advanced Medical Directive</span></a></li>
-                                                <li><a href="team.html"><span>Our Doctors</span></a></li>
+                                                <li><a asp-page="/doctor/teamdoctors"><span>Our Doctors</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -127,9 +127,8 @@
                                         <li class="add-menu-left">
                                             <ul>
                                                 <li><a asp-page="/lastmsg/BView"><span>View Loved-ones Last Message</span></a></li>
-                                                <li><a href="team.html"><span>Counselling</span></a></li>
-                                                <li><a href="team.html"><span>Our Counsellors</span></a></li>
-                                                <li><a href="faq.html"><span>View my Appointments</span></a></li>
+                                                <li><a asp-page="/counsel/teamcounsellors"><span>Our Counsellors</span></a></li>
+                                                <li><a asp-page="/appointment/viewmyappt"><span>View my Appointments</span></a></li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -144,6 +143,8 @@
                                         <li class="add-menu-left">
                                             <ul>
                                                 <li><a asp-page="/Account/Edit"><span>Edit Account</span></a></li>
+                                                <li><a asp-page="/team/createwitnessconsult"><span>Edit My Witness Profile</span></a></li>
+                                                <li><a asp-page="/team/viewwitnessappt"><span>My Witness Appointments</span></a></li>
                                                 <li><a asp-page="/Main_Login" asp-page-handler="Logout"><span>Logout</span></a></li>
                                             </ul>
                                         </li>
