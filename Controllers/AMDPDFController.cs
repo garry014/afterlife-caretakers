@@ -71,7 +71,8 @@ namespace afterlife_caretakers.Controllers
             PdfGraphics graphics = page.Graphics;
 
             //Load the image as stream.
-            FileStream imageStream = new FileStream("../afterlife-caretakers-main/wwwroot/images/logo.png", FileMode.Open, FileAccess.Read);
+            string ImageFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "logo.png");
+            FileStream imageStream = new FileStream(ImageFolder, FileMode.Open, FileAccess.Read);
             PdfBitmap image = new PdfBitmap(imageStream);
 
             //Draw the image

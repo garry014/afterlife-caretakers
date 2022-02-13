@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.Extensions.Configuration;
 using Syncfusion.Drawing;
@@ -28,14 +29,15 @@ namespace afterlife_caretakers.Controllers
         [Route("~/funeralpdf")]
         public ActionResult CreateFuneralPDF()
         {
+            
             var ConnectionString = Configuration.GetConnectionString("MyConn");
             SqlConnection conSelect = new SqlConnection(ConnectionString);
-            string sql = "Select column from table"; //change to your columns and table
+            string sql = "SELECT * FROM FuneralPlans WHERE WillMaker_ID = " + HttpContext.Session.GetInt32("user_id"); //change to your columns and table
             SqlCommand selectstatus = new SqlCommand(sql, conSelect);
             conSelect.Open();
             SqlDataReader reader = selectstatus.ExecuteReader();
             reader.Read();
-            string name = reader["column"].ToString();
+            string name = reader["religion"].ToString();
 
             //Create a new PDF document
             PdfDocument document = new PdfDocument();
@@ -47,7 +49,8 @@ namespace afterlife_caretakers.Controllers
             PdfGraphics graphics = page.Graphics;
 
             //Load the image as stream.
-            FileStream imageStream = new FileStream("../afterlife-caretakers-main/wwwroot/images/logo.png", FileMode.Open, FileAccess.Read);
+            string ImageFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images", "logo.png");
+            FileStream imageStream = new FileStream(ImageFolder, FileMode.Open, FileAccess.Read);
             PdfBitmap image = new PdfBitmap(imageStream);
 
             //Draw the image
@@ -88,7 +91,7 @@ namespace afterlife_caretakers.Controllers
             //Download the PDF document in the browser
             FileStreamResult fileStreamResult = new FileStreamResult(stream, "application/pdf");
 
-            fileStreamResult.FileDownloadName = "Funeral Plan.pdf";
+            fileStreamResult.FileDownloadName = "Funeral_Plan.pdf";
 
             return fileStreamResult;
         }

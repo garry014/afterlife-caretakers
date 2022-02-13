@@ -130,8 +130,21 @@
                                 <i class="far fa-eye"></i>
                                 View/Download My Plan
                             </button><br><br>
+                            @{Html.BeginForm("CreateFuneralPDF", "FUNERALPDF", FormMethod.Get);
+                                {
+                                    <div class="download-link center" style=" width:50% ; margin-left: auto; margin-right:auto; margin-bottom:30px">
+                                        <img src="/images/icon/pdf.png" alt="">
+                                        <h5 class="title">Download My Plan (in PDF)</h5>
+                                        <span>
+                                            <input type="submit" value="AMD Form" style="background-color: transparent; border: none; color:white; " />
+                                        </span>
+                                    </div>
+                                }
+                                Html.EndForm();
+
+                            }
                             <a class="btn w-75 btn-secondary btn-lg"
-                                    href="./religion?id=@Model.Funeral.Id">
+                               href="./religion?id=@Model.Funeral.Id">
                                 <i class="fas fa-edit"></i> Edit My
                                 Plan
                             </a><br><br>
