@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -28,7 +29,7 @@ namespace afterlife_caretakers.Pages.willmaking
             }
             public IActionResult OnPost()
             {
-            MyWitness.OWNERID = 88;
+            MyWitness.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
                 if (!ModelState.IsValid)
                 {
                     return Page();

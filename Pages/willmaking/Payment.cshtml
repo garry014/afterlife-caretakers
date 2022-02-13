@@ -62,100 +62,79 @@
                                     <div class="step-name">Download PDF</div>
                                 </div>
                             </div>
-                    </form>
-                    <!-- start -->
-                    <strong>Payment Summary:</strong>
-                    <br>
-                    <strong>Will Creation: $86</strong>
-                    <br>
-                    <strong>Appointment with Advisor: $44</strong>
-                    <br>
-                    <strong>Finding 2 Witness: $20</strong>
-                    <!-- end -->
-                    <div class="col-sm-9 col-md-6 col-lg-8 col-xl-12">
-                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
-                            <div class="col align-self-center">
-                                <div class="form-group ">
-                                    <h5 style="text-align: center;padding-top: 10px;"> Payment Method</h5>
-                                </div>
                         </form>
-                        <div class="Place-order mt-25">
-                            <div id="smart-button-container" style="border:3px solid black; padding: 0 10% 0 10%">
-                                <span style="font-weight: bold;"><center>Total: <u>$150</u></center></span>
+                        <!-- start -->
+                        <strong>Payment Summary:</strong>
+                        <br>
+                        <strong>Will Creation: $86</strong>
+                        <br>
+                        <strong>Appointment with Advisor: $44</strong>
+                        <br>
+                        <strong>Finding 2 Witness: $20</strong>
+                        <!-- end -->
+                        <div class="col-sm-9 col-md-6 col-lg-8 col-xl-12">
+                            <form class="form-wraper contact-form" method="post" id="theForm">
+                                <div class="col align-self-center">
+                                    <div class="form-group ">
+                                        <h5 style="text-align: center;padding-top: 10px;"> Payment Method</h5>
+                                    </div>
 
-                                <script>
-                                    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID" /> // Replace YOUR_CLIENT_ID with your sandbox client ID
-                                </script>
+                                    <div class="Place-order mt-25">
+                                        <div id="smart-button-container" style="border:3px solid black; padding: 0 10% 0 10%">
+                                            <span style="font-weight: bold;"><center>Total: <u>$150</u></center></span>
+
+                                            <script src="https://www.paypal.com/sdk/js?client-id=Afak9C3leieUEjRHO3_Al31aSkkPXgkWXLVzh5YuTAG8tKqqVP7j6WYGwMoKeqW5pRPZ6CdyCwW1sXBz"></script>
 
 
-                                <div id="paypal-button-container"></div>
+                                            <div id="paypal-button-container"></div>
 
-                                <!-- Add the checkout buttons, set up the order and approve the order -->
-                                <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=SGD"
-                                        data-sdk-integration-source="button-factory"></script>
-                                <script>
-                                    function initPayPalButton() {
-
-                                        paypal.Buttons({
-                                            style: {
-                                                shape: 'rect',
-                                                color: 'gold',
-                                                layout: 'vertical',
-                                                label: 'checkout',
-
-                                            },
-
-                                            createOrder: function (data, actions) {
-                                                // element = document.getElementById("cancelBtn");
-                                                // if(element == null){
-                                                // 	alert("Please confirm billing details!")
-                                                // 	return false;
-                                                // }
-                                                return actions.order.create({
-                                                    purchase_units: [{ "amount": { "currency_code": "SGD", "value": "150" } }]
-                                                });
-                                            },
-
-                                            onApprove: function (data, actions) {
-                                                return actions.order.capture().then(function (details) {
-                                                    window.location.replace("file:///C:/Users/starp/Downloads/meditro_template/xhtml/DownloadWill.html");
-                                                });
-                                            },
-
-                                            onError: function (err) {
-                                                console.log(err);
-
-                                            }
-                                        }).render('#paypal-button-container');
-                                    }
-                                    initPayPalButton();
-                                </script>
-
-                                </script>
-                            </div>
+                                            <!-- Add the checkout buttons, set up the order and approve the order -->
+                                            <script src="https://www.paypal.com/sdk/js?client-id=Afak9C3leieUEjRHO3_Al31aSkkPXgkWXLVzh5YuTAG8tKqqVP7j6WYGwMoKeqW5pRPZ6CdyCwW1sXBz&currency=SGD"
+                                                    data-sdk-integration-source="button-factory"></script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
-
             </div>
-
-
-            <!-- Right hand side part of the website -->
-            <!-- <div class="col-lg-6 mb-30">
-                <div class="contact-info ovpr-dark" style="background-image: url(images/about/pic-1.jpg);">
-                    <div class="info-inner">
-                        <h4 class="title mb-30">Payment</h4>
-                        <text>Payment for the services</text>
-                        <br>
-                        <br>
-                        <text>
-                        </text>
-
-
-                    </div>
-                </div>
-            </div> -->
-        </div>
-    </div>
-    </div>
 </section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    function initPayPalButton() {
+
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'checkout',
+
+            },
+
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{ "amount": { "currency_code": "SGD", "value": "100" } }]
+                });
+            },
+
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    console.log(data);
+                    document.getElementById('theForm').submit(); // make sure you labelled your form as theForm
+
+                });
+            },
+
+            onError: function (err) {
+                console.log(err);
+
+            }
+        }).render('#paypal-button-container');
+    }
+    initPayPalButton();
+</script>

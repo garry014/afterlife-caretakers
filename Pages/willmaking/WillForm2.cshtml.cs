@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -19,12 +20,17 @@ namespace afterlife_caretakers.Pages.willmaking
         }
         [BindProperty]
         public MaritalInfo MyMarital { get; set; }
-        public void OnGet()
+        public IActionResult OnGet()
         {
-            //MaritalInfo.HomeAddr = WillService.PersonalInfo.HomeAddr;
-
-
-
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "WillMaker")
+            {
+                return Page();
+            }
+            return Page();
         }
 
         public IActionResult OnPostFianceBack()

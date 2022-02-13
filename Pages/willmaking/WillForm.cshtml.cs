@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
 using afterlife_caretakers.Services;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -14,19 +15,35 @@ namespace afterlife_caretakers.Pages.willmaking
         [BindProperty]
         public PersonalInformation PersonalInfo { get; set; }
 
-        public WillFormModel()
+        private readonly Services.WillService _svc;
+        private readonly Services.UserService _usvc;
+
+        [BindProperty]
+        public Users MyUser { get; set; }
+        public WillFormModel(Services.WillService service, Services.UserService uservice)
         {
             PersonalInfo = new PersonalInformation();
+            _svc = service;
+            _usvc = uservice;
         }
-        public void OnGet()
+        public IActionResult OnGet(int id)
         {
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "WillMaker")
+            {
+                return Page();
+            }
+            MyUser = _usvc.GetUserByID((int)HttpContext.Session.GetInt32("user_id"));
             if (WillService.PersonalInfo != null)
             {
                 PersonalInfo = WillService.PersonalInfo;
             }
             Console.WriteLine("On Get Will Form 1");
+            return NotFound();
         }
-
         public IActionResult OnPostFirstBack()
         {
             //WillService.PersonalInfo = null;

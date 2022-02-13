@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -28,17 +29,26 @@ namespace afterlife_caretakers.Pages.willmaking
         public List <BeneficiaryInformation> MyBeneficiary { get; set; }
         public IActionResult OnGet()
         {
-            ownerExecList = _svc.GetAllExecutor(88);
+            ownerExecList = _svc.GetAllExecutor((int)HttpContext.Session.GetInt32("user_id"));
             initData();
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "WillMaker")
+            {
+                return Page();
+            }
             return Page();
+
         }
         public void initData()
         {
 
             //neeed to add this to display the contents of table
-            ownerGiftList = _svc.GetGiftFromOwner(88);
+            ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             //displaying beneficiary into form
-            MyBeneficiary = _svc.GetBeneficiaryFromOwner(88);
+            MyBeneficiary = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
 
             foreach (BeneficiaryInformation b in MyBeneficiary)
             {
@@ -54,7 +64,7 @@ namespace afterlife_caretakers.Pages.willmaking
         }
         public IActionResult OnPostExecNext()
         {
-            ownerExecList = _svc.GetAllExecutor(88);
+            ownerExecList = _svc.GetAllExecutor((int)HttpContext.Session.GetInt32("user_id"));
             initData();
             return RedirectToPage("WillWitness");
         }
@@ -64,14 +74,14 @@ namespace afterlife_caretakers.Pages.willmaking
             initData();
             if (ModelState.IsValid)
             {
-                MyExecutor.OWNERID = 88;
+                MyExecutor.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
 
                 // trying to add exec to owner into db
                 if (_svc.AddExecutor(MyExecutor))
                 {
                     Console.WriteLine("Add new exec");
                     // grab from DB again all the exec of this owner
-                    ownerExecList = _svc.GetExecutorFromOwner(88);
+                    ownerExecList = _svc.GetExecutorFromOwner((int)HttpContext.Session.GetInt32("user_id"));
 
                 }
                 else

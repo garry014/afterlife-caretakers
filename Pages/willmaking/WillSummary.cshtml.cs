@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -39,10 +40,10 @@ namespace afterlife_caretakers.Pages.willmaking
         public IActionResult OnGet(int id)
         {
             
-            MyBeneficiary = _svc.GetBeneficiaryFromOwner(88);
-            ownerGiftList = _svc.GetGiftFromOwner(88);
-            ownerExecList = _svc.GetExecutorFromOwner(88);
-            ownerWitnessList = _svc.GetWitnessFromOwner(88);
+            MyBeneficiary = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+            ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+            ownerExecList = _svc.GetExecutorFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+            ownerWitnessList = _svc.GetWitnessFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             initData();
             ////owner id == willmaker id
             if (MyBeneficiary == null)
@@ -61,15 +62,23 @@ namespace afterlife_caretakers.Pages.willmaking
             {
                 return NotFound();
             }
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "WillMaker")
+            {
+                return Page();
+            }
             return Page();
         }
         public void initData()
         {
 
             //neeed to add this to display the contents of table
-            ownerGiftList = _svc.GetGiftFromOwner(88);
+            ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             //displaying beneficiary into form
-            MyBeneficiary = _svc.GetBeneficiaryFromOwner(88);
+            MyBeneficiary = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
 
             foreach (BeneficiaryInformation b in MyBeneficiary)
             {

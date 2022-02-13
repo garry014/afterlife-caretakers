@@ -8,6 +8,7 @@ using afterlife_caretakers.Models;
 using afterlife_caretakers.Services;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -31,9 +32,9 @@ namespace afterlife_caretakers.Pages.willmaking
         {
 
             //neeed to add this to display the contents of table
-            ownerGiftList = _svc.GetGiftFromOwner(88);
+            ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             //displaying beneficiary into form
-            MyBeneficiary = _svc.GetBeneficiaryFromOwner(88);
+            MyBeneficiary = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
    
             foreach (BeneficiaryInformation b in MyBeneficiary)
             {
@@ -46,6 +47,14 @@ namespace afterlife_caretakers.Pages.willmaking
         {
             
             initData();
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            if (HttpContext.Session.GetString("usertype") == "WillMaker")
+            {
+                return Page();
+            }
             return Page();
         }
         public IActionResult OnPostGiftBack()
@@ -63,14 +72,14 @@ namespace afterlife_caretakers.Pages.willmaking
         {
             if (ModelState.IsValid)
             {
-                MyGift.OWNERID = 88;
+                MyGift.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
 
                 // trying to add bene to owner into db
                 if (_svc.AddAsset(MyGift))
                 {
                     Console.WriteLine("Add new asset");
                     // grab from DB again all the gift of this owner
-                    //ownerGiftList = _svc.GetGiftFromOwner(88);
+                    //ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
                     initData();
                 }
                 else

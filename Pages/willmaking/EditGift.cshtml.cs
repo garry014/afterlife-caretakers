@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using afterlife_caretakers.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Http;
 
 namespace afterlife_caretakers.Pages.willmaking
 {
@@ -43,7 +44,7 @@ namespace afterlife_caretakers.Pages.willmaking
         //    //neeed to add this to display the contents of table
         //    ownerGiftList = _svc.GetGiftFromOwner(88);
         //    //displaying beneficiary into form
-        //    ownerbeneList = _svc.GetBeneficiaryFromOwner(88);
+        //    ownerbeneList = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
 
         //    foreach (BeneficiaryInformation b in ownerbeneList)
         //    {
@@ -54,11 +55,12 @@ namespace afterlife_caretakers.Pages.willmaking
         //}
         public IActionResult OnPost()
         {
-            //MyBeneficiary.OWNERID = 88;
-            //ownerbeneList = _svc.GetBeneficiaryFromOwner(88);
+            //MyBeneficiary.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
+            //ownerbeneList = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             //initData();
-            MyGift.OWNERID = 88;
-            
+            MyGift.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
+
+
             if (!ModelState.IsValid)
             {
                 return Page();

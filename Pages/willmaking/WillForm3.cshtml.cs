@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using afterlife_caretakers.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -24,9 +25,16 @@ namespace afterlife_caretakers.Pages.willmaking
             _svc = service;
         }
         //getting bene off owner id
-        public void OnGet()
+        public IActionResult OnGet(int id)
         {
-            ownerBeneList = _svc.GetBeneficiaryFromOwner(88);
+            //check if user logged in
+            if (HttpContext.Session.GetString("usertype") == null)
+            {
+                return NotFound();
+            }
+            ownerBeneList = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+
+            return Page();
         }
         public IActionResult OnPostForm3Back()
         {
@@ -35,7 +43,7 @@ namespace afterlife_caretakers.Pages.willmaking
         }
         public IActionResult OnPostForm3Next()
         {
-            ownerBeneList = _svc.GetBeneficiaryFromOwner(88);
+            ownerBeneList = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             return RedirectToPage("ChoiceOfGift");
             //if (ModelState.IsValid)
             //{
@@ -51,14 +59,14 @@ namespace afterlife_caretakers.Pages.willmaking
                 // Add Beneficiary if exist
                 //BeneficiaryInformation newBene = new BeneficiaryInformation(MyBeneficiary);
                 //MyBeneficiary.Id = 100;
-                MyBeneficiary.OWNERID = 88;
+                MyBeneficiary.OWNERID = (int)HttpContext.Session.GetInt32("user_id");
 
                 // trying to add bene to owner into db
                 if (_svc.AddBeneficiary(MyBeneficiary))
                 {
                     Console.WriteLine("Add new bene");
                     // grab from DB again all the bene of this owner
-                    ownerBeneList = _svc.GetBeneficiaryFromOwner(88);
+                    ownerBeneList = _svc.GetBeneficiaryFromOwner((int)HttpContext.Session.GetInt32("user_id"));
                     
                 }
                 else

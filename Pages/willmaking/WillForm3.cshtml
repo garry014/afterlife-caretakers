@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Create Will 3";
 }
-
+<script src="~/js/willvar.js"></script>
 <!-- Inner Banner -->
 <div class="banner-wraper">
     <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
@@ -102,8 +102,11 @@
                                 }
                             }
                             <br>
+                            <button class="blueButton" onclick="setBeneficiary(true)" type="button">
+                                Add Beneficiary
+                            </button>
                             <input type="hidden" asp-for="MyGift.Id" />
-                            <div class="form-group col-md-8">
+                            @*<div class="form-group col-md-8">
                                 <p>
                                     <label>
                                         <input class="myradio" type="radio" name="default"
@@ -116,9 +119,9 @@
                                     </label>
 
                                 </p>
-                            </div>
+                            </div>*@
 
-                            <div id="bDetails" style="display:none">
+                            <div id="bDetails" style="display:none; border:1px; border-style:solid;">
                                 <label>What are the details of your Beneficiary?</label>
 
                                 <div class="form-group col-md-8" style="margin:8px;">

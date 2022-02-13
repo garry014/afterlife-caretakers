@@ -12,5 +12,6 @@ namespace afterlife_caretakers.Models
         public double Price { get; set; }
         public int UserID { get; set; }
         public DateTime TimeStamp { get; set; }
+        public int FormId { get; set; }
     }
 }
