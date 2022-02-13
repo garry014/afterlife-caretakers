@@ -1,0 +1,273 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.DistributionofAssetsModel
+@{
+    ViewData["Title"] = "Non specific gift types";
+}
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Will Creation</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    @*<ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        </ul>*@
+                </nav>
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info<br></div>
+                                </div>
+                                <div class="stepper-item active">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-30">
+                    <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                        <div class="ajax-message"></div>
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label for="fname">What is your gift type?</label>
+
+                                <select class="form-select" name="gift_type" id="gift_type">
+                                    <option value="1">Cash</option>
+                                    <option value="2">Bank Account</option>
+                                    <option value="3">Real Estate</option>
+                                    <option value="4">Other Personal Property</option>
+                                </select>
+                                <!-- <select name="gifttype" id="gifttype" style="border: black ;" required
+                    class="form-control">
+
+                    <option value="1">Cash</option>
+                    <option value="2">property</option>
+                    <option value="3">etc</option>
+                    <option value="4">etc</option>
+                </select> -->
+
+                            </div>
+                            <!-- List of options -->
+                            <!-- this might be the non-specific gift side. -->
+                            <!-- Error with radio button -->
+                            <!-- How to add caret -->
+                            <div class="form-group col-md-8">
+
+                                <p>
+                                    <label>
+                                        <input class="myradio" type="radio" name="default"> Don't leave
+                                        a backup
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input class="myradio" type="radio" name="default">
+                                        This share will pass on to beneficiary children (if any) in
+                                        equal shares.
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input class="myradio" type="radio" name="default"> This share
+                                        will go to the following people mentioned.
+                                    </label>
+                                </p>
+                                <!-- <input type="radio" id="dont" name="dont" value="dont">
+                <label for="dont">Don't leave a backup</label><br>
+                <input type="radio" id="pass" name="pass" value="pass">
+                <label for="pass">This share will pass on to beneficiary children (if any) in equal shares.</label><br>
+                <input type="radio" id="shares" name="shares" value="shares">
+                <label for="pass">This share will go to the following people mentioned.</label><br> -->
+
+                            </div>
+
+                            <div class="form-group col-md-8">
+
+                                <label for="fname">Who do you want to receive your Gift?</label>
+                                <select class="form-select" name="beneficiary_no" id="beneficiary_no">
+                                    <option value="1">Beneficiary1</option>
+                                    <option value="2">Beneficiary2</option>
+                                    <option value="3">Beneficiary3</option>
+                                    <option value="4">Beneficiary4</option>
+                                </select>
+
+                            </div>
+
+                            <!-- Adding another child -->
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <p class="form-submit">
+                                    <button class="blueButton" id="addBeneficiaryBtn"
+                                            onclick="toggleBeneficiary(true)">
+                                        Add Another
+                                        Beneficiary
+                                    </button>
+                                </p>
+                                <br>
+                                <br>
+                            </div>
+                            <!-- Onclick content -->
+                            <div id="bDetails" style="display:none">
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <input name="relation" type="text" required class="form-control"
+                                           placeholder="Relationship to Will Maker">
+                                </div>
+
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <input name="name" type="text" required class="form-control"
+                                           placeholder="FullName">
+                                </div>
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <input name="name" type="text" required class="form-control"
+                                           placeholder="NRIC">
+                                </div>
+                                <!-- <div class="form-group col-md-8"style="margin:8px;">
+                    <input name="name" type="text" required class="form-control" placeholder="Gender">
+                </div>	 -->
+                                <!-- Calendar -->
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <input name="Age" type="date" required class="form-control"
+                                           placeholder="BirthDate">
+                                </div>
+                                <!-- <div class="form-group col-md-8" style="margin:8px;">
+                    <input name="email" type="text" required class="form-control" placeholder="Email">
+                </div> -->
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <input name="phoenno" type="text" required class="form-control"
+                                           placeholder="Phone Number">
+                                </div>
+                                <!-- Adding another beneficiary -->
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <p class="form-submit">
+                                        <button class="blueButton" id="addBeneficiaryBtn">
+                                            Add Another
+                                            Beneficiary
+                                        </button>
+                                    </p>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                            <!-- End of content -->
+                            <!-- Specify shares -->
+                            <div class="form-group col-md-8">
+                                <input type="checkbox" name="substitute" value="substitute"
+                                       onclick="toggleShares()">
+                                <label for="substitute">Specify Shares</label>
+                                <!-- how to make box black etc. -->
+                            </div>
+                            <div id="specifyShareContainer" style="display:none">
+                                <fieldset class="js-wrap-percentages px-3 pt-3 mb-3"
+                                          style="background-color: rgb(251, 251, 251);">
+                                    <div class="form-group row">
+                                        <div class="col-12 col-md mb-3 mb-md-0">
+                                            <input type="text" class="form-control" value="Cosette Chan"
+                                                   tabindex="-1" readonly>
+                                        </div>
+
+                                        <div class="col-12 col-md-4">
+                                            <div class="input-group">
+                                                <input type="number" min="0" class="form-control"
+                                                       required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-12 col-md mb-3 mb-md-0">
+                                            <input type="text" class="form-control" value="Takt Chan"
+                                                   tabindex="-1" readonly>
+                                        </div>
+                                        <div class="col-12 col-md-4">
+                                            <div class="input-group">
+                                                <input type="number" min="0" class="form-control"
+                                                       required>
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text">%</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+
+                            </div>
+
+                            <div class="col-lg-12">
+                                <button name="submit" type="submit" value="Save" class="btn w-100 btn-secondary btn-lg">Save</button>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form action="WillManual.html">
+                                <button name="submit" type="submit" value="Back" class="BButton w-100 btn-lg" style="height:60px;">Back</button>
+                            </form>
+
+                        </div>
+                        <br>
+                        <div class="col-sm-6">
+                            <form action="WillForm2.html" method="post">
+                                <button name="submit" type="submit" value="Next" class="btn w-100 btn-secondary btn-lg">Next</button>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right hand side part of the website -->
+                <div class="col-lg-6 mb-30">
+                    <div class="contact-info ovpr-dark" style="background-image: url(images/about/pic-1.jpg);">
+                        <div class="info-inner">
+                            <h4 class="title mb-30">Will Making Form</h4>
+                            <h4 class="title mb-30">Your Marital Status</h4>
+                            <text>
+                                Information about your spouse makes the form easier to fill in later
+                                on
+                            </text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

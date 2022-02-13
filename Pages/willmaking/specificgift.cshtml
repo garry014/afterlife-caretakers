@@ -1,0 +1,226 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.specificgiftModel
+@{
+    ViewData["Title"] = "Add specific gift";
+}
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Creation of Will</h1>
+                <!-- Breadcrumb row -->
+                <!-- <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                    </ul>
+                </nav> -->
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info<br></div>
+                                </div>
+                                <div class="stepper-item active">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets<br></div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-30">
+                    <form class="form-wraper contact-form" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        @* table shd be retrieving details from previous page *@
+                        <table class="table table-bordered" id="editableTable">
+                            <thead>
+                                <tr>
+                                    <th>Gift type</th>
+                                    <th>Description</th>
+                                    <th>Recipient</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ if (Model.ownerGiftList != null)
+                                    {
+
+                                        @foreach (var item in Model.ownerGiftList)
+                                        {
+                                <tr>
+                                    <td>@item.gift_type</td>
+                                    <td>@item.description</td>
+                                    @{ if (@Model.beneDictionary.ContainsKey(item.BeneID))
+                                        {
+                                    <td>@Model.beneDictionary[item.BeneID].NAME</td>
+                                        }
+                                        else
+                                        {
+                                    <td>loading...</td>
+                                            }
+                                        }
+                                    <td>
+                                    <a asp-page="/willmaking/DeleteSpecific" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
+                                </tr>
+
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <div class="row">
+                            <div class="form-group col-md-8">
+                                <label>What is your gift type?</label>
+                                <select class="form-select" asp-for="MyGift.gift_type" onChange="toggleAsset()" id="gift_type">
+                                    <option value="Cash">Cash</option>
+                                    @*<option value="Bank Account">Bank Account</option>*@
+                                    <option value="Real Estate">Real Estate</option>
+                                    <option value="description">Other Personal Property</option>
+                                </select>
+                                <div id="cash_type" class="form-group col-md-8"
+                                     style="display:block; margin:8px;">
+                                    <label id="specificid">Amount to give:</label>
+                                    <input asp-for="MyGift.description"
+                                           class="form-control">
+                                    <span asp-validation-for="MyGift.description" class="text-danger"></span>
+                                    <input type="hidden" asp-for="MyGift.TYPE" value="Specific" />
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label>Who do you want to receive your Gift?</label>
+                                    <select asp-for="MyGift.BeneID" asp-items="@Model.BeneficiarySelections" class="form-select" id="beneficiary_no">
+                                        <option>Select Beneficiary</option>
+                                    </select>
+
+                                </div>
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <p class="form-submit">
+                                        <button asp-page-handler="GiftAdd" class="blueButton">
+                                            Add Gift
+                                        </button>
+                                    </p>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button type="button" value="Back" onclick="location.href = 'ChoiceOfGift';" class="BButton w-100 btn-lg" style="height:60px;">Back</button>
+
+                                </div>
+                                <br>
+                                <div class="col-sm-6">
+                                    @* for now my next is adding , idk how i should implement add here *@
+                                    <button asp-page-handler="GiftNext" name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Next</button>
+
+                                </div>
+                            </div>
+</form>
+                </div>
+                @*<input type="hidden" asp-for="MyGift.Id" />*@
+                <!-- Onclick content -->
+                @* maybe can add form tag here to add again? *@
+                <div id="bDetails" style="display:none">
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <label for="addresss">
+                            What is the Relationship Between you and the Beneficiary
+                            (eg.friend)?
+                        </label>
+                        <input name="relation" type="text" required class="form-control"
+                               placeholder="Relationship to Will Maker">
+                    </div>
+
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <label for="addresss">
+                            What is your Beneficiary FullName?
+                        </label>
+                        <input name="name" type="text" required class="form-control"
+                               placeholder="FullName">
+                    </div>
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <label for="addresss">What is your Beneficiary NRIC?</label>
+                        <input name="name" type="text" required class="form-control"
+                               placeholder="NRIC">
+                    </div>
+                    <!-- Calendar -->
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <label for="addresss">What is your Beneficiary BirthDate?</label>
+                        <input name="Age" type="date" required class="form-control"
+                               placeholder="BirthDate">
+                    </div>
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <label for="addresss">What is your Beneficiary Phone Number?</label>
+                        <input name="phoenno" type="text" required class="form-control"
+                               placeholder="Phone Number">
+                    </div>
+                    <div class="form-group col-md-8" style="margin:8px;">
+                        <p class="form-submit">
+                            <button class="blueButton" id="addBeneficiaryBtn">
+                                Add Another
+                                Beneficiary
+                            </button>
+                        </p>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- Right hand side part of the website -->
+            <div class="col-lg-6 mb-30">
+                <div class="contact-info ovpr-dark"
+                     style="background-image: url(images/about/pic-1.jpg);">
+                    <div class="info-inner">
+                        <text>Gift Icon</text>
+                        <h4 class="title mb-30">What is a specific gift</h4>
+                        <text>
+                            A specific gift is property that you identifiy and give to specific
+                            people, before you divide the rest of the property
+                        </text>
+                        <!-- some text here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+<script src="/js/willvar.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

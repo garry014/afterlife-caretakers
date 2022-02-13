@@ -1,0 +1,244 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.WillSummaryModel
+@{
+    ViewData["Title"] = "Will Summary";
+}
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Will Information Summary</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    @*<ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        </ul>*@
+                </nav>
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info</div>
+                                </div>
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets<br></div>
+                                </div>
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item active">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment<br /> View Summary</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- This shows the processing pop up -->
+                <!-- <form class="form-wraper contact-form ajax-form" action="script/contact.php"> -->
+                <div class="row" style="text-align: center">
+                    <div class="form-group col-md-6">
+                        <div style="text-align: center; border-radius: 40px; padding-top: 101px; padding-bottom: 95px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                            <h3 style="margin-top:-25px">Your Personal Information</h3>
+                            @{ @if (Model.PersonalInfo != null)
+                                {
+
+                                        <div>
+                                            Name: @Model.PersonalInfo.Name<br />
+                                            NRIC: @Model.PersonalInfo.NRIC<br />
+                                            Mobile Number: @Model.PersonalInfo.MobileNo<br />
+                                            q
+                                            <br />
+                                            <div class="text-center">
+                                                <form action="WillForm3.html">
+                                                    @*<button name="submit" type="submit" value="Edit"
+                                                            class="btn btn-secondary"
+                                                            style="padding-left:60px; padding-right:60px; font-size:15px">
+                                                        Edit
+                                                    </button>*@
+                                                </form>
+                                            </div>
+                                            <br />
+                                        </div>
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6">
+                        <div style="text-align: center; border-radius: 40px; padding-top: 70px; padding-bottom: 45px; margin-bottom:40px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                            <h3 style="margin-top:-25px">Executor & Witness Details</h3>
+                            <h5>Executor</h5>
+                            @{ @if (Model.ownerExecList != null)
+                                {
+
+                                    @foreach (var item in Model.ownerExecList)
+                                    {
+                                        <div>
+                                            <h5>Executor @item.Id</h5>
+                                            @*Relationship: @item.Relationship<br />*@
+                                            Name: @item.NAME<br />
+                                            NRIC: @item.NRIC<br />
+                                            Email: @item.Email<br />
+                                            Mobile Number: @item.PhoneNo<br />
+                                            <br />
+                                            <div class="text-center">
+                                                <form method="post">
+                                                    @*<button asp-page-handler="ExecBack"name="submit" type="submit" value="Edit"
+                                                            class="btn btn-secondary"
+                                                            style="padding-left:60px; padding-right:60px; font-size:15px">
+                                                        Edit
+                                                    </button>*@
+                                                    @*<a asp-page="/willmaking/EditExec" asp-route-id="@item.Id"class="btn btn-secondary"
+                                                            style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>*@
+                                                </form>
+                                            </div>
+                                            <br />
+                                        </div>
+                                    }
+                                }
+                            }
+                            <h5>Witness</h5>
+                            @{ @if (Model.ownerWitnessList != null)
+                                {
+
+                                    @foreach (var item in Model.ownerWitnessList)
+                                    {
+                                        <div>
+                                            <h5>Witness @item.Id</h5>
+                                            @*Relationship: @item.Relationship<br />*@
+                                            Name: @item.NAME<br />
+                                            NRIC: @item.NRIC<br />
+                                            Email: @item.Email<br />
+                                            Mobile Number: @item.PhoneNo<br />
+                                            <br />
+                                            <div class="text-center">
+                                                @*<form method="post">
+                                                    <a asp-page="/willmaking/EditWitness" asp-route-id="@item.Id" class="btn btn-secondary"
+                                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
+                                                </form>*@
+                                            </div>
+                                            <br />
+                                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+
+                    @*@{ @if (Model.ownerBeneList != null)
+                        {
+
+                            @foreach (var item in Model.ownerBeneList)
+                            {*@
+                <div class="form-group col-md-6">
+                    <div style="text-align: center; border-radius: 40px; padding-top: 78px; padding-bottom: 65px; margin-bottom:20px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                        <h3 style="margin-top:-25px">Beneficiary Details</h3>
+                        @{ @if (Model.MyBeneficiary != null)
+                            {
+
+                                @foreach (var item in Model.MyBeneficiary)
+                                {
+                                    <div>
+                                        <h5>Beneficiary @item.Id</h5>
+                                        Relationship: @item.Relationship<br />
+                                        Name: @item.NAME<br />
+                                        NRIC: @item.NRIC<br />
+                                        Mobile Number: @item.PhoneNo<br />
+                                        <br />
+                                        <div class="text-center">
+                                              
+                                        </div>
+                                        <br />
+                                    </div>
+                                }
+                            }
+                        }
+                    </div>
+                    </div>
+                            @*}
+                        }
+                    }*@
+
+                    <div class="form-group col-md-6">
+                        <div style="text-align: center; border-radius: 40px; padding-top: 40px; padding-bottom: 40px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                            <h3>Your Assets</h3>
+                            @{ @if (Model.ownerGiftList != null)
+                                {
+
+                                    @foreach (var item in Model.ownerGiftList)
+                                    {
+                        <div>
+                            Type of Gift: @item.TYPE<br />
+                            Gift Name: @item.gift_type<br />
+                            Amount: @item.description<br />
+                            @{ if (@Model.beneDictionary.ContainsKey(item.BeneID))
+                                {
+                                    <td>@Model.beneDictionary[item.BeneID].NAME</td>
+                                }
+                                else
+                                {
+                                    <td>loading...</td>
+                                }
+                            }
+
+                            <br />
+                            <div class="text-center">
+                                <form method="post">
+                                    <a asp-page="/willmaking/EditGift" asp-route-id="@item.Id" class="btn btn-secondary"
+                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
+                                </form>
+                            </div>
+                            <br />
+                        </div>
+                                    }
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <br />
+                        <div class="text-center">
+                            <form method="post">
+                                <button action="/WillPayment" asp-page-handler="SummaryNext" name="submit" type="submit" value="Confirm" class="btn w-100 btn-secondary btn-lg">Confirm</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+
+<br />
+<br />
+<br />

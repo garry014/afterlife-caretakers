@@ -1,0 +1,167 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.ChoiceOfGiftModel
+@{
+    ViewData["Title"] = "Choice of Gift";
+}
+<style>
+    /* HIDE RADIO */
+    [type=radio] {
+        position: absolute;
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+
+        /* IMAGE STYLES */
+        [type=radio] + img {
+            cursor: pointer;
+        }
+
+        /* CHECKED STYLES */
+        [type=radio]:checked + img {
+            outline: 2px solid #f00;
+        }
+
+    .ImageGiftChoice {
+        width: 237px;
+    }
+</style>
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Will Creation</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                </nav>
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info<br></div>
+                                </div>
+                                <div class="stepper-item active">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-xl-6 mb-30">
+                    <div class="row">
+                        <h5>Gift Choice:</h5>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <form method="post">
+                            <input type="hidden" asp-for="MyGift.gift_type" value="sampleText" />
+                            <input type="hidden" asp-for="MyGift.description" value="sampleText"/>
+                            <div class="form-group col-sm-6">
+
+                                @*<input type="hidden" asp-for="MyGift.Id" />*@
+                                <label>
+                                    @Html.RadioButton("MyGift.TYPE", "Specific", "testa")
+                                    <!-- width="500px" height="600px" -->
+                                    <img class="ImageGiftChoice" src="~/images/WillForm/tick copy.png" />
+                                </label>
+
+                                <div class="page-content">
+                                    <p><b>Yes,i want to leave specific gifts behind.</b></p>
+                                    <small>
+                                        <b>
+                                            Pick this option if you want to give specific items such as a
+                                            property, a car, or a bank account, to specific people. The rest of your property
+                                            will be converted to cash and distributed to the people you choose, in the
+                                            percentage of your choice.
+                                        </b>
+                                    </small>
+                                    <br>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="form-group col-sm-6">
+                                <label>
+                                    @Html.RadioButton("MyGift.TYPE", "DistributionofAssets", "testa")
+                                    <img class="ImageGiftChoice" src="~/images/WillForm/cross.png">
+                                </label>
+                                <div class="page-content">
+                                    <p><b>No, i dont want to leave specific gifts behind.</b></p>
+                                    <small>
+                                        <b>
+                                            Pick this option if you don't have specific items to name. Your
+                                            property will be converted to cash and distributed to the people you choose, in the
+                                            percentage of your choice.
+                                        </b>
+                                    </small>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @*<button asp-page-handler="ChoiceBack" name="submit" type="submit" value="Back" class="BButton w-100 btn-lg" style="height:60px;">Back</button>*@
+                                    <button type="button" value="Back" onclick="location.href = 'WillForm3';" class="BButton w-100 btn-lg" style="height:60px;">Back</button>
+                                </div>
+                                <br>
+                                <div class="col-sm-6">
+                                    <div class="col-lg-12">
+                                        <button name="submit" type="submit" value="Submit" class="btn w-100 btn-secondary btn-lg">Next</button>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            @* end of button *@
+                        </form>
+                    </div>
+                </div>
+
+
+                <!-- Right hand side part of the website -->
+                <div class="col-lg-6 mb-30">
+                    <div class="contact-info ovpr-dark" style="background-image: url(images/about/pic-1.jpg);">
+                        <div class="info-inner">
+                            <h4 class="title mb-30">What is a specific gift</h4>
+                            <text>A specific gift is property that you identifiy and give to specific people, before you divide the rest of the property</text>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

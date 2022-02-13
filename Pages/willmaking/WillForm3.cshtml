@@ -1,0 +1,205 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.WillForm3Model
+@{
+    ViewData["Title"] = "Create Will 3";
+}
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Will Creation</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                </nav>
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item active">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info<br>Beneficiary Information</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets<br></div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-30">
+                    <form class="form-wraper contact-form" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <table class="table table-bordered" id="editableTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ if (Model.ownerBeneList != null)
+                                    {
+
+                                        @foreach (var item in Model.ownerBeneList)
+                                        {
+                                            <tr>
+                                                <td>@item.NAME</td>
+
+                                                <td>
+                                                    <a asp-page="/willmaking/EditBene" asp-route-id="@item.Id"> <i class="fas fa-edit"></i> Edit</a>
+                                                    <a asp-page="/willmaking/DeleteBene" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                        <div class="row">
+                            @{ if (Model.MyBeneficiary == null)
+                                {
+                                    <label>Do you have any beneficiaries?(if yes, please fill up the form below)</label>
+
+
+                                }
+                                else
+                                {
+                                    <label>Do you want to add more beneficiaries?</label>
+                                }
+                            }
+                            <br>
+                            <input type="hidden" asp-for="MyGift.Id" />
+                            <div class="form-group col-md-8">
+                                <p>
+                                    <label>
+                                        <input class="myradio" type="radio" name="default"
+                                               onclick="setBeneficiary(true)"> Yes
+                                    </label>
+                                    <br>
+                                    <label>
+                                        <input class="myradio" type="radio" name="default" value="0"
+                                               onclick="setBeneficiary(false)"> No
+                                    </label>
+
+                                </p>
+                            </div>
+
+                            <div id="bDetails" style="display:none">
+                                <label>What are the details of your Beneficiary?</label>
+
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <label>Relationship to Will Maker:</label>
+                                    <input type="text" asp-for="MyBeneficiary.Relationship"
+                                           class="form-control" placeholder="Relationship eg.Mother">
+                                </div>
+
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <label>Beneficiary FullName:</label>
+                                    <input type="text" asp-for="MyBeneficiary.NAME"
+                                           class="form-control" placeholder="FullName">
+                                </div>
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <label>NRIC:</label>
+                                    <input type="text" asp-for="MyBeneficiary.NRIC"
+                                           class="form-control" placeholder="NRIC">
+                                </div>
+
+                                <!-- Calendar -->
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <label>Beneficiary BirthDate:</label>
+                                    <input type="date" asp-for="MyBeneficiary.Birthdate"
+                                           class="form-control" placeholder="BirthDate">
+                                </div>
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <label>Beneficiary Phone Number:</label>
+                                    <input type="text" asp-for="MyBeneficiary.PhoneNo"
+                                           class="form-control" placeholder="Phone Number">
+                                </div>
+                                @* this was the problem ! *@
+                                @*<input type="hidden" asp-for="MyBeneficiary.Id" />*@
+                                <!-- Adding another beneficiary -->
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <p class="form-submit">
+                                        <button asp-page-handler="Form3AddBene" class="blueButton" id="addBeneficiaryBtn">
+                                            Add
+                                            Beneficiary
+                                        </button>
+                                    </p>
+                                    <br>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <button type="button" value="Back" onclick="location.href = 'WillForm2';" class="BButton w-100 btn-lg" style="height:60px;">Back</button>
+                                @*<button name="submit" asp-page-handler="Form3Back" type="submit" value="Back" class="BButton w-100 btn-lg" style="height:60px;">Back</button>*@
+
+
+                            </div>
+                            <br>
+                            <div class="col-sm-6">
+
+                                <button action="/WillForm2" asp-page-handler="Form3Next" name="submit" type="submit" value="Next" class="btn w-100 btn-secondary btn-lg">Next</button>
+
+
+                            </div>
+                    </form>
+                </div>
+
+            </div>
+
+            <!-- Right hand side part of the website -->
+            <div class="col-lg-6 mb-30">
+                <div class="contact-info ovpr-dark" style="background-image: url(images/about/pic-1.jpg);">
+                    <div class="info-inner">
+                        <h4 class="title mb-30">What is a Beneficiary?</h4>
+                        <!-- some text here -->
+                        <text>The beneficiary is defined as the person who benefits from something such as a will or a life insurance policy. An example of a beneficiary is the person who you leave your assets to when you die.</text>
+                        <br />
+                        <text style="color:black">You can have more than one beneficiary.</text>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</section>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

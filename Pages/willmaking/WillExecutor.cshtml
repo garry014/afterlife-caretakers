@@ -1,0 +1,178 @@
+﻿@page
+@model afterlife_caretakers.Pages.willmaking.WillExecutorModel
+@{
+    ViewData["Title"] = "Create Will Executor";
+}
+
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Will Creation</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    @*<ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Contact Us</li>
+                        </ul>*@
+                </nav>
+            </div>
+        </div>
+        <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-12 mb-30">
+                        <form class="form-wraper contact-form ajax-form" action="script/contact.php">
+                            <div class="stepper-wrapper">
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">1</div>
+                                    <div class="step-name">Your Info<br></div>
+                                </div>
+                                <div class="stepper-item completed">
+                                    <div class="step-counter">2</div>
+                                    <div class="step-name">Distribution of Assets</div>
+                                </div>
+                                <div class="stepper-item active">
+                                    <div class="step-counter">3</div>
+                                    <div class="step-name">Executor</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">4</div>
+                                    <div class="step-name">Witness</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">5</div>
+                                    <div class="step-name">Payment</div>
+                                </div>
+                                <div class="stepper-item">
+                                    <div class="step-counter">6</div>
+                                    <div class="step-name">Download PDF</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 mb-30">
+                    <form class="form-wraper contact-form" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <table class="table table-bordered" id="editableTable">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @{ if (Model.ownerExecList != null)
+                                    {
+
+                                        @foreach (var item in Model.ownerExecList)
+                                        {
+                                            <tr>
+                                                <td>@item.NAME</td>
+
+                                                <td>
+                                                    @*  <td><a asp-page="/willmaking/EditBene" asp-route-id="@item.Id"> <i class="fas fa-edit"></i> Edit</a>
+        <a asp-page="/willmaking/DeleteBene" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td> *@
+                                                    <a asp-page="/willmaking/EditExec" asp-route-id="@item.Id"> <i class="fas fa-edit"></i> Edit</a>
+                                                    <a asp-page="/willmaking/DeleteExec" asp-route-id="@item.Id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a>
+                                                </td>
+                                            </tr>
+
+                                        }
+                                    }
+                                }
+                            </tbody>
+                        </table>
+                        <br />
+                        <div class="row">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+                            <div class="form-group col-md-8">
+                                <label>Who do you want to name as your executor?</label>
+
+                                <select asp-for="MyGift.BeneID" asp-items="@Model.BeneficiarySelections" class="form-select" id="beneficiary_no">
+                                    <option>Select Beneficiary</option>
+
+                                </select>
+                            </div>
+                            <div class="form-group col-md-8">
+                                <input type="checkbox" name="substitute" value="substitute"
+                                       onclick="toggleSpouse()">
+                                <label for="substitute">Make substitute if not available</label>
+                            </div>
+
+                            <div id="sDetails" style="display:none">
+                                <div class="form-group col-md-8">
+                                    <label>What is your Executor Full Legal Name?</label>
+                                    <input asp-for="MyExecutor.NAME" type="text"  class="form-control" placeholder="Full Name">
+                                    <span asp-validation-for="MyExecutor.NAME" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label>What is your Executor NRIC Number</label>
+                                    <input asp-for="MyExecutor.NRIC" type="text"  class="form-control" placeholder="NRIC">
+                                    <span asp-validation-for="MyExecutor.NRIC" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label>What is your Executor Email?</label>
+                                    <input asp-for="MyExecutor.Email" type="text"  class="form-control" placeholder="Email">
+                                    <span asp-validation-for="MyExecutor.Email" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label>What is your Executor Phone Number?</label>
+                                    <input asp-for="MyExecutor.PhoneNo" type="text"  class="form-control" placeholder="Phone Number">
+                                    <span asp-validation-for="MyExecutor.PhoneNo" class="text-danger"></span>
+                                </div>
+                                <div class="form-group col-md-8" style="margin:8px;">
+                                    <p class="form-submit">
+                                        <button asp-page-handler="AddExec" class="blueButton">
+                                            Add Executor
+                                        </button>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    @*<button asp-page-handler="ExecBack" name="submit" type="submit" value="Back" class="BButton w-100 btn-lg" style="height:60px;">Back</button>*@
+                                    <button type="button" value="Back" onclick="location.href = 'specificgift';" class="BButton w-100 btn-lg" style="height:60px;">Back</button>
+                                </div>
+                                <br>
+                                <div class="col-sm-6">
+                                    <button asp-page-handler="ExecNext" name="submit" type="submit" value="Next" class="btn w-100 btn-secondary btn-lg">Next</button>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                    </form>
+                </div>
+                <!-- Right hand side part of the website -->
+                <div class="col-lg-6 mb-30">
+                    <div class="contact-info ovpr-dark" style="background-image: url(images/about/pic-1.jpg);">
+                        <div class="info-inner">
+                            <h4 class="title mb-30">Executor</h4>
+                            <text>An Executor is the person who will carry out the wishes in your Will. Pick someone responsible. He or She needs to be at least 21 years old, and cannot be a bankrupt.</text>
+                            <br>
+                            <br>
+                            <text>The Executor can be one of the beneficiaries. This is common when the spouse is appointed as the executor and the assets are also given to the spouse.</text>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+            </div>
+
+
