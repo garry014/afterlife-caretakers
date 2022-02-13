@@ -26,7 +26,7 @@ namespace afterlife_caretakers.Pages.Register
         public string MyMessage { get; set; }
 
         [BindProperty]
-        public ImageClass Image { get; set; }
+        public PhotoClass Image { get; set; }
 
 
 
@@ -34,7 +34,7 @@ namespace afterlife_caretakers.Pages.Register
         {
         }
 
-        public IActionResult OnPost()
+        public IActionResult OnPost(PhotoClass Image)
         {
             MyUsers.usertype = "Beneficiary";
             MyUsers.activation_status = "inactive";
@@ -42,6 +42,8 @@ namespace afterlife_caretakers.Pages.Register
             MyUsers.password = BCrypt.Net.BCrypt.HashPassword(MyUsers.password, salt);
             if (ModelState.IsValid)
             {
+                string uniqueFileName = UploadedFile(Image);
+                MyUsers.NRIC_upload = uniqueFileName;
                 if (_svc.AddUsers(MyUsers))
                 {
                     // Create session
@@ -55,16 +57,25 @@ namespace afterlife_caretakers.Pages.Register
                     MyMessage = "Email has been registered!";
                     return Page();
                 }
+
             }
             return Page();
         }
 
-        private string UploadedFile(ImageClass Image)
+        private string UploadedFile(PhotoClass Image)
         {
             string uniqueFileName = null;
 
             if (Image != null)
             {
+                // check if file is an image file
+                var _extensions = new string[] { ".jpg", ".png" };
+                var extension = Path.GetExtension(Image.Image.FileName);
+                if (!_extensions.Contains(extension.ToLower()))
+                {
+                    return uniqueFileName;
+                }
+
                 string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images/userphotos/");
                 uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.Image.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
