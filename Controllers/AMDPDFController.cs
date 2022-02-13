@@ -48,19 +48,6 @@ namespace afterlife_caretakers.Controllers
             string whomeno = reader["homeno"].ToString();
             string wofficeno = reader["officeno"].ToString();  
             
-            SqlConnection conSelect = new SqlConnection(ConnectionString);
-            string usersql = "Select name, NRIC, address, postal, phoneno from Users";
-            SqlCommand selectuser = new SqlCommand(usersql, conSelect);
-            conSelect.Open();
-            SqlDataReader reader2 = selectuser.ExecuteReader();
-            reader2.Read();
-            string uname = reader2["name"].ToString();
-            string unric = reader2["NRIC"].ToString();
-            string ugender = reader2["gender"].ToString();
-            string udob = reader2["dob"].ToString();
-            string uaddress = reader2["address"].ToString();
-            string upostal = reader2["postal"].ToString();
-            string uhomeno = reader2["phoneno"].ToString();
             //Create a new PDF document
             PdfDocument document = new PdfDocument();
 
@@ -89,26 +76,23 @@ namespace afterlife_caretakers.Controllers
             
             //amd maker
             graphics.DrawString("PERSON MAKING THE ADVANCE MEDICAL DIRECTIVE", subheader, PdfBrushes.Black, new PointF(0, 130));
-            graphics.DrawString("Name: "+ uname, font, PdfBrushes.Black, new PointF(0, 150));
-            graphics.DrawString("NRIC: "+ unric, font, PdfBrushes.Black, new PointF(0, 170));
-            graphics.DrawString("Gender: "+ ugender, font, PdfBrushes.Black, new PointF(0, 190));
-            graphics.DrawString("Date of Birth: "+ udob, font, PdfBrushes.Black, new PointF(0, 210));
-            graphics.DrawString("Address: "+ uaddress, font, PdfBrushes.Black, new PointF(0, 230));
-            graphics.DrawString("Postal Code: "+ upostal, font, PdfBrushes.Black, new PointF(0, 250));
-            graphics.DrawString("Home Number: "+ uhomeno, font, PdfBrushes.Black, new PointF(0, 270));
-            //amd maker signature
-            graphics.DrawString("Signature: " + wnric, font, PdfBrushes.Black, new PointF(0, 330));
+            graphics.DrawString("Name: Nina Tan", font, PdfBrushes.Black, new PointF(0, 150));
+            graphics.DrawString("NRIC: S1234567A", font, PdfBrushes.Black, new PointF(0, 170));
+            graphics.DrawString("Gender: Female", font, PdfBrushes.Black, new PointF(0, 190));
+            graphics.DrawString("Date of Birth: 08/15/1950" + wnric, font, PdfBrushes.Black, new PointF(0, 210));
+            graphics.DrawString("Address: Yishun Ave 2, Blk 700" + wnric, font, PdfBrushes.Black, new PointF(0, 230));
+            graphics.DrawString("Postal Code: Singapore 769098" + wnric, font, PdfBrushes.Black, new PointF(0, 250));
+            graphics.DrawString("Home Number: 65985462" + wnric, font, PdfBrushes.Black, new PointF(0, 270));
+            graphics.DrawString("Office Number: 63663248" + wnric, font, PdfBrushes.Black, new PointF(0, 290));
 
             //witness
-            graphics.DrawString("WITNESS OF THE ADVANCE MEDICAL DIRECTIVE", subheader, PdfBrushes.Black, new PointF(0, 380));
-            graphics.DrawString("Name: "+wname, font, PdfBrushes.Black, new PointF(0, 400));
-            graphics.DrawString("NRIC: "+wnric, font, PdfBrushes.Black, new PointF(0, 420));
-            graphics.DrawString("Home Address: "+waddress, font, PdfBrushes.Black, new PointF(0, 440));
-            graphics.DrawString("Postal Code: " + wpostal, font, PdfBrushes.Black, new PointF(0, 460));
-            graphics.DrawString("Home Number: "+whomeno, font, PdfBrushes.Black, new PointF(0, 480));
-            graphics.DrawString("Office Number: "+wofficeno, font, PdfBrushes.Black, new PointF(0, 500));
-            //witness signature
-            graphics.DrawString("Signature: " + wnric, font, PdfBrushes.Black, new PointF(0, 540));
+            graphics.DrawString("WITNESS OF THE ADVANCE MEDICAL DIRECTIVE", subheader, PdfBrushes.Black, new PointF(0, 340));
+            graphics.DrawString("Name: "+wname, font, PdfBrushes.Black, new PointF(0, 360));
+            graphics.DrawString("NRIC: "+wnric, font, PdfBrushes.Black, new PointF(0, 380));
+            graphics.DrawString("Home Address: "+waddress, font, PdfBrushes.Black, new PointF(0, 400));
+            graphics.DrawString("Postal Code: " + wpostal, font, PdfBrushes.Black, new PointF(0, 420));
+            graphics.DrawString("Home Number: "+whomeno, font, PdfBrushes.Black, new PointF(0, 440));
+            graphics.DrawString("Office Number: "+wofficeno, font, PdfBrushes.Black, new PointF(0, 560));
             
             graphics.DrawString("Date: " + DateTime.Now.ToShortDateString(), font, PdfBrushes.Black, new PointF(0, 730));
 
