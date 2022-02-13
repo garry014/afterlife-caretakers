@@ -34,7 +34,7 @@ namespace afterlife_caretakers.Pages.Register
         {
         }
 
-        public IActionResult OnPost(PhotoClass Image)
+        public IActionResult OnPost()
         {
             MyUsers.usertype = "Beneficiary";
             MyUsers.activation_status = "inactive";
@@ -42,8 +42,8 @@ namespace afterlife_caretakers.Pages.Register
             MyUsers.password = BCrypt.Net.BCrypt.HashPassword(MyUsers.password, salt);
             if (ModelState.IsValid)
             {
-                string uniqueFileName = UploadedFile(Image);
-                MyUsers.NRIC_upload = uniqueFileName;
+                //string uniqueFileName = UploadedFile(Image);
+                //MyUsers.NRIC_upload = uniqueFileName;
                 if (_svc.AddUsers(MyUsers))
                 {
                     // Create session
@@ -62,29 +62,29 @@ namespace afterlife_caretakers.Pages.Register
             return Page();
         }
 
-        private string UploadedFile(PhotoClass Image)
-        {
-            string uniqueFileName = null;
+        //private string UploadedFile(PhotoClass Image)
+        //{
+        //    string uniqueFileName = null;
 
-            if (Image != null)
-            {
-                // check if file is an image file
-                var _extensions = new string[] { ".jpg", ".png" };
-                var extension = Path.GetExtension(Image.Image.FileName);
-                if (!_extensions.Contains(extension.ToLower()))
-                {
-                    return uniqueFileName;
-                }
+        //    if (Image != null)
+        //    {
+        //        // check if file is an image file
+        //        var _extensions = new string[] { ".jpg", ".png" };
+        //        var extension = Path.GetExtension(Image.Image.FileName);
+        //        if (!_extensions.Contains(extension.ToLower()))
+        //        {
+        //            return uniqueFileName;
+        //        }
 
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images/userphotos/");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.Image.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    Image.Image.CopyTo(fileStream);
-                }
-            }
-            return uniqueFileName;
-        }
+        //        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images/userphotos/");
+        //        uniqueFileName = Guid.NewGuid().ToString() + "_" + Image.Image.FileName;
+        //        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+        //        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            Image.Image.CopyTo(fileStream);
+        //        }
+        //    }
+        //    return uniqueFileName;
+        //}
     }
 }
