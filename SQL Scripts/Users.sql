@@ -11,7 +11,7 @@ CREATE TABLE [dbo].[Users] (
     [NRIC_upload]       VARCHAR (100) NULL,
     [activation_status] VARCHAR (200) NULL,
     [deathcert_upload]  VARCHAR (100) NULL,
-    [deathdate_setting] VARCHAR(50) NULL, 
+    [deathdate_setting] DATETIME NULL, 
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
 
