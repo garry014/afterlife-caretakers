@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model afterlife_caretakers.Pages.team.createconsultModel
 @{
     ViewData["Title"] = "Create My Viewing Profile";
@@ -92,24 +92,22 @@
             <div class="contact-wraper">
                 <form class="form-wraper contact-form" method="post" id="theForm"  enctype="multipart/form-data">
                     <div style="display:none;">
-                        <input type="text" asp-for="User.name" />
-                        <input type="text" asp-for="User.NRIC" />
-                        <input type="text" asp-for="User.email" />
-                        <input type="text" asp-for="User.gender">
-                        <input type="text" asp-for="User.phoneno" />
-                        <input type="text" asp-for="User.password">
-                        
-                        <input type="text" asp-for="User.usertype">
-                        <input type="text" asp-for="Consult.ServiceType" value="@Model.User.usertype">
+                        <input type="text" asp-for="Admin.name" />
+                        <input type="text" asp-for="Admin.email" />
+                        <input type="text" asp-for="Admin.password" />
+                        <input type="text" asp-for="Admin.gender" />
 
-                        <input type="text" asp-for="User.Id">
-                        <input type="text" asp-for="Consult.UserId" value="@Model.User.Id">
+                        <input type="text" asp-for="Admin.admin_role">
+                        <input type="text" asp-for="Consult.ServiceType" value="@Model.Admin.admin_role">
+
+                        <input type="text" asp-for="Admin.Id">
+                        <input type="text" asp-for="Consult.UserId" value="@Model.Admin.Id">
                     </div>
                     <div class="row">
                         <div asp-validation-summary="All" class="text-danger"></div>
                         <div><label>@Model.ValidateMsg</label></div>
                         <div class="col-lg-6 mb-30">
-                            <h3>Service Type: @Model.User.usertype</h3> <br /> 
+                            <h3>Service Type: @Model.Admin.admin_role</h3> <br /> 
                             <div class="row">
                                 <div class="form-group">
                                     <span style=" padding-bottom:10px;">Availability Status &nbsp; &nbsp;</span>
