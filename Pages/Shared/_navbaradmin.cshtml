@@ -131,19 +131,19 @@
                                
                                 
                             <li>
-                               
-                                    <a href="javascript:;">General Admin<i class="fas fa-plus"></i></a>
-                                    <ul class="sub-menu">
-                                        <li class="add-menu-left">
-                                            <ul>
-                                                <li><a asp-page="/Admin/AdminCreation"><span>Creation of Account</span></a></li>
-<!--                                                 <li><a href="team.html"><span>Edit Personal Account</span></a></li>
-                                                <li><a href="team.html"><span>Verify Users Account</span></a></li> -->
+                                       
+                                        
+                                            <a href="javascript:;">General Admin<i class="fas fa-plus"></i></a>
+                                            <ul class="sub-menu">
+                                                <li class="add-menu-left">
+                                                    <ul>
+                                                        <li><a asp-page="/Admin/AdminCreation"><span>Creation of Account</span></a></li>
+                                                        <li><a href="team.html"><span>Edit Personal Account</span></a></li>
+                                                        <li><a asp-page="/Admin/AdminVerificationList"><span>Verify Users Account</span></a></li>
+                                                    </ul>
+                                                </li>
                                             </ul>
-                                        </li>
-                                    </ul>
-                                
-                            </li>
+                                    </li>
                               
                                 <li>
                                     @if (Context.Session.GetString("user_id") != null)
@@ -161,21 +161,7 @@
                                         </ul>
                                     }
                                 </li>
-                                @*<li>
-            @if (Context.Session.GetString("user_id") != null)
-            {
-                <a>@Context.Session.GetString("name")<i class="fas fa-plus"></i></a>
-
-                <ul class="sub-menu">
-                    <li class="add-menu-left">
-                        <ul>
-                            <li><a asp-page="/Account/Edit"><span>Edit Account</span></a></li>
-                            <li><a asp-page="Main_Login" asp-page-handler="Logout"><span>Logout</span></a></li>
-                        </ul>
-                    </li>
-                </ul>
-            }
-        </li>*@
+                             
 
                             </ul>
 
