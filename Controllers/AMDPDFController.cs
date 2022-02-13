@@ -53,7 +53,7 @@ namespace afterlife_caretakers.Controllers
             SqlCommand selectuser = new SqlCommand(usersql, conSelect);
             conSelect.Open();
             SqlDataReader reader2 = selectuser.ExecuteReader();
-            reader.Read();
+            reader2.Read();
             string uname = reader2["name"].ToString();
             string unric = reader2["NRIC"].ToString();
             string ugender = reader2["gender"].ToString();
