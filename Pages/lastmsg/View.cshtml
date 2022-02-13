@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model afterlife_caretakers.Pages.lastmsg.ViewModel
 @{
     ViewData["Title"] = "View - Last message";
@@ -46,7 +46,7 @@
                         {
                             <span>after @Model.Video.releasePeriod week(s) from my passing.</span>
                         }
-                         <a asp-for="/lastmsg/update">(Update video release?)</a>
+                        <a asp-for="/lastmsg/update">(Update video release?)</a>
                     </center>
                 </div>
                 <div class="col-lg-12 mb-30">
@@ -55,8 +55,36 @@
                         <span>Written Memo: </span>
                         <span>@Model.Video.writtenMemo</span> <a asp-for="/lastmsg/update">(Update written memo?)</a>
                     }
+
+                </div>
+                <div class="col-lg-12 mb-30">
+                    The following beneficaries are allowed to watch after my passing;
+                    @if (Model.AllPermissions != null)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Email of Beneficaries</th>
+                                    <th scope="col">Remove?</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.AllPermissions)
+                                {
+                                    if (item.video_id == Model.Video.Id)
+                                    {
+                                        <tr>
+                                            <th scope="row">@item.bene_id</th>
+                                            <td><a asp-page="/prefuneral/DeleteCasket" asp-route-id="@item.video_id"><i class="fa fa-trash" aria-hidden="true"></i> Delete</a></td>
+                                        </tr>
+                                    }
+
+                                }
+                            </tbody>
+                        </table>
+                    }
+                    <a asp-page="/lastmsg/AddBene" asp-route-id="@Model.Video.Id" style="color:blue"><i class="fa fa-plus" aria-hidden="true"></i> Add Beneficary</a>
                     
                 </div>
             </div>
-    </div>
 </section>
