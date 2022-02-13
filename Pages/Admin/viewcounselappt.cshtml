@@ -1,0 +1,70 @@
+﻿@page
+@model afterlife_caretakers.Pages.Admin.viewcounselapptModel
+@{
+    ViewData["Title"] = "My Counsellor Appointments";
+}
+
+<section class="section-area section-sp1 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-7 col-xl-8 mb-30 mb-md-50">
+                <!-- blog start -->
+
+                <div class="blog-card blog-single" id="comment-list">
+                    <div class="comments-area" id="comments">
+                        <h4 class="widget-title">Upcoming Appointments</h4>
+
+                        <div class="clearfix">
+                            <!-- comment list END -->
+                            <ol class="comment-list">
+                                <li class="comment">
+
+                                    @{ if (Model.allmyappt != null)
+                                        {
+                                            @foreach (var appt in Model.allmyappt)
+                                            {
+                                                if (appt.ApptType == "Counselling" && appt.ConsultId == Model.Id)
+                                                {
+                                                    
+
+                                                        var time = appt.StartTime + (appt.Duration * 100);
+
+                                                    <div class="comment-body">
+                                                        <div class="comment-author vcard">
+
+                                                            <!-- <img class="avatar photo" src="images/serviceprofiles/counsellors/c2.jpg" alt=""> -->
+                                                            <div class="clearfix">
+                                                                <cite class="fn">@appt.ApptType  Appointment with @appt.ConsultName</cite>
+                                                                <span class="says">says:</span>
+                                                                <div class="comment-meta"> <a href="javascript:void(0);">@appt.Date.ToShortDateString() FROM @appt.StartTime - @time </a> </div>
+                                                            </div>
+                                                        </div>
+                                                        <p>Contact your consultee to confirm location of physical appointment</p>
+                                                    </div>
+                                                    }
+                                                
+
+                                            }
+                                        }
+                                    }
+
+
+                                </li>
+                            </ol>
+
+                        </div>
+
+                       
+
+
+                    </div>
+                </div>
+                <!-- blog END -->
+            </div>
+
+            
+
+        </div>
+    </div>
+</section>
+
