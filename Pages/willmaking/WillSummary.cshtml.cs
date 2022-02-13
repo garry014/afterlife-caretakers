@@ -91,7 +91,12 @@ namespace afterlife_caretakers.Pages.willmaking
         public IActionResult OnPostSummaryNext()
         {
             //return Page();
-            return RedirectToPage("Payment");
+            //return RedirectToPage("Payment");
+            //displaying signature page + redirection.
+            string referralLink = "/willmaking/payment";
+            HttpContext.Session.SetString("SignatureRedirectBack", referralLink);
+
+            return LocalRedirect("/Signature");
 
         }
         public IActionResult OnPostExecBack()
