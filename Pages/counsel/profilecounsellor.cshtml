@@ -1,4 +1,4 @@
-﻿@page "{id}"
+@page "{id}"
 @model afterlife_caretakers.Pages.counsel.profilecounsellorModel
 @{
     ViewData["Title"] = "Counsellor Profile";
@@ -117,7 +117,7 @@
 
                                     @foreach (var coun in Model.allconsults)
                                     {
-                                        @if (coun.ServiceStatus == true)
+                                        @if (coun.ServiceStatus == true && coun.ServiceType =="Counselling")
                                         {
                                             <div class="widget-post clearfix">
                                                 <div class="ttr-post-media">  <img src="/images/profiles/counselling/@coun.ProfileImg" width="200" height="143" alt=""> </div>
