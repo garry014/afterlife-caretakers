@@ -34,5 +34,7 @@ namespace afterlife_caretakers.Models
         public string deathcert_upload { get; set; }
         
         public string deathdate_setting { get; set; }
+        
+        public string address { get; set; }
     }
 }
