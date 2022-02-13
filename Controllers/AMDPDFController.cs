@@ -79,11 +79,11 @@ namespace afterlife_caretakers.Controllers
             graphics.DrawString("Name: Nina Tan", font, PdfBrushes.Black, new PointF(0, 150));
             graphics.DrawString("NRIC: S1234567A", font, PdfBrushes.Black, new PointF(0, 170));
             graphics.DrawString("Gender: Female", font, PdfBrushes.Black, new PointF(0, 190));
-            graphics.DrawString("Date of Birth: 08/15/1950" + wnric, font, PdfBrushes.Black, new PointF(0, 210));
-            graphics.DrawString("Address: Yishun Ave 2, Blk 700" + wnric, font, PdfBrushes.Black, new PointF(0, 230));
-            graphics.DrawString("Postal Code: Singapore 769098" + wnric, font, PdfBrushes.Black, new PointF(0, 250));
-            graphics.DrawString("Home Number: 65985462" + wnric, font, PdfBrushes.Black, new PointF(0, 270));
-            graphics.DrawString("Office Number: 63663248" + wnric, font, PdfBrushes.Black, new PointF(0, 290));
+            graphics.DrawString("Date of Birth: 08/15/1950", font, PdfBrushes.Black, new PointF(0, 210));
+            graphics.DrawString("Address: Yishun Ave 2, Blk 700", font, PdfBrushes.Black, new PointF(0, 230));
+            graphics.DrawString("Postal Code: Singapore 769098", font, PdfBrushes.Black, new PointF(0, 250));
+            graphics.DrawString("Home Number: 65985462", font, PdfBrushes.Black, new PointF(0, 270));
+            graphics.DrawString("Office Number: 63663248", font, PdfBrushes.Black, new PointF(0, 290));
 
             //witness
             graphics.DrawString("WITNESS OF THE ADVANCE MEDICAL DIRECTIVE", subheader, PdfBrushes.Black, new PointF(0, 340));
