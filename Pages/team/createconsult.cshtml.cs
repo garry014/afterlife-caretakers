@@ -17,21 +17,23 @@ namespace afterlife_caretakers.Pages.team
         private readonly IWebHostEnvironment webHostEnvironment;
 
         private readonly Services.ConsultService _svc;
-        private readonly Services.UserService _usvc;
+        //private readonly Services.UserService _usvc;
         private readonly Services.AdminService _asvc;
-        public createconsultModel( IWebHostEnvironment hostEnvironment, Services.ConsultService service, Services.UserService uservice, Services.AdminService aservice)
+        public createconsultModel( IWebHostEnvironment hostEnvironment, Services.ConsultService service, Services.AdminService aservice)
         {
             
             webHostEnvironment = hostEnvironment;
             _svc = service;
-            _usvc = uservice;
+            //_usvc = uservice;
             _asvc = aservice;
         }
 
         [BindProperty]
         public ConsultProfile Consult { get; set; }
+        
+
         [BindProperty]
-        public Users User { get; set; }
+        public Admins Admin { get; set; }
 
         [BindProperty]
         public List<Admins> Admins{get; set;}
@@ -58,7 +60,7 @@ namespace afterlife_caretakers.Pages.team
 
             if (userid != 0)
             {
-                User = _usvc.GetUserByID(userid);
+                Admin = _asvc.GetAdminByID(userid);
                 //Admins = _asvc.GetAllAdmin();
 
                 Consult = _svc.GetConsultByUserId(userid);
@@ -66,7 +68,7 @@ namespace afterlife_caretakers.Pages.team
                 {
                     return Redirect("/team/editconsult/" + Consult.Id);
                 }
-                System.Diagnostics.Debug.WriteLine("id and name: " + User.Id +" "+ User.name);
+                System.Diagnostics.Debug.WriteLine("id and name: " + Admin.Id +" "+ Admin.name);
                 
         
                 /////////////////trying to redirect//////////////////////
