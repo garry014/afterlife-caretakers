@@ -35,8 +35,12 @@ namespace afterlife_caretakers.Services
         }
         public MaritalInfo GetFianceById(int id)
         {
-            MaritalInfo theFiance = _context.Fiance.Where(f => f.Id == id).FirstOrDefault();
+            MaritalInfo theFiance = _context.Fiance.Where(f => f.OWNERID == id).FirstOrDefault();
             return theFiance;
+        }
+        public List<MaritalInfo> GetFianceByOwnerId(int ownerid)
+        {
+            return _context.Fiance.Where(f => f.OWNERID == ownerid).ToList();
         }
         private bool FianceExists(int id)
         {

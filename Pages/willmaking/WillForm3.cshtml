@@ -90,21 +90,11 @@
                         </table>
                         <br />
                         <div class="row">
-                            @{ if (Model.MyBeneficiary == null)
-                                {
-                                    <label>Do you have any beneficiaries?(if yes, please fill up the form below)</label>
-
-
-                                }
-                                else
-                                {
-                                    <label>Do you want to add more beneficiaries?</label>
-                                }
-                            }
                             <br>
-                            <button class="blueButton" onclick="setBeneficiary(true)" type="button">
+                            <button class="blueButton w-75" onclick="setBeneficiary(true)" type="button">
                                 Add Beneficiary
                             </button>
+                            <br />
                             <input type="hidden" asp-for="MyGift.Id" />
                             @*<div class="form-group col-md-8">
                                 <p>
@@ -121,51 +111,57 @@
                                 </p>
                             </div>*@
 
-                            <div id="bDetails" style="display:none; border:1px; border-style:solid;">
-                                <label>What are the details of your Beneficiary?</label>
+                        <div id="bDetails" style="display:none; border:1px; border-style:solid;">
+                            <br />
+                            <label>What are the details of your Beneficiary?</label>
 
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <label>Relationship to Will Maker:</label>
-                                    <input type="text" asp-for="MyBeneficiary.Relationship"
-                                           class="form-control" placeholder="Relationship eg.Mother">
-                                </div>
-
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <label>Beneficiary FullName:</label>
-                                    <input type="text" asp-for="MyBeneficiary.NAME"
-                                           class="form-control" placeholder="FullName">
-                                </div>
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <label>NRIC:</label>
-                                    <input type="text" asp-for="MyBeneficiary.NRIC"
-                                           class="form-control" placeholder="NRIC">
-                                </div>
-
-                                <!-- Calendar -->
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <label>Beneficiary BirthDate:</label>
-                                    <input type="date" asp-for="MyBeneficiary.Birthdate"
-                                           class="form-control" placeholder="BirthDate">
-                                </div>
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <label>Beneficiary Phone Number:</label>
-                                    <input type="text" asp-for="MyBeneficiary.PhoneNo"
-                                           class="form-control" placeholder="Phone Number">
-                                </div>
-                                @* this was the problem ! *@
-                                @*<input type="hidden" asp-for="MyBeneficiary.Id" />*@
-                                <!-- Adding another beneficiary -->
-                                <div class="form-group col-md-8" style="margin:8px;">
-                                    <p class="form-submit">
-                                        <button asp-page-handler="Form3AddBene" class="blueButton" id="addBeneficiaryBtn">
-                                            Add
-                                            Beneficiary
-                                        </button>
-                                    </p>
-                                    <br>
-                                    <br>
-                                </div>
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <label>Relationship to Will Maker:</label>
+                                <input type="text" asp-for="MyBeneficiary.Relationship"
+                                       class="form-control" placeholder="Relationship eg.Mother">
                             </div>
+
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <label>Beneficiary FullName:</label>
+                                <input type="text" asp-for="MyBeneficiary.NAME"
+                                       class="form-control" placeholder="FullName">
+                            </div>
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <label>NRIC:</label>
+                                <input type="text" asp-for="MyBeneficiary.NRIC"
+                                       class="form-control" placeholder="NRIC">
+                            </div>
+
+                            <!-- Calendar -->
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <label>Beneficiary BirthDate:</label>
+                                <input type="date" asp-for="MyBeneficiary.Birthdate"
+                                       class="form-control" placeholder="BirthDate">
+                            </div>
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <label>Beneficiary Phone Number:</label>
+                                <input type="text" asp-for="MyBeneficiary.PhoneNo"
+                                       class="form-control" placeholder="Phone Number">
+                            </div>
+                            @* this was the problem ! *@
+                            @*<input type="hidden" asp-for="MyBeneficiary.Id" />*@
+                            <!-- Adding another beneficiary -->
+                            <div class="form-group col-md-8" style="margin:8px;">
+                                <p class="form-submit">
+                                    <button asp-page-handler="Form3AddBene" class="blueButton w-50" id="addBeneficiaryBtn">
+                                        Add
+
+                                    </button>
+                                    <br />
+                                    <br />
+                                    <button class="btn w-50 btn-secondary btn-lg"  onclick="setBeneficiary(false)" type="button">
+                                        Cancel
+                                    </button>
+                                </p>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
                         </div>
                         <br>
                         <div class="row">

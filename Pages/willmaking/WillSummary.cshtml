@@ -70,27 +70,37 @@
                             @{ @if (Model.MyUser != null)
                                 {
 
-                        <div>
-                            Name: @Model.MyUser.name<br />
-                            NRIC: @Model.MyUser.NRIC<br />
-                            Mobile Number: @Model.MyUser.phoneno<br />
-                            Gender: @Model.MyUser.gender<br />
-                            Email: @Model.MyUser.email<br />
-                            Home Address: @Model.MyUser.address<br />
-                            <br />
-                            <div class="text-center">
-                                <form action="WillForm3.html">
-                                    @*<button name="submit" type="submit" value="Edit"
-                        class="btn btn-secondary"
-                        style="padding-left:60px; padding-right:60px; font-size:15px">
-                    Edit
-                </button>*@
-                                </form>
-                            </div>
-                            <br />
-                        </div>
+                                    <div>
+                                        Name: @Model.MyUser.name<br />
+                                        NRIC: @Model.MyUser.NRIC<br />
+                                        Mobile Number: @Model.MyUser.phoneno<br />
+                                        Gender: @Model.MyUser.gender<br />
+                                        Email: @Model.MyUser.email<br />
+                                        Home Address: @Model.MyUser.address<br />
+                                        <br />
+                                        <br />
+                                    </div>
                                 }
                             }
+                            <h3 style="margin-top:-25px">Marital Information</h3>
+                            @{ @if (Model.MyFiance != null)
+                                {
+
+                        <div>
+                            Marital Status: @Model.MyFiance.Mstatus<br />
+                            Name: @Model.MyFiance.NAME<br />
+                            NRIC: @Model.MyFiance.NRIC<br />
+                            Mobile Number: @Model.MyFiance.PhoneNo<br />
+                            Gender: @Model.MyFiance.Gender<br />
+                            Email: @Model.MyFiance.Email<br />
+                            <br />
+                            <br />
+                        </div>
+                        }
+                            }
+
+
+
                         </div>
                     </div>
 
@@ -114,12 +124,12 @@
                                             <div class="text-center">
                                                 <form method="post">
                                                     @*<button asp-page-handler="ExecBack"name="submit" type="submit" value="Edit"
-                                                            class="btn btn-secondary"
-                                                            style="padding-left:60px; padding-right:60px; font-size:15px">
-                                                        Edit
-                                                    </button>*@
+                                                                class="btn btn-secondary"
+                                                                style="padding-left:60px; padding-right:60px; font-size:15px">
+                                                            Edit
+                                                        </button>*@
                                                     @*<a asp-page="/willmaking/EditExec" asp-route-id="@item.Id"class="btn btn-secondary"
-                                                            style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>*@
+                                                        style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>*@
                                                 </form>
                                             </div>
                                             <br />
@@ -143,9 +153,9 @@
                                             <br />
                                             <div class="text-center">
                                                 @*<form method="post">
-                                                    <a asp-page="/willmaking/EditWitness" asp-route-id="@item.Id" class="btn btn-secondary"
-                                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
-                                                </form>*@
+                                                        <a asp-page="/willmaking/EditWitness" asp-route-id="@item.Id" class="btn btn-secondary"
+                                                           style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
+                                                    </form>*@
                                             </div>
                                             <br />
                                         </div>
@@ -160,34 +170,34 @@
 
                             @foreach (var item in Model.ownerBeneList)
                             {*@
-                <div class="form-group col-md-6">
-                    <div style="text-align: center; border-radius: 40px; padding-top: 78px; padding-bottom: 65px; margin-bottom:20px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
-                        <h3 style="margin-top:-25px">Beneficiary Details</h3>
-                        @{ @if (Model.MyBeneficiary != null)
-                            {
-
-                                @foreach (var item in Model.MyBeneficiary)
+                    <div class="form-group col-md-6">
+                        <div style="text-align: center; border-radius: 40px; padding-top: 78px; padding-bottom: 65px; margin-bottom:20px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
+                            <h3 style="margin-top:-25px">Beneficiary Details</h3>
+                            @{ @if (Model.MyBeneficiary != null)
                                 {
-                                    <div>
-                                        <h5>Beneficiary @item.Id</h5>
-                                        Relationship: @item.Relationship<br />
-                                        Name: @item.NAME<br />
-                                        NRIC: @item.NRIC<br />
-                                        Mobile Number: @item.PhoneNo<br />
-                                        <br />
-                                        <div class="text-center">
-                                              
+
+                                    @foreach (var item in Model.MyBeneficiary)
+                                    {
+                                        <div>
+                                            <h5>Beneficiary @item.Id</h5>
+                                            Relationship: @item.Relationship<br />
+                                            Name: @item.NAME<br />
+                                            NRIC: @item.NRIC<br />
+                                            Mobile Number: @item.PhoneNo<br />
+                                            <br />
+                                            <div class="text-center">
+
+                                            </div>
+                                            <br />
                                         </div>
-                                        <br />
-                                    </div>
+                                    }
                                 }
                             }
-                        }
+                        </div>
                     </div>
-                    </div>
-                            @*}
-                        }
-                    }*@
+                    @*}
+                            }
+                        }*@
 
                     <div class="form-group col-md-6">
                         <div style="text-align: center; border-radius: 40px; padding-top: 40px; padding-bottom: 40px; margin-left: 40px; margin-right: 40px; box-shadow: 1px 1px 10px #888888, 10px 12px #1F2278; ">
@@ -197,29 +207,29 @@
 
                                     @foreach (var item in Model.ownerGiftList)
                                     {
-                        <div>
-                            Type of Gift: @item.TYPE<br />
-                            Gift Name: @item.gift_type<br />
-                            Amount: @item.description<br />
-                            @{ if (@Model.beneDictionary.ContainsKey(item.BeneID))
-                                {
-                                    <td>@Model.beneDictionary[item.BeneID].NAME</td>
-                                }
-                                else
-                                {
-                                    <td>loading...</td>
-                                }
-                            }
+                                        <div>
+                                            Type of Gift: @item.TYPE<br />
+                                            Gift Name: @item.gift_type<br />
+                                            Amount: @item.description<br />
+                                            @{ if (@Model.beneDictionary.ContainsKey(item.BeneID))
+                                                {
+                                                    <td>@Model.beneDictionary[item.BeneID].NAME</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>loading...</td>
+                                                }
+                                            }
 
-                            <br />
-                            <div class="text-center">
-                                <form method="post">
-                                    <a asp-page="/willmaking/EditGift" asp-route-id="@item.Id" class="btn btn-secondary"
-                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
-                                </form>
-                            </div>
-                            <br />
-                        </div>
+                                            <br />
+                                            <div class="text-center">
+                                                <form method="post">
+                                                    <a asp-page="/willmaking/EditGift" asp-route-id="@item.Id" class="btn btn-secondary"
+                                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
+                                                </form>
+                                            </div>
+                                            <br />
+                                        </div>
                                     }
                                 }
                             }

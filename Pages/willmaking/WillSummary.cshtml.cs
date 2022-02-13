@@ -22,13 +22,13 @@ namespace afterlife_caretakers.Pages.willmaking
             _usvc = uservice;
         }
         [BindProperty]
+        public MaritalInfo MyFiance { get; set; }
+        [BindProperty]
         public Users MyUser { get; set; }
         [BindProperty]
         public  List<BeneficiaryInformation> MyBeneficiary { get; set; }
         [BindProperty]
         public PersonalInformation PersonalInfo { get; set; }
-        [BindProperty]
-        public MaritalInfo MyMarital { get; set; }
         [BindProperty]
         public ExecutorInformation MyExecutor { get; set; }
         [BindProperty]
@@ -49,6 +49,7 @@ namespace afterlife_caretakers.Pages.willmaking
             ownerGiftList = _svc.GetGiftFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             ownerExecList = _svc.GetExecutorFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             ownerWitnessList = _svc.GetWitnessFromOwner((int)HttpContext.Session.GetInt32("user_id"));
+            MyFiance = _svc.GetFianceById((int)HttpContext.Session.GetInt32("user_id"));
             var current_user = (int)HttpContext.Session.GetInt32("user_id");
             MyUser = _usvc.GetUserByID(current_user);
             initData();
@@ -72,6 +73,10 @@ namespace afterlife_caretakers.Pages.willmaking
             if (MyUser == null)
             {
                 Console.WriteLine("id found:" + MyUser.name);
+                return NotFound();
+            }
+            if (MyFiance == null)
+            {
                 return NotFound();
             }
             if (HttpContext.Session.GetString("usertype") == null)
