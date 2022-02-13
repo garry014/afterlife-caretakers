@@ -60,7 +60,7 @@ namespace afterlife_caretakers.Pages.Admin
                 HttpContext.Session.SetString("admin_type", acc.admin_role);
                 Console.WriteLine("Login with: " + acc.Id);
                 Console.WriteLine("Login with: " + acc.admin_role);
-                return RedirectToPage("../Admin/AdminHome");
+                return RedirectToPage("/Admin/AdminHome");
             }
             return Page();
         }
