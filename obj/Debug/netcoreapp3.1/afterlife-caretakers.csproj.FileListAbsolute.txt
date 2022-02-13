@@ -317,13 +317,8 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\P
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\counsel\teamcounsellors.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\doctor\doctorprofile.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\doctor\teamdoctors.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\createconsult.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\createwitnessconsult.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\editconsult.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\editwitnessconsult.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\viewadvisorappt.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\viewcounselappt.cshtml.g.cs
-C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\viewdoctorappt.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\viewwitnessappt.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\witness\teamwitnesses.cshtml.g.cs
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\createconsult.cshtml.g.cs
@@ -348,3 +343,13 @@ C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\R
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\editwitnessconsult.cshtml.g.cs
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\team\viewwitnessappt.cshtml.g.cs
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\witness\teamwitnesses.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\bin\Debug\netcoreapp3.1\SendGrid.dll
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\bin\Debug\netcoreapp3.1\StarkbankEcdsa.dll
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerification.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerificationList.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\createconsult.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\editconsult.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\EmailConfirmation_Admin.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewadvisorappt.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewcounselappt.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\viewdoctorappt.cshtml.g.cs
