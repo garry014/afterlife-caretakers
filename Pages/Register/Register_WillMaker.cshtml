@@ -47,7 +47,11 @@
                                                 <span asp-validation-for="MyUsers.phoneno" class="text-danger"></span>
                                             </div>
                                         </div>
-                                    </div>                               
+                                    </div>      
+                                     <div class="form-group">
+                                        <input asp-for="MyUsers.address" placeholder="Address" class="form-control" />
+                                        <span asp-validation-for="MyUsers.address" class="text-danger"></span>
+                                    </div>
                                     <div class="form-group" align="left">
                                         <label class="col-sm-2 col-form-label">Gender:</label>
                                         @Html.RadioButton("MyUsers.gender", "M")  <span>Male</span>
