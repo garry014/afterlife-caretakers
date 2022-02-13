@@ -25,11 +25,11 @@ namespace afterlife_caretakers.Pages.prefuneral
         
         public IActionResult OnGet()
         {
-            if (HttpContext.Session.GetString("usertype") == null)
+            if (HttpContext.Session.GetString("admin_type") == null)
             {
                 return NotFound();
             }
-            if (HttpContext.Session.GetString("usertype") == "Admin")
+            if (HttpContext.Session.GetString("admin_type").Contains("General_Admin"))
             {
                 allcaskets = _svc.GetAllCaskets();
                 return Page();
