@@ -1,4 +1,4 @@
-﻿@page
+@page
 @model afterlife_caretakers.Pages.amd.amdpaymentModel
 @{
     ViewData["Title"] = "AMD Payment";
@@ -67,8 +67,7 @@
                                 <h4 style="text-align:center;">Payment Summary</h4>
                                 <div class="container text-center" style="font-size:16px; width:60%">
                                     <span style="font-weight:bold">AMD Form:</span> $30<br />
-                                    <span style="font-weight:bold">Doctor Appointment:</span> $20 <br />
-                                    <div style="font-size:20px"><u><span style="font-weight:bold">Total:</span> $60 </u></div>
+                                    <div style="font-size:20px"><u><span style="font-weight:bold">Total:</span> $30 </u></div>
                                     <br />
                                 </div>
                                 <h4 style="text-align:center; margin-top:20px">Payment Mode</h4>
@@ -102,7 +101,7 @@
 
                                                 createOrder: function (data, actions) {
                                                     return actions.order.create({
-                                                        purchase_units: [{ "amount": { "currency_code": "SGD", "value": "60" } }]
+                                                        purchase_units: [{ "amount": { "currency_code": "SGD", "value": "30" } }]
                                                     });
                                                 },
 
