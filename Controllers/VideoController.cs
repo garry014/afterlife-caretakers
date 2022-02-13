@@ -14,6 +14,10 @@ namespace afterlife_caretakers.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            if(HttpContext.Session.GetInt32("user_id") == null)
+            {
+                return NotFound();
+            }
             return View();
         }
 

@@ -38,6 +38,7 @@ namespace afterlife_caretakers.Controllers
             SqlDataReader reader = selectstatus.ExecuteReader();
             reader.Read();
             string name = reader["religion"].ToString();
+            string rites = reader["rites"].ToString();
 
             //Create a new PDF document
             PdfDocument document = new PdfDocument();
@@ -64,7 +65,7 @@ namespace afterlife_caretakers.Controllers
             //Draw the text
             //can text me if you need any help for this part, for the button its in "amdpdf.cshtml"
             //title
-            graphics.DrawString("FUNERAL PLAN", title, PdfBrushes.Black, new PointF(205, 80));
+            graphics.DrawString("PRE-FUNERAL PLANNING", title, PdfBrushes.Black, new PointF(205, 80));
 
             //content
             graphics.DrawString("Religion", subheader, PdfBrushes.Black, new PointF(0, 130));
