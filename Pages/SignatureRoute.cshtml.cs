@@ -20,8 +20,8 @@ namespace afterlife_caretakers.Pages
         }
 
         private readonly IWebHostEnvironment webHostEnvironment;
+        public Funeral Funeral { get; set; }
 
-        
         public IActionResult OnGet()
         {
             if (string.IsNullOrEmpty(HttpContext.Session.GetString("ESignatureFile")))
@@ -43,19 +43,26 @@ namespace afterlife_caretakers.Pages
                     string[] linkList = HttpContext.Session.GetString("SignatureRedirectBack").Split("?id=");
                     Int32.TryParse(linkList[1], out x);
 
-                    System.Diagnostics.Debug.WriteLine(linkList[1],x);
-                    Funeral Funeral = _svc.GetFuneralByFuneralId(x);
+                    //Funeral Funeral = _svc.GetFuneralByFuneralId(x);
 
                     var included = new[] { "Signature" };
-                    
-                    Funeral.PlaquePhoto = "sss";//HttpContext.Session.GetString("ESignatureFile");
+                    Funeral Funeral = new Funeral();
+                    Funeral.Id = x;
+                    Funeral.Signature = HttpContext.Session.GetString("ESignatureFile").ToString();
+
                     if (_svc.UpdateFuneral(Funeral, included) == true)
                     {
                         return Redirect(HttpContext.Session.GetString("SignatureRedirectBack"));
                     }
+                    else
+                        return BadRequest();
                 }
-                // DO NOT CHANGE THIS
-                return Redirect(HttpContext.Session.GetString("SignatureRedirectBack"));
+                else
+                {
+                    // DO NOT CHANGE THIS
+                    return Redirect(HttpContext.Session.GetString("SignatureRedirectBack"));
+                }
+                
             }
             return NotFound();
         }
