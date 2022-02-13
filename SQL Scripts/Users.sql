@@ -8,10 +8,12 @@ CREATE TABLE [dbo].[Users] (
     [usertype]          VARCHAR (100) NOT NULL,
     [NRIC]              VARCHAR (9)   NOT NULL,
     [willformID]        VARCHAR (100) NULL,
-    [NRIC_upload]       VARCHAR (100) NULL,
+    [NRIC_upload]       VARCHAR (MAX) NULL,
     [activation_status] VARCHAR (200) NULL,
-    [deathcert_upload]  VARCHAR (100) NULL,
-    [deathdate_setting] DATETIME NULL, 
+    [deathcert_upload]  VARCHAR (MAX) NULL,
+    [deathdate_setting] VARCHAR (50)  NULL,
+    [address]           VARCHAR (MAX) NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
 
