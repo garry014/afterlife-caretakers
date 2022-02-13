@@ -15968,5 +15968,54 @@ footer {
     .footer .pt-img4 {
       bottom: 40px;
       sright: 0px; } }
+.BButton {
+    background-color: saddlebrown;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 15px 30px;
+    border: 2px solid;
+    border-color: saddlebrown;
+    border-radius: 8px;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    line-height: 1.2;
+}
+
+    .BButton:hover,
+    .BButton:focus,
+    .BButton:active {
+        background-color: saddlebrown;
+    }
+.blueButton {
+    background-color: #565acf;
+    color: #fff;
+    display: inline-block;
+    font-weight: 500;
+    font-size: 14px;
+    padding: 15px 30px;
+    border: 2px solid;
+    border-color: #565acf;
+    border-radius: 8px;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+    line-height: 1.2;
+}
+
+    .blueButton:hover,
+    .blueButton:focus,
+    .blueButton:active {
+        background-color: #4247c9;
+    }
+
+.input-group-text {
+    background-color: pink;
+    height: 61px;
+}
 
 /*# sourceMappingURL=style.css.map */
