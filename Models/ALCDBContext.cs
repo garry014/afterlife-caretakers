@@ -34,6 +34,12 @@ namespace afterlife_caretakers.Models
         public DbSet<AMDWitness> amdwitness { get; set; }
         public DbSet<Admins> admins { get; set; }
         public static object Admin { get; internal set; }
+        public DbSet<PersonalInformation> Personal { get; set; }
+        public DbSet<BeneficiaryInformation> Beneficiary { get; set; }
+        public DbSet<MaritalInfo> Fiance { get; set; }
+        public DbSet<Gift> Asset { get; set; }
+        public DbSet<ExecutorInformation> Executor { get; set; }
+        public DbSet<WitnessInformation> Witness { get; set; }
         
     }
 }
