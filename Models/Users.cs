@@ -37,4 +37,14 @@ namespace afterlife_caretakers.Models
         
         public string address { get; set; }
     }
+    
+     public class PhotoClass
+    {
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        [MaxFileSize(5 * 1024 * 1024)]
+        public IFormFile Image { get; set; }
+        [AllowedExtensions(new string[] { ".jpg", ".png" })]
+        [MaxFileSize(5 * 1024 * 1024)]
+        public IFormFile Image2 { get; set; }
+    }
 }
