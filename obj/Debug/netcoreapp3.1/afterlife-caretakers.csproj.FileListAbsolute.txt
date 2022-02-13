@@ -128,3 +128,4 @@ C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\P
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\amd\amdwitness.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\amd\amdwitnessu.cshtml.g.cs
 C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Shared\_navbaradmin.cshtml.g.cs
+C:\Users\gary1\Desktop\todo\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\lastmsg\intro.cshtml.g.cs
