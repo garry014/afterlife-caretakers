@@ -8,10 +8,11 @@ namespace afterlife_caretakers.Models
     public enum AdminRoles
     {
         General_Admin,
-        Doctor,
-        Will_Advisor,
-        Grief_Counsellor,
-        Sales_Team
+        Sales_Team,
+        Counselling,
+        Advisor,
+        Doctor
+        
 
     }
 }
