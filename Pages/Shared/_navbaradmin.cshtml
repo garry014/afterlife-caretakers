@@ -73,8 +73,11 @@
                         </div>
                         <div class="menu-links navbar-collapse collapse justify-content-end" id="menuDropdown">
                             <div class="menu-logo">
+                                
                                 <a href="index.html"><img src="images/logo-white.png" alt=""></a>
                             </div>
+                             @if (Context.Session.GetString("user_id") != null)
+                            {
                             <ul class="nav navbar-nav">
                                 <li class="active"><a asp-page="/Admin/AdminHome">Home</a></li>
                                 <li>
@@ -165,7 +168,7 @@
 
                             </ul>
 
-
+            }
 
                             <!--
                                 <li>
