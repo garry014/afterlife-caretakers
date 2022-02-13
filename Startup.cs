@@ -39,6 +39,10 @@ namespace afterlife_caretakers
             services.AddTransient<AdminService>();
             services.AddTransient<AMDService>();
             services.AddTransient<WillService>();
+            services.AddTransient<ConsultService>();
+            services.AddTransient<BookingService>();
+            services.AddTransient<WitnessService>();
+            services.AddTransient<WitBooking>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
