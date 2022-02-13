@@ -1,0 +1,160 @@
+﻿@page "{id}"
+@model afterlife_caretakers.Pages.appointment.paymentapptModel
+@{
+    ViewData["Title"] = "Confirmation & Payment - Wake/Funeral Planning";
+}
+
+<style>
+    @@media (min-width:1000px) {
+        #dynamicParent {
+            padding-left: 20%;
+            padding-right: 20%;
+        }
+    }
+
+    .caps {
+        text-transform: capitalize;
+    }
+</style>
+
+<!-- Inner Banner -->
+<div class="banner-wraper">
+    <div class="page-banner banner-lg contact-banner" style="background-image:url(/images/banner/img1.jpg);">
+        <div class="container">
+            <div class="page-banner-entry text-center">
+                <h1>Pre-Funeral Planning</h1>
+                <!-- Breadcrumb row -->
+                <nav aria-label="breadcrumb" class="breadcrumb-row">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Pre-Funeral Planning</li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb row END -->
+</div>
+<!-- Inner Banner end -->
+<!-- About us -->
+<section class="">
+    <div class="container">
+        <div class="contact-wraper">
+            <div class="row">
+                <div class="col-lg-12 mb-30">
+                    <form class="form-wraper contact-form" method="post" id="theForm">
+
+                        <div class="stepper-wrapper">
+                            <div class="stepper-item completed">
+                                <div class="step-counter">1</div>
+                                <div class="step-name">Choose Service:<br /> Counselling</div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">2</div>
+                                <div class="step-name">Choose Consultant:<br /> @Model.Appt.ConsultName</div>
+                            </div>
+                            <div class="stepper-item completed">
+                                <div class="step-counter">3</div>
+                                <div class="step-name">Appointment Details</div>
+                            </div>
+                            <div class="stepper-item active">
+                                <div class="step-counter">4</div>
+                                <div class="step-name">Payment</div>
+                            </div>
+
+
+                        </div>
+
+                        <div style="display:none;">
+                            @*<input type="hidden" asp-for="Appt.Location" />*@
+                            @*<input type="hidden" asp-for="Funeral.TimeStamp">*@
+                            @*<input type="text" asp-for="Funeral.Religion" />
+                            <input type="text" asp-for="Funeral.WakeLocationIn">
+                            <input type="text" asp-for="Funeral.WakePostalCode">
+                            <input type="text" asp-for="Funeral.LocationAttire">
+                            <input type="text" asp-for="Funeral.FuneralVechicle">
+                            <input type="text" asp-for="Funeral.FinalRestingPlace">
+                            <input type="text" asp-for="Funeral.ColumbariumName">
+                            <input type="text" asp-for="Funeral.PlaqueName">
+                            <input type="text" asp-for="Funeral.CasketID">
+                            <input type="text" asp-for="Funeral.PaymentAmount">*@
+                        </div>
+
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <center><h5><u>Review and Confirm</u></h5></center>
+                        
+                        <div class="row" id="dynamicParent">
+                            <h6>Appointment</h6>
+                            <p>@Model.Appt.ApptType Appointment with @Model.Appt.ConsultName (Rate: $@Model.Appt.ConsultRate /hr) <br />
+                            @Model.Appt.Date.ToShortDateString() , from @Model.Appt.StartTime - @Model.time  </p>
+
+                        
+                            <br /><hr />
+                            <h5><u>Proceed to Payment</u></h5>
+                            <div id="smart-button-container" style="border:3px solid black; padding: 0 10% 0 10%">
+                                <span style="font-weight: bold;"><center>Pay today and Pay: <u>$@Model.totalSum</u></center></span>
+                                <div style="text-align: center;">
+                                    <div id="paypal-button-container"></div>
+                                </div>
+                            </div>
+                            <script src="https://www.paypal.com/sdk/js?client-id=Afak9C3leieUEjRHO3_Al31aSkkPXgkWXLVzh5YuTAG8tKqqVP7j6WYGwMoKeqW5pRPZ6CdyCwW1sXBz"></script>
+
+
+                            <div id="paypal-button-container" ></div>
+
+                            <!-- Add the checkout buttons, set up the order and approve the order -->
+                            <script src="https://www.paypal.com/sdk/js?client-id=Afak9C3leieUEjRHO3_Al31aSkkPXgkWXLVzh5YuTAG8tKqqVP7j6WYGwMoKeqW5pRPZ6CdyCwW1sXBz&currency=SGD"
+                                    data-sdk-integration-source="button-factory"></script>
+
+                            <br>
+                            
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+<script>
+    function alertbox() {
+        alert("Payment successful!");
+    }
+    function initPayPalButton() {
+
+        paypal.Buttons({
+            style: {
+                shape: 'rect',
+                color: 'gold',
+                layout: 'vertical',
+                label: 'checkout',
+
+            },
+
+            createOrder: function (data, actions) {
+                return actions.order.create({
+                    purchase_units: [{ "amount": { "currency_code": "SGD", "value": @Model.totalSum } }]
+                });
+            },
+
+            onApprove: function (data, actions) {
+                return actions.order.capture().then(function (details) {
+                    console.log(data);
+                    document.getElementById('theForm').submit(); // make sure you labelled your form as theForm
+                    
+                });
+            },
+
+            onError: function (err) {
+                console.log(err);
+
+            }
+        }).render('#paypal-button-container');
+                                                            }
+    initPayPalButton();
+</script>
+}

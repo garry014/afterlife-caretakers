@@ -1,0 +1,180 @@
+﻿@page "{id}"
+@model afterlife_caretakers.Pages.counsel.profilecounsellorModel
+@{
+    ViewData["Title"] = "Counsellor Profile";
+}
+
+<div class="page-content bg-white">
+    <!-- Inner Banner -->
+    <div class="banner-wraper">
+        <div class="page-banner" style="background-image:url(images/banner/img1.jpg);">
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1>Our Counsellors</h1>
+                    <!-- Breadcrumb row -->
+                    <nav aria-label="breadcrumb" class="breadcrumb-row">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="index.html">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home">
+                                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                                    </svg> Home
+                                </a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="teamcounsellors.html">Our Counsellors</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">@Model.Consult.ConsultName</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+            <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+            <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+        </div>
+        <!-- Breadcrumb row END -->
+    </div>
+    <!-- Inner Banner end -->
+
+    <section class="section-area section-sp1 bg-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-7 col-xl-8 mb-30 mb-md-50">
+                    <!-- blog start -->
+                    <div class="blog-card blog-single">
+
+                        <div class="info-bx">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    
+                                    <div class="col-lg-5 mb-30">
+                                        <img src="/images/profiles/counselling/@Model.Consult.ProfileImg" alt="">
+                                        <!-- <img style="border-radius: 25px;" class="about-thumb2" src="images/serviceprofiles/counsellors/c2.jpg" alt="" /> -->
+                                    </div>
+                                    <div class="col-lg-6 mb-30">
+                                        <div class="heading-bx">
+                                            <!-- <h6 class="title-ext text-secondary">About Us</h6> -->
+                                            <h2 class="title">@Model.Consult.ConsultName</h2>
+                                            <span class="text-secondary">Rate: $@Model.Consult.Rate/hr</span>
+                                            @if (Model.Consult.ServiceStatus == true)
+                                            {
+                                                <p>
+                                                    Experience: @Model.Consult.Experience years <br />
+
+                                                    Status: <span style="color:forestgreen;">Available</span>
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    Experience: @Model.Consult.Experience years <br />
+
+                                                    Status: <span style="color:red;">Not Available</span>
+                                                </p>
+                                            }
+
+                                        </div>
+                                        @if (Model.Consult.ServiceStatus == true)
+                                        {
+                                            <a asp-page="/appointment/apptdate" asp-route-id="@Model.Consult.Id" class="btn btn-secondary btn-lg shadow">Book Appointment with Me!</a>
+                                        } else { 
+                                            <p>Sorry, booking with me is not available for now.</p>
+                                        }
+                                        
+                                        </div>
+                                </div>
+                            </div>
+
+                            <div class="ttr-post-text">
+
+                                <p>
+                                    @Model.Consult.Description1
+                                </p>
+
+                                <!-- <blockquote class="wp-block-quote">
+        <p> <br /><br /></p>
+    </blockquote> -->
+
+                                <p>@Model.Consult.Description2</p>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12 col-lg-5 col-xl-4 mb-30">
+                    <aside class="side-bar sticky-top aside-bx">
+                        <div class="widget recent-posts-entry">
+                            <h4 class="widget-title">Other Counsellors</h4>
+                            <a asp-page="/counsel/teamcounsellors" class="btn btn-primary light">View All Our Counsellors</a> <br /><br />
+                        <div class="widget-post-bx">
+
+                            @{ if (Model.allconsults != null)
+                                {
+
+                                    @foreach (var coun in Model.allconsults)
+                                    {
+                                        @if (coun.ServiceStatus == true)
+                                        {
+                                            <div class="widget-post clearfix">
+                                                <div class="ttr-post-media">  <img src="/images/profiles/counselling/@coun.ProfileImg" width="200" height="143" alt=""> </div>
+                                                <div class="ttr-post-info">
+
+
+                                                    <div class="ttr-post-header">
+                                                        <h6 class="post-title"><a href="#">@coun.ConsultName</a></h6>
+                                                    </div>
+                                                    <ul class="post-meta">
+                                                        <li class="date">Rate: $@coun.Rate/hr</li>
+                                                    </ul>
+                                                    <span style="color:forestgreen;">Available</span>
+                                                                                                                                                                
+
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+
+                                        }
+                                    }
+                                    }
+                                }
+
+
+                                                                                                                                            @*<div class="widget-post clearfix">
+                <div class="ttr-post-media"> <img src="images/serviceprofiles/counsellors/c1.jpg" width="200" height="160" alt=""> </div>
+                <div class="ttr-post-info">
+                    <div class="ttr-post-header">
+                        <h6 class="post-title"><a href="#">Janine Lee</a></h6>
+                    </div>
+                    <ul class="post-meta">
+                        <li class="date">Rate: $40/hr</li>
+                    </ul>
+                    <span style="color:forestgreen;">Available</span>
+                </div>
+            </div>
+            <div class="widget-post clearfix">
+                <div class="ttr-post-media"> <img src="images/serviceprofiles/counsellors/c6.jpg" width="200" height="160" alt=""> </div>
+                <div class="ttr-post-info">
+                    <div class="ttr-post-header">
+                        <h6 class="post-title"><a href="#">Nora See</a></h6>
+                    </div>
+                    <ul class="post-meta">
+                        <li class="date">Rate: $40/hr</li>
+                    </ul>
+                    <span style="color:forestgreen;">Available</span>
+                </div>
+            </div>*@
+                                                                                                                                        </div>
+                        </div>
+
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

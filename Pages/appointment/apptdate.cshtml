@@ -1,0 +1,186 @@
+﻿@page
+@model afterlife_caretakers.Pages.appointment.apptdateModel
+@{
+}
+<style>
+
+    .stepper-wrapper {
+        margin-top: auto;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+    }
+
+    .stepper-item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+    }
+
+        .stepper-item::before {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #ccc;
+            width: 100%;
+            top: 20px;
+            left: -50%;
+            z-index: 2;
+        }
+
+        .stepper-item::after {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #ccc;
+            width: 100%;
+            top: 20px;
+            left: 50%;
+            z-index: 2;
+        }
+
+        .stepper-item .step-counter {
+            position: relative;
+            z-index: 5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ccc;
+            margin-bottom: 6px;
+        }
+
+        .stepper-item.active {
+            font-weight: bold;
+        }
+
+        .stepper-item.completed .step-counter {
+            background-color: #4bb543;
+        }
+
+        .stepper-item.completed::after {
+            position: absolute;
+            content: "";
+            border-bottom: 2px solid #4bb543;
+            width: 100%;
+            top: 20px;
+            left: 50%;
+            z-index: 3;
+        }
+
+        .stepper-item:first-child::before {
+            content: none;
+        }
+
+        .stepper-item:last-child::after {
+            content: none;
+        }
+
+    .step-name {
+        text-align: center;
+    }
+</style>
+
+<div class="page-content bg-white">
+
+    <!-- Inner Banner -->
+    <div class="banner-wraper">
+        <div class="page-banner" style="background-image:url(images/banner/img1.jpg);">
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1>Book Counselling Appointment</h1>
+                    <!-- Breadcrumb row -->
+                    <nav aria-label="breadcrumb" class="breadcrumb-row">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Booking</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+            <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+            <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+        </div>
+        <!-- Breadcrumb row END -->
+    </div>
+    <!-- Inner Banner end -->
+    <!-- Appointment -->
+    <section class="section-area section-sp2 appointment-wraper">
+        <div class="container">
+            <div class="col-lg-12 mb-30">
+                <div class="stepper-wrapper">
+                    <div class="stepper-item completed">
+                        <div class="step-counter">1</div>
+                        <div class="step-name">Choose Service:<br /> Counselling</div>
+                    </div>
+                    <div class="stepper-item completed">
+                        <div class="step-counter">2</div>
+                        <div class="step-name">Choose Consultant:<br /> @Model.Consult.ConsultName</div>
+                    </div>
+                    <div class="stepper-item active">
+                        <div class="step-counter">3</div>
+                        <div class="step-name">Appointment Details</div>
+                    </div>
+                    <div class="stepper-item">
+                        <div class="step-counter">4</div>
+                        <div class="step-name">Payment</div>
+                    </div>
+
+
+                </div>
+            </div>
+            <br />
+            <div class="row justify-content-center">
+                <div class="col-xl-8 col-lg-8 col-md-7">
+                    <div class="appointment-form form-wraper">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <h3 class="title">Book @Model.Consult.ServiceType Appointment</h3>
+                        <p>@Model.Consult.ServiceType Appointment with @Model.Consult.ConsultName<span class="text-secondary"> (Rate: $@Model.Consult.Rate/hr)</span> </p>
+
+                        <form id="thisform" method="post">
+                            <input type="hidden" asp-for="Consult.Id" />
+                            <input type="hidden" asp-for="Consult.Description1" />
+                            <input type="hidden" asp-for="Consult.Description2" />
+                            <input type="hidden" asp-for="Consult.ServiceType">
+                            <input type="hidden" asp-for="Consult.ConsultName">
+                            
+                            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                            <div><label>@Model.ValidateMsg</label></div>
+                            <div class="form-group" id="Date">
+                                <input asp-for="Appt" type="date" min="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" value="@DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")" class="form-control" id="dateres"  placeholder="Day of Appointment" required>
+
+                            </div>
+                            <script>
+                                //var today = new Date().toISOString().split('T')[0];
+                                //document.getElementsByName("dateres")[0].setAttribute('min', today);
+                                function myFunction() {
+                                    var today = new Date();
+                                    var date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+                                    var x = document.getElementById("dateres").min;
+                                    document.getElementById("demo").innerHTML = x;
+                                }
+                               
+                            </script>
+
+
+                            <br />
+                            <button name="submit" type="submit" value="Submit" class="btn btn-secondary btn-lg shadow">Continue to Appointment Details</button>
+                            @*<button onclick="document.getElementById('thisform').submit();" class="btn btn-secondary btn-lg shadow">Check Payment Summary</button>*@
+                            @*<a href="bookcounsellorvalidate.html" class="btn btn-secondary btn-lg shadow">Check Payment Summary</a>*@
+                            <!-- <button type="submit" class="btn btn-secondary btn-lg">Check Payment Summary</button> -->
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

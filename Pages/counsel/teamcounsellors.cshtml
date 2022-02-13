@@ -1,0 +1,228 @@
+﻿@page
+@model afterlife_caretakers.Pages.counsel.teamcounsellorsModel
+@{
+    ViewData["Title"] = "Counsellors Team";
+}
+<style>
+
+		.stepper-wrapper {
+			margin-top: auto;
+			display: flex;
+			justify-content: space-between;
+			margin-bottom: 20px;
+		}
+
+		.stepper-item {
+			position: relative;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			flex: 1;
+
+			@*@media (max-width: 768px) {
+				font-size: 12px;
+			}*@
+		}
+
+			.stepper-item::before {
+				position: absolute;
+				content: "";
+				border-bottom: 2px solid #ccc;
+				width: 100%;
+				top: 20px;
+				left: -50%;
+				z-index: 2;
+			}
+
+			.stepper-item::after {
+				position: absolute;
+				content: "";
+				border-bottom: 2px solid #ccc;
+				width: 100%;
+				top: 20px;
+				left: 50%;
+				z-index: 2;
+			}
+
+			.stepper-item .step-counter {
+				position: relative;
+				z-index: 5;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: #ccc;
+				margin-bottom: 6px;
+			}
+
+			.stepper-item.active {
+				font-weight: bold;
+			}
+
+			.stepper-item.completed .step-counter {
+				background-color: #4bb543;
+			}
+
+			.stepper-item.completed::after {
+				position: absolute;
+				content: "";
+				border-bottom: 2px solid #4bb543;
+				width: 100%;
+				top: 20px;
+				left: 50%;
+				z-index: 3;
+			}
+
+			.stepper-item:first-child::before {
+				content: none;
+			}
+
+			.stepper-item:last-child::after {
+				content: none;
+			}
+
+		.step-name {
+			text-align: center;
+		}
+		/* HIDE RADIO */
+		[type=radio] {
+			position: absolute;
+			opacity: 0;
+			width: 0;
+			height: 0;
+		}
+
+			/* IMAGE STYLES */
+			[type=radio] + img {
+				cursor: pointer;
+			}
+
+			/* CHECKED STYLES */
+			[type=radio]:checked + img {
+				outline: 5px solid #008000;
+			}
+</style>
+
+<div class="page-content bg-white">
+
+    <!-- Inner Banner -->
+    <div class="banner-wraper">
+        <div class="page-banner" style="background-image:url(images/banner/img1.jpg);">
+            <div class="container">
+                <div class="page-banner-entry text-center">
+                    <h1>Our Counsellors</h1>
+                    <!-- Breadcrumb row -->
+                    <nav aria-label="breadcrumb" class="breadcrumb-row">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Our Counsellors</li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <img class="pt-img1 animate-wave" src="images/shap/wave-blue.png" alt="">
+            <img class="pt-img2 animate2" src="images/shap/circle-dots.png" alt="">
+            <img class="pt-img3 animate-rotate" src="images/shap/plus-blue.png" alt="">
+        </div>
+        <!-- Breadcrumb row END -->
+    </div>
+    <!-- Inner Banner end -->
+    <!-- Team -->
+    <section class="section-area section-sp1 team-wraper">
+        <div class="container">
+            <div class="col-lg-12 mb-30">
+                <div class="stepper-wrapper">
+                    <div class="stepper-item completed">
+                        <div class="step-counter">1</div>
+                        <div class="step-name">Choose Service: Counselling</div>
+                    </div>
+                    <div class="stepper-item active">
+                        <div class="step-counter">2</div>
+                        <div class="step-name">Choose Consultant</div>
+                    </div>
+                    <div class="stepper-item">
+                        <div class="step-counter">3</div>
+                        <div class="step-name">Appointment Details</div>
+                    </div>
+                    <div class="stepper-item">
+                        <div class="step-counter">4</div>
+                        <div class="step-name">Payment</div>
+                    </div>
+
+                </div>
+            </div>
+            <br />
+            <div class="row">
+
+                @{ if (Model.allconsults != null)
+                    {
+                        @foreach (var coun in Model.allconsults)
+                        {
+                            if (coun.ServiceType == "Counselling")
+                            {
+                            <div class="col-lg-4 col-sm-6">
+                                <div class="team-member mb-30">
+                                    
+                                    <div class="team-media">
+                                        <img src="/images/profiles/counselling/@coun.ProfileImg" alt="">
+                                    </div>
+                                     
+
+                                    <div class="team-info">
+                                        <div class="team-info-comntent">
+                                            <h4 class="title">@coun.ConsultName </h4>
+                                            <span class="text-secondary">Rate: $@coun.Rate/hr</span>
+                                            @if (coun.ServiceStatus == true)
+                                            {
+                                                <p>
+                                                    Experience: @coun.Experience years <br />
+
+                                                    Status: <span style="color:forestgreen;">Available</span>
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <p>
+                                                    Experience: @coun.Experience years <br />
+
+                                                    Status: <span style="color:red;">Not Available</span>
+                                                </p>
+                                            }
+
+                                        </div>
+                                        @if (coun.ServiceStatus == true)
+                                        {
+                                            <a asp-page="/counsel/profilecounsellor" asp-route-id="@coun.Id" class="btn btn-outline-primary btn-sm">More Details <i class="btn-icon-bx fas fa-chevron-right"></i></a>
+                                            <br /><br /><a asp-page="/appointment/apptdate" asp-route-id="@coun.Id" class="btn btn-outline-primary btn-sm">Book Appointment with Me</a>
+                                        }
+                                        else
+                                        {
+                                            <a asp-page="/counsel/profilecounsellor" asp-route-id="@coun.Id" class="btn btn-outline-primary btn-sm">More Details <i class="btn-icon-bx fas fa-chevron-right"></i></a>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                            }
+
+                        }
+
+                    }
+
+
+                }
+
+
+
+            </div>
+        </div>
+        <img class="pt-img1 animate1" src="images/shap/trangle-orange.png" alt="">
+        <img class="pt-img2 animate2" src="images/shap/square-dots-orange.png" alt="">
+        <img class="pt-img3 animate-rotate" src="images/shap/line-circle-blue.png" alt="">
+        <img class="pt-img4 animate-wave" src="images/shap/wave-blue.png" alt="">
+        <img class="pt-img5 animate-wave" src="images/shap/circle-dots.png" alt="">
+    </section>
+
+</div>

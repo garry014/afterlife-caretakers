@@ -1,0 +1,164 @@
+﻿@page
+@model afterlife_caretakers.Pages.team.viewadvisorapptModel
+@{
+    ViewData["Title"] = "My Will Advisor Appointments";
+}
+
+
+<section class="section-area section-sp1 bg-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-7 col-xl-8 mb-30 mb-md-50">
+                <!-- blog start -->
+
+                <div class="blog-card blog-single" id="comment-list">
+                    <div class="comments-area" id="comments">
+                        <h4 class="widget-title">Upcoming Appointments</h4>
+
+                        <div class="clearfix">
+                            <!-- comment list END -->
+                            <ol class="comment-list">
+                                <li class="comment">
+
+                                    @{ if (Model.allmyappt != null)
+                                        {
+                                            @foreach (var appt in Model.allmyappt)
+                                            {
+                                                if (appt.ApptType == "Advisor" && appt.ConsultId == Model.Id)
+                                                {
+                                                    var time = appt.StartTime + (appt.Duration * 100);
+
+                                                    <div class="comment-body">
+                                                        <div class="comment-author vcard">
+
+                                                            <!-- <img class="avatar photo" src="images/serviceprofiles/counsellors/c2.jpg" alt=""> -->
+                                                            <div class="clearfix">
+                                                                <cite class="fn">@appt.ApptType  Appointment with @appt.ConsultName</cite>
+                                                                <span class="says">says:</span>
+                                                                <div class="comment-meta"> <a href="javascript:void(0);">@appt.Date.ToShortDateString() FROM @appt.StartTime - @time </a> </div>
+                                                            </div>
+                                                        </div>
+                                                        <p><a href="#" style="text-decoration:underline;">Click here to join Online Appointment</a> <br />Meeting ID: 628 282 113 <br />Password: rG42Fs33</p>
+                                                        <a><i class="fa fa-calendar-o" aria-hidden="true"></i></a>
+                                                        <a href="reschedulecounsellor.html" class="btn btn-primary light">  <i class="fa fa-calendar" aria-hidden="true"></i> RESCHEDULE</a>
+                                                    </div>
+                                                    
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+
+                                </li>
+                            </ol>
+
+                        </div>
+
+                        <h4 class="widget-title">Pending: Confirm Physical Location</h4>
+
+                        <div class="clearfix">
+                            <!-- comment list END -->
+                            <ol class="comment-list">
+                                <li class="comment">
+
+                                    @{ if (Model.allmyappt != null)
+                                        {
+                                            @foreach (var pappt in Model.allmyappt)
+                                            {
+                                                if (pappt.ApptType == "Advisor")
+                                                {
+                                                        var time = pappt.StartTime + (pappt.Duration * 100);
+
+                                                        <div class="comment-body">
+                                                            <div class="comment-author vcard">
+                                                                <!-- <img class="avatar photo" src="images/serviceprofiles/counsellors/c2.jpg" alt=""> -->
+                                                                <div class="clearfix">
+                                                                    <cite class="fn">@pappt.ApptType Appointment with @pappt.ConsultName</cite>
+                                                                    <span class="says">says:</span>
+                                                                    <div class="comment-meta"> <a href="javascript:void(0);">@pappt.Date.ToShortDateString() FROM @pappt.StartTime - @time</a> </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <p><span style="font-weight:bold;"></span><br />Contact your counsultant to confirm a physical location.<br /><span style="font-weight:bold;">Mobile: </span>9422 5358 <br /><span style="font-weight:bold;">Email: </span>sarahlimcounselling@gmail.com</p>
+
+                                                        </div>
+                                                    
+                                                }
+
+                                            }
+                                        }
+                                    }
+
+
+                                </li>
+                            </ol>
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <!-- blog END -->
+            </div>
+
+            <div class="col-md-12 col-lg-5 col-xl-4 mb-30">
+                <aside class="side-bar sticky-top aside-bx">
+
+                    <div class="widget recent-posts-entry">
+
+                        <div class="widget-post-bx">
+                            <!--
+                            <h4 class="widget-title">Book next Appointment</h4>
+                            <div class="widget-post clearfix">
+                                <div class="ttr-post-info">
+                                    <div class="ttr-post-header">
+                                        <ul>
+                                            <li><a href="bookcounsellor.html" style="text-decoration:underline;">Counsellor: Book Sarah Lim</a></li>
+
+                                            <br />
+                                            <li><a href="serviceappt.html" style="font-weight: bold; text-decoration: underline;">Book other Services</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>-->
+
+
+
+                            @{ if (Model.allmyappt != null)
+                                {
+
+                                    @foreach (var appt in Model.allmyappt)
+                                    {
+                                        if (appt.ApptStatus == true)
+                                        {
+                                            <h4 class="widget-title">Previous Appointments</h4>
+                                            <div class="widget-post clearfix">
+                                                <div class="ttr-post-info">
+                                                    <div class="ttr-post-header">
+                                                        <h6 class="post-title"><a href="blog-details.html">@appt.ApptType Appointment with @appt.ConsultName</a></h6>
+                                                    </div>
+                                                    <ul class="post-meta">
+                                                        <li class="date"><i class="far fa-calendar-alt"></i> @appt.Date.ToShortDateString()</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+
+                                        }
+                                    }
+                                }
+
+                            }
+                        </div>
+
+                    </div>
+
+
+                </aside>
+            </div>
+
+        </div>
+    </div>
+</section>
+
