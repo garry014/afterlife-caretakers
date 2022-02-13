@@ -40,6 +40,10 @@ namespace afterlife_caretakers.Models
         public DbSet<Gift> Asset { get; set; }
         public DbSet<ExecutorInformation> Executor { get; set; }
         public DbSet<WitnessInformation> Witness { get; set; }
+        public DbSet<ConsultProfile> ConsultProfiles { get; set; }
+        public DbSet<BookAppointment> Appointments { get; set; }
+        public DbSet<WitnessConsult> WitnessConsults { get; set; }
+        public DbSet<WitAppointment> WitAppt { get; set; }
         
     }
 }
