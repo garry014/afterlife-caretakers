@@ -48,8 +48,8 @@ namespace afterlife_caretakers.Pages.prefuneral
             if (ModelState.IsValid)
             {
                 string uniqueFileName = "";
-                var file = Image as IFormFile;
-                if (file != null)
+                
+                if (Image != null)
                 {
                     uniqueFileName = UploadedFile(Image);
                 }
@@ -61,7 +61,7 @@ namespace afterlife_caretakers.Pages.prefuneral
                 Casket.ImageLink = uniqueFileName;
                 if (_svc.AddCasket(Casket))
                 {
-                    return RedirectToPage("/prefuneral/viewcasket");
+                    return RedirectToPage("/prefuneral/Viewcasket");
                 }
                 
             }
@@ -71,8 +71,8 @@ namespace afterlife_caretakers.Pages.prefuneral
         private string UploadedFile(ImageClass Image)
         {
             string uniqueFileName = null;
-            var file = Image as IFormFile;
-            if (file != null)
+            
+            if (Image != null)
             {
                 // check if file is an image file
                 var _extensions = new string[] { ".jpg", ".png" };
