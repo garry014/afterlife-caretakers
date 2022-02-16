@@ -41,12 +41,13 @@
                         </center>
                     </div>
                     <div class="col-lg-12 mb-30">
-                        @if (@Model.Video.writtenMemo != null)
-                        {
-                            <span>Written Memo: </span>
-                            <span>@Model.Video.writtenMemo</span>
-                        }
-
+                        <center>
+                            @if (@Model.Video.writtenMemo != null)
+                            {
+                                <span>Written Memo: </span>
+                                <span>@Model.Video.writtenMemo</span>
+                            }
+                        </center>
                     </div>
                 }
                 @if (@Model.ErrorMsg != null) { 
@@ -54,9 +55,6 @@
                         @Model.ErrorMsg
                     </div>
                 }
-
-
-
             </div>
         </div>
 </section>
