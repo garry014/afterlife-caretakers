@@ -12,32 +12,33 @@ namespace afterlife_caretakers.Pages.lastmsg
     public class BViewModel : PageModel
     {
         private readonly Services.BVideoPermissionService _svc;
-        public BViewModel(Services.BVideoPermissionService service)
+        private readonly Services.UserService _usvc;
+        private readonly Services.VideoMemoService _vsvc;
+        public BViewModel(Services.BVideoPermissionService service, Services.UserService uservice, Services.VideoMemoService vservice)
         {
             _svc = service;
+            _usvc = uservice;
+            _vsvc = vservice;
         }
 
         [BindProperty]
-        public List<BVideoPermission> Permissions { get; set; }
-        //public IActionResult OnGet()
-        //{
-        //    if (HttpContext.Session.GetInt32("user_id") == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public List<BVideoPermission> AllPermissions { get; set; }
+        [BindProperty]
+        public string emailAddress { get; set; }
+        public Users User { get; set; }
+        public Video Video { get; set; }
+        public IActionResult OnGet()
+        {
+            if (HttpContext.Session.GetString("user_email") == null)
+            {
+                return RedirectToPage("/Main_Login");
+            }
 
-        //    int x = 0;
-        //    Int32.TryParse(id, out x);
-        //    List<FExecutorPermission> listAllPermission = _svc.GetAllPermissions();
-        //    List<int> finalPermission = new List<int>();
-        //    foreach (var permission in listAllPermission)
-        //    {
-        //        if (permission.funeral_id == x)
-        //        {
-        //            finalPermission.Add(permission.executor_id);
-        //        }
-        //    }
-        //    Permissions = _svc.GetPermissionByBId(HttpContext.Session.GetString("user_email"));
-        //}
+            emailAddress = HttpContext.Session.GetString("user_email");
+            AllPermissions = _svc.GetAllPermissions();
+
+            
+            return Page();
+        }
     }
 }
