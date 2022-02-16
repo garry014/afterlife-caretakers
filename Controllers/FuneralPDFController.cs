@@ -37,8 +37,11 @@ namespace afterlife_caretakers.Controllers
             conSelect.Open();
             SqlDataReader reader = selectstatus.ExecuteReader();
             reader.Read();
-            string name = reader["religion"].ToString();
-            string rites = reader["rites"].ToString();
+            string religion = reader["religion"].ToString();
+            string RequireRites = reader["RequireRites"].ToString();
+            string WakeLocationIn = reader["WakeLocationIn"].ToString();
+            string WakePostalCode = reader["WakePostalCode"].ToString();
+            string Signature = reader["Signature"].ToString();
 
             //Create a new PDF document
             PdfDocument document = new PdfDocument();
@@ -65,18 +68,23 @@ namespace afterlife_caretakers.Controllers
             //Draw the text
             //can text me if you need any help for this part, for the button its in "amdpdf.cshtml"
             //title
-            graphics.DrawString("PRE-FUNERAL PLANNING", title, PdfBrushes.Black, new PointF(205, 80));
+            graphics.DrawString("PRE-FUNERAL PLANNING", title, PdfBrushes.Black, new PointF(195, 80));
 
             //content
             graphics.DrawString("Religion", subheader, PdfBrushes.Black, new PointF(0, 130));
-            graphics.DrawString("Religion: " + name, font, PdfBrushes.Black, new PointF(0, 150));
-            
-            graphics.DrawString("Wake Location", subheader, PdfBrushes.Black, new PointF(0, 190));
-            graphics.DrawString("Location: " + name, font, PdfBrushes.Black, new PointF(0, 210));
-            graphics.DrawString("Postal Code: " + name, font, PdfBrushes.Black, new PointF(0, 230));
+            graphics.DrawString("Religion: " + religion, font, PdfBrushes.Black, new PointF(0, 150));
+            graphics.DrawString("Require Rites: " + RequireRites, font, PdfBrushes.Black, new PointF(0, 170));
+
+            graphics.DrawString("Wake Location", subheader, PdfBrushes.Black, new PointF(0, 210));
+            graphics.DrawString("Wake location in: " + WakeLocationIn, font, PdfBrushes.Black, new PointF(0, 230));
+            graphics.DrawString("Postal Code: " + WakePostalCode, font, PdfBrushes.Black, new PointF(0, 250));
 
             //signature
-            graphics.DrawString("Signature: " + name, font, PdfBrushes.Black, new PointF(0, 270));
+            graphics.DrawString("Signature: ", font, PdfBrushes.Black, new PointF(0, 270));
+            string ImageFolder1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "signature", Signature);
+            FileStream imageStream1 = new FileStream(ImageFolder1, FileMode.Open, FileAccess.Read);
+            PdfBitmap image1 = new PdfBitmap(imageStream1);
+            graphics.DrawImage(image1, 0, 290, 188, 50);
 
             //date
             graphics.DrawString("Date: " + DateTime.Now.ToShortDateString(), font, PdfBrushes.Black, new PointF(0, 730));
