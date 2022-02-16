@@ -22,6 +22,15 @@ namespace afterlife_caretakers.Services
             {
                 return false;
             }
+            DateTime myDate;
+            if (!DateTime.TryParse("1/1/2000", out myDate))
+            {
+                return false;
+            }
+            else
+            {
+                newusers.deathdate_setting = myDate; 
+            }
             _context.Add(newusers);
             _context.SaveChanges();
             return true;
