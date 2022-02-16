@@ -32,11 +32,10 @@ namespace afterlife_caretakers.Pages.prefuneral
             {
                 return NotFound();
             }
-            if (HttpContext.Session.GetString("admin_type").Contains("General_Admin"))
+            if (!HttpContext.Session.GetString("admin_type").Contains("General_Admin"))
             {
-                return Page();
+                return NotFound();
             }
-            return NotFound();
             
             if (id == null)
             {

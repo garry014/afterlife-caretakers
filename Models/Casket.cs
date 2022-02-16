@@ -28,10 +28,10 @@ namespace afterlife_caretakers.Models
     public class ImageClass
     {
         [AllowedExtensions(new string[] { ".jpg", ".png" })]
-        [MaxFileSize(5 * 1024 * 1024)]
+        [MaxFileSize(9 * 1024 * 1024)]
         public IFormFile Image { get; set; }
         [AllowedExtensions(new string[] { ".jpg", ".png" })]
-        [MaxFileSize(5 * 1024 * 1024)]
+        [MaxFileSize(9 * 1024 * 1024)]
         public IFormFile Image2 { get; set;}
     }
 
