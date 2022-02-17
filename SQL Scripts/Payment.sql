@@ -4,5 +4,6 @@
     [Item] VARCHAR(100) NOT NULL,
 	[Price] FLOAT NOT NULL,
 	[UserID] INT NOT NULL,
-	[TimeStamp] DATETIME NOT NULL
+	[TimeStamp] DATETIME NOT NULL,
+	[FormId] INT NOT NULL,
 )
