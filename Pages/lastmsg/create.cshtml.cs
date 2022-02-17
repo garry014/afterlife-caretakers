@@ -56,7 +56,7 @@ namespace afterlife_caretakers.Pages.lastmsg
                 Video.willMakerID = (int)HttpContext.Session.GetInt32("user_id");
                 if (_svc.AddVideo(Video))
                 {
-                    return RedirectToPage("/prefuneral/viewcasket");
+                    return RedirectToPage("/lastmsg/view");
                 }
             }
             return Page();
