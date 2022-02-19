@@ -23,7 +23,7 @@
                                         {
                                             @foreach (var appt in Model.allmyappt)
                                             {
-                                                if (appt.ApptType == "Doctor     " && appt.ConsultId == Model.Id)
+                                                if (appt.ApptType == "Doctor" )
                                                 {
 
                                                     var time = appt.StartTime + (appt.Duration * 100);
