@@ -6,8 +6,8 @@ CREATE TABLE [dbo].[ConsultProfiles] (
     [Rate]          INT           NOT NULL,
     [Experience]    INT           NOT NULL,
     [ProfileImg]    VARCHAR (MAX) NULL,
-    [Description1]  VARCHAR (500) NOT NULL,
-    [Description2]  VARCHAR (500) NOT NULL,
+    [Description1]  VARCHAR (MAX) NOT NULL,
+    [Description2]  VARCHAR (MAX) NOT NULL,
     [PublishStatus] BIT           NULL,
     [UserId]        INT           NULL,
     PRIMARY KEY CLUSTERED ([Id] ASC)
