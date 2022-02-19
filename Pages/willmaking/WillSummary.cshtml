@@ -95,6 +95,12 @@
                             Email: @Model.MyFiance.Email<br />
                             <br />
                             <br />
+                            <div class="text-center">
+                                <form method="post">
+                                    <a asp-page="/willmaking/EditFiance" asp-route-id="@Model.MyFiance.Id" class="btn btn-secondary"
+                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>
+                                </form>
+                            </div>
                         </div>
                         }
                             }
@@ -123,13 +129,8 @@
                                             <br />
                                             <div class="text-center">
                                                 <form method="post">
-                                                    @*<button asp-page-handler="ExecBack"name="submit" type="submit" value="Edit"
-                                                                class="btn btn-secondary"
-                                                                style="padding-left:60px; padding-right:60px; font-size:15px">
-                                                            Edit
-                                                        </button>*@
-                                                    @*<a asp-page="/willmaking/EditExec" asp-route-id="@item.Id"class="btn btn-secondary"
-                                                        style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>*@
+                                                    @*<a asp-page="/willmaking/EditExec" asp-route-id="@item.Id" class="btn btn-secondary"
+                                                       style="padding-left:60px; padding-right:60px; font-size:15px">Edit</a>*@
                                                 </form>
                                             </div>
                                             <br />

@@ -38,6 +38,7 @@ namespace afterlife_caretakers.Services
             MaritalInfo theFiance = _context.Fiance.Where(f => f.OWNERID == id).FirstOrDefault();
             return theFiance;
         }
+
         public List<MaritalInfo> GetFianceByOwnerId(int ownerid)
         {
             return _context.Fiance.Where(f => f.OWNERID == ownerid).ToList();
@@ -45,6 +46,32 @@ namespace afterlife_caretakers.Services
         private bool FianceExists(int id)
         {
             return _context.Fiance.Any(f => f.Id == id);
+        }
+        public bool UpdateFiance(MaritalInfo thefiance)
+        {
+            bool updated = true;
+            _context.Attach(thefiance).State = EntityState.Modified;
+
+            try
+            {
+                _context.SaveChanges();
+                updated = true;
+
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!FianceExists(thefiance.Id))
+                {
+                    updated = false;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+            return updated;
+
+
         }
         //end of marital status
 

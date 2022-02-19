@@ -87,7 +87,7 @@
                         <form method="post">
                             <input type="hidden" asp-for="MyGift.gift_type" value="sampleText" />
                             <input type="hidden" asp-for="MyGift.description" value="sampleText"/>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
 
                                 @*<input type="hidden" asp-for="MyGift.Id" />*@
                                 <label>
@@ -110,7 +110,7 @@
                                 </div>
                             </div>
                             <br>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label>
                                     @Html.RadioButton("MyGift.TYPE", "DistributionofAssets", "testa")
                                     <img class="ImageGiftChoice" src="~/images/WillForm/cross.png">

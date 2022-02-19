@@ -9,7 +9,6 @@
     <Folder Include="wwwroot\images\uploads\funeral_photoFramed\" />
     <Folder Include="wwwroot\images\uploads\funeral_photoAttire\" />
     <Folder Include="wwwroot\Signature\" />
-    <Folder Include="wwwroot\signature\" />
     <Folder Include="wwwroot\UploadedFiles\" />
   </ItemGroup>
 
