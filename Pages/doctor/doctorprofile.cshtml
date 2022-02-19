@@ -25,7 +25,7 @@
                                 </a>
                             </li>
                             <li class="breadcrumb-item"><a href="teamdoctors.html">Our Doctors</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">@Model.Consult.ConsultName</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dr. @Model.Consult.ConsultName</li>
                         </ul>
                     </nav>
                 </div>
@@ -56,7 +56,7 @@
                                     <div class="col-lg-6 mb-30">
                                         <div class="heading-bx">
                                             <!-- <h6 class="title-ext text-secondary">About Us</h6> -->
-                                            <h2 class="title">@Model.Consult.ConsultName</h2>
+                                            <h2 class="title">Dr. @Model.Consult.ConsultName</h2>
                                             <span class="text-secondary">Rate: $@Model.Consult.Rate/hr</span>
                                             @if (Model.Consult.ServiceStatus == true)
                                             {
@@ -131,7 +131,7 @@
 
 
                                                         <div class="ttr-post-header">
-                                                            <h6 class="post-title"><a href="#">@doc.ConsultName</a></h6>
+                                                            <h6 class="post-title"><a href="#">Dr. @doc.ConsultName</a></h6>
                                                         </div>
                                                         <ul class="post-meta">
                                                             <li class="date">Rate: $@doc.Rate/hr</li>
