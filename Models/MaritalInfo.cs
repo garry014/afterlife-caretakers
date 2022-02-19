@@ -6,17 +6,18 @@ using System.Threading.Tasks;
 
 namespace afterlife_caretakers.Models
 {
+    //MaxLength(25)]
     public class MaritalInfo
     {
         [Required]
         public int Id { get; set; }
         [Required]
         public string NAME { get; set; }
-        [Required]
+        [Required, MaxLength(9)]
         public string NRIC { get; set; }
         [Required]
         public string Gender { get; set; }
-        [Required]
+        [Required, MaxLength(8)]
         public string PhoneNo { get; set; }
         [Required]
         public string Mstatus { get; set; }

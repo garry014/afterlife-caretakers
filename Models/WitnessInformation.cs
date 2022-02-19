@@ -14,13 +14,13 @@ namespace afterlife_caretakers.Models
         public string Relationship { get; set; }
         [Required]
         public string NAME { get; set; }
-        [Required]
+        [Required, MaxLength(9)]
         public string NRIC { get; set; }
         //[Required] birthdate would be checked in beneficiary side if their qualified.
         //public DateTime Birthdate { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
-        [Required]
+        [Required, MaxLength(8)]
         public string PhoneNo { get; set; }
         [Required]
         public string Email { get; set; }

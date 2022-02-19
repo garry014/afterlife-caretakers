@@ -22,11 +22,11 @@ namespace afterlife_caretakers.Pages.willmaking
             }
             return Page();
         }
-        public IActionResult OnStaceyPost()
+        public IActionResult OnPostBookButton()
         {
-            return Page();
+            return RedirectToPage("teamadvisors");
         }
-        public IActionResult OnPost()
+        public IActionResult OnPostCreateWillBUTTON()
         {
             return RedirectToPage("WillManual");
         }

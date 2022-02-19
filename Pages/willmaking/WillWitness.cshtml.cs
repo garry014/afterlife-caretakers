@@ -42,6 +42,10 @@ namespace afterlife_caretakers.Pages.willmaking
             ownerWitnessList = _svc.GetWitnessFromOwner((int)HttpContext.Session.GetInt32("user_id"));
             return RedirectToPage("WillSummary");
         }
+        public IActionResult OnPostFindWitnessButton()
+        {
+            return RedirectToPage("teamwitnesses");
+        }
         public IActionResult OnPostAddWitness()
         {
             if (ModelState.IsValid)

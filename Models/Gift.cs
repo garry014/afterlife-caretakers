@@ -4,13 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
+
 namespace afterlife_caretakers.Models
 {
     public class Gift
     { 
         [Required]
         public int Id { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Must select the green icon to split distribute your assets")]
         public string TYPE { get; set; }
         [Required]
         public string gift_type { get; set; }

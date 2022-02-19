@@ -34,13 +34,13 @@ namespace afterlife_caretakers.Models
         public int Id { get; set; }
         [Required]
         public string NAME { get; set; }
-        [Required]
+        [Required, MaxLength(9)]
         public string NRIC { get; set; }
         [Required]
         public DateTime Birthdate { get; set; }
         [Required]
         public string Relationship { get; set; }
-        [Required]
+        [Required, MaxLength(8)]
         public string PhoneNo { get; set; }
         [Required]
         public int OWNERID { get; set; }

@@ -358,3 +358,6 @@ C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\S
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerification.cshtml.g.cs
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\AdminVerificationList.cshtml.g.cs
 C:\Users\starp\OneDrive\Documents\afterlife-caretakers\obj\Debug\netcoreapp3.1\Razor\Pages\Admin\EmailConfirmation_Admin.cshtml.g.cs
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\xunit.abstractions.dll
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\xunit.core.dll
+C:\Users\starp\OneDrive\Documents\afterlife-caretakers\bin\Debug\netcoreapp3.1\xunit.execution.dotnet.dll

@@ -37,8 +37,8 @@
                 <h5>Do you need an advisor to oversee your creation of will?</h5>
                 <strong>If YES , Book One Now</strong>
                 <div class="text-center">
-                    <form action="StaceyPage.html">
-                        <button type="submit" class="btn btn-secondary" style="padding-left:80px; padding-right:80px; font-size:15px">Book Appointment</button>
+                    <form method="post">
+                        <button type="submit" asp-page-handler="BookButton" class="btn btn-secondary" style="padding-left:80px; padding-right:80px; font-size:15px">Book Appointment</button>
                     </form>
                 </div>
                 <br>
@@ -52,7 +52,7 @@
                 </form> -->
                 <div class="text-center">
                     <form method="post">
-                        <button type="submit" class="btn btn-secondary" style="padding-left:80px; padding-right:80px; font-size:15px">Create Will</button>
+                        <button type="submit" asp-page-handler="CreateWillBUTTON" class="btn btn-secondary" style="padding-left:80px; padding-right:80px; font-size:15px">Create Will</button>
                     </form>
                 </div>
 
